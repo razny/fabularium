@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..700;1,100..700&display=swap');
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+  }
+
+.input-group-text a { /*centers mag icon*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-item {
+    font-weight: 600;
+}
+
+body {
+    background-color: rgb(77, 44, 61);
+}
+
+.list-group-item p:first-of-type {
+    font-weight: 600;
+}
