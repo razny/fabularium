@@ -27,6 +27,7 @@ body {
   
   .secondary {
     background-color: var(--secondary);
+    color: white;
   }
   
   .accent {
@@ -47,6 +48,76 @@ footer .text-body {
     padding: 0;
   }
 
+.img > .card {
+  background-color: red;
+}
+  /**/
+
+  /*
+  .myswiper {
+    position: relative;
+    padding-bottom: 40px;
+  }
+*/
+  .card {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .card__title {
+    text-align: center;
+    transition: opacity .3s;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+
+  .swiper-slide:not(.swiper-slide-active) .card__title {
+    opacity: 0;
+  }
+
+  .swiper-slide {
+    width: 25%;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  color: var(--primary);
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding: 0 50px;
+}
+
+.swiper::before{
+  content: "";
+  display: block;
+  background: var(--background);
+  left: 0;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50px;
+  z-index: 9;
+}
+.swiper::after{
+  content: "";
+  display: block;
+  background: var(--background);
+  right: 0;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50px;
+  z-index: 9;
+}
+
+  /**/
+  .btn-dark:hover {
+    background: var(--accent);
+  }
 .navbar-brand {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -59,6 +130,10 @@ footer .text-body {
     justify-content: center;
 }
 
+.input-group .input-group-text:hover {
+  background-color: rgb(243, 243, 243);
+}
+
 .nav-item {
     font-weight: 600;
 }
@@ -66,6 +141,7 @@ footer .text-body {
 .list-group-item p:first-of-type {
     font-weight: 600;
 }
+
 
 h2 {
     width: 100%; 
@@ -82,4 +158,5 @@ h2 {
      border-style: solid;
      border-width: 1px;
      border-color: #828282;
+     background-color: rgb(255, 255, 255)!important;
  }
