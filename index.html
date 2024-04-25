@@ -33,7 +33,7 @@
       </form>
       <ul class="navbar-nav d-flex align-items-center ms-2">
         <li class="nav-item">
-          <a class="nav-link" href="#"><img src="images/shopping-cart-icon.svg" width="32" height="32" alt="Logo" /></a>
+          <a class="nav-link" href="pages/koszyk.html"><img src="images/shopping-cart-icon.svg" width="32" height="32" alt="Logo" /></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="pages/logowanie.html"><img src="images/user-icon.svg" width="28" height="28"
@@ -78,38 +78,56 @@
     </section>
   </div>
 
-  <section class="container-fluid bg w-75 mt-5">
-    <ul class="list-group flex-row flex-wrap justify-content-between">
-      <li class="list-group-item bg border-0 ">
-        <div class="d-flex flex-column align-items-center">
-          <img src="images/fast-delivery-icon.svg" alt="Image 1" style="width: 50px; height: 50px;">
-          <p class="text-center mb-0 mt-2">Free shipping</p>
-          <p class="text-center">Lorem ipsum dolor sit consectetur</p>
-        </div>
-      </li>
-      <li class="list-group-item bg border-0">
-        <div class="d-flex flex-column align-items-center">
-          <img src="images/lock-icon.svg" alt="Image 2" style="width: 50px; height: 50px;">
-          <p class="text-center mb-0 mt-2">Secure payment</p>
-          <p class="text-center">Lorem ipsum dolor sit consectetur</p>
-        </div>
-      </li>
-      <li class="list-group-item bg border-0">
-        <div class="d-flex flex-column align-items-center">
-          <img src="images/customer-service-icon.svg" alt="Image 3" style="width: 50px; height: 50px;">
-          <p class="text-center mb-0 mt-2">24/7 customer service</p>
-          <p class="text-center">Lorem ipsum dolor sit consectetur</p>
-        </div>
-      </li>
-      <li class="list-group-item bg border-0">
-        <div class="d-flex flex-column align-items-center">
-          <img src="images/arrow-icon.svg" alt="Image 4" style="width: 50px; height: 50px;">
-          <p class="text-center mb-0 mt-2">Easy returns</p>
-          <p class="text-center">Lorem ipsum dolor sit consectetur</p>
-        </div>
-      </li>
-    </ul>
+  <section class="container-fluid bg w-75 mt-5 p-2">
+    <div class="row bg">
+      <div class="col-md-3 bg">
+        <ul class="list-group border-0">
+          <li class="list-group-item border-0 bg">
+            <div class="d-flex flex-column align-items-center">
+              <img src="images/fast-delivery-icon.svg" alt="Image 1" style="width: 50px; height: 50px;">
+              <p class="text-center mb-2 mt-2">Darmowa dostawa</p>
+              <p class="text-center text-secondary">Szybka i darmowa dostawa Twoich zamówień, abyś mógł lepiej korzystać z zakupów.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-group border-0">
+          <li class="list-group-item border-0 bg">
+            <div class="d-flex flex-column align-items-center">
+              <img src="images/lock-icon.svg" alt="Image 2" style="width: 50px; height: 50px;">
+              <p class="text-center mb-2 mt-2">Bezpieczna płatność</p>
+              <p class="text-center text-secondary">Twoje dane są chronione, a transakcje są szyfrowane dla pełnej ochrony.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-group border-0">
+          <li class="list-group-item border-0 bg">
+            <div class="d-flex flex-column align-items-center">
+              <img src="images/customer-service-icon.svg" alt="Image 3" style="width: 50px; height: 50px;">
+              <p class="text-center mb-2 mt-2">Obsługa klienta 24/7</p>
+              <p class="text-center text-secondary">Zadzwoń lub napisz do nas w każdej chwili, a my z przyjemnością Ci pomożemy!</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-group border-0">
+          <li class="list-group-item border-0 bg">
+            <div class="d-flex flex-column align-items-center">
+              <img src="images/arrow-icon.svg" alt="Image 4" style="width: 50px; height: 50px;">
+              <p class="text-center mb-2 mt-2">Bezproblemowe zwroty</p>
+              <p class="text-center text-secondary">Niezadowolony z zakupów? Skontaktuj się z nami, a znajdziemy rozwiązanie.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </section>
+  
+  
 
   <section class="container-fluid bg mt-5 w-75">
     <h2 class="text-center my-5"><span class="bg">Polecane książki</span></h2>
@@ -122,7 +140,7 @@
               <img src="images/cover1.jpg" class="mt-3" alt="Book 1" style="width: 100px;">
               <div class="card-body mx-2">
                 <h5 class="card-title">Tytuł książki pierwszy</h5>
-                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
                 <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
               </div>
             </div>
@@ -133,7 +151,7 @@
               <img src="images/cover2.jpeg" class="mt-3" alt="Book 2" style="width: 100px;">
               <div class="card-body mx-2">
                 <h5 class="card-title">Tytuł książki drugi</h5>
-                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
                 <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
               </div>
             </div>
@@ -144,7 +162,7 @@
               <img src="images/cover3.png" class="mt-3" alt="Book 3" style="width: 100px;">
               <div class="card-body mx-2">
                 <h5 class="card-title">Tytuł książki trzeci</h5>
-                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
                 <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
               </div>
             </div>
@@ -155,7 +173,7 @@
               <img src="images/cover4.jpg" class="mt-3" alt="Book 4" style="width: 100px;">
               <div class="card-body mx-2">
                 <h5 class="card-title">Tytuł książki czwarty</h5>
-                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
                 <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
               </div>
             </div>
@@ -166,7 +184,7 @@
               <img src="images/cover5.jpg" class="mt-3" alt="Book 5" style="width: 100px;">
               <div class="card-body mx-2">
                 <h5 class="card-title">Tytuł książki piąty</h5>
-                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
                 <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
               </div>
             </div>
