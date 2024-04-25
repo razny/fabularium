@@ -38,6 +38,13 @@ body {
   color: var(--primary);
 }
 
+.gradient-bg {
+  background: rgb(126, 63, 204);
+  background: linear-gradient(90deg, rgba(126, 63, 204, 1) 0%, rgba(175, 126, 236, 1) 100%);
+}
+
+/*********************************/
+
 footer,
 footer .text-body {
   text-decoration: none;
@@ -53,14 +60,7 @@ footer .text-body {
   padding: 0;
 }
 
-/**/
-
-/*
-  .myswiper {
-    position: relative;
-    padding-bottom: 40px;
-  }
-*/
+/*********************************/
 .card {
   height: 100%;
   overflow: hidden;
@@ -75,6 +75,7 @@ footer .text-body {
   font-size: 14px;
 }
 
+/*********************************/
 .swiper-slide:not(.swiper-slide-active) .card__title {
   opacity: 0;
 }
@@ -117,11 +118,18 @@ footer .text-body {
   width: 50px;
   z-index: 9;
 }
+/*********************************/
+.btn-link {
+  text-decoration: none;
+  margin-top: 0;
+  padding-top: 0;
+  color: var(--accent);
+}
 
-/**/
 .btn-dark:hover {
   background: var(--accent);
 }
+
 .navbar-brand {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -147,7 +155,7 @@ footer .text-body {
   font-weight: 600;
 }
 
-/* */
+/*********************************/
 #catalog .card {
   transition: box-shadow 0.3s ease;
 }
@@ -155,7 +163,7 @@ footer .text-body {
 #catalog .card:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
-/* */
+/*********************************/
 
 section > h2 {
   width: 100%;
@@ -175,6 +183,7 @@ section > h2 span {
   background-color: rgb(255, 255, 255) !important;
 }
 
+/*********************************/
 .counter {
   background-color: rgb(245, 244, 245);
   padding: 10px 0;
@@ -203,3 +212,4 @@ section > h2 span {
   display: table;
   color: #4ad1e5;
 }
+/*********************************/
