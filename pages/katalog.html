@@ -8,8 +8,7 @@
   <link rel="stylesheet" type="text/css" href="../styles/style.css" />
   <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
   <title>Fabularium - katalog</title>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-..."></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body class="bg">
@@ -66,20 +65,37 @@
           <div class="col-md-8 order-md-2 col-lg-9">
             <div class="container-fluid">
               <div class="row">
-                <!-- add dropdown sort by x menu-->
 
-                <!-- pagination - top -->
-                <div class="col-md-12 mb-3">
-                  <ul class="pagination justify-content-end">
-                    <li class="page-item"><a class="page-link" href="#">Poprzednia</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Następna</a></li>
-                  </ul>
+                <!-- Dropdown column -->
+                <div class="col-md-6">
+                  <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                      Sortuj wg:
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Trafność</a></li>
+                      <li><a class="dropdown-item" href="#">Nazwy: A do Z</a></li>
+                      <li><a class="dropdown-item" href="#">Nazwy: Z do A</a></li>
+                      <li><a class="dropdown-item" href="#">Cena: od najniższej</a></li>
+                      <li><a class="dropdown-item" href="#">Cena: od najwyższej</a></li>
+                    </ul>
+                  </div>
                 </div>
 
-                <!-- product cards -->
+                <!-- Pagination column -->
+                <div class="col-md-6">
+                  <div class="col-md-12 mb-3">
+                    <ul class="pagination justify-content-end">
+                      <li class="page-item"><a class="page-link" href="#">Poprzednia</a></li>
+                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#">Następna</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Product cards -->
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">

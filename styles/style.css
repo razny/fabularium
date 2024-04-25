@@ -126,6 +126,10 @@ footer .text-body {
   color: var(--accent);
 }
 
+.btn-link:hover {
+  color: var(--primary);
+}
+
 .btn-dark:hover {
   background: var(--accent);
 }
