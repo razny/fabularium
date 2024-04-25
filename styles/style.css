@@ -1,84 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..700;1,100..700&display=swap");
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-    --text: #070509;
-    --background: #f9f7fc;
-    --primary: #7e3fcc;
-    --secondary: #af7eec;
-    --accent: #9345f5;
-  }
-  
-  .text {
-    color: var(--text);
-  }
+  --text: #070509;
+  --background: #f9f7fc;
+  --primary: #7e3fcc;
+  --secondary: #af7eec;
+  --accent: #9345f5;
+}
 
-  .bg {
-    background-color: var(--background);
-  }
-  
-  .primary {
-    background-color: var(--primary);
-  }
-  
-  .secondary {
-    background-color: var(--secondary);
-    color: white;
-  }
-  
-  .accent {
-    background-color: var(--accent);
-  }
+.text {
+  color: var(--text);
+}
 
-footer, footer .text-body {
-    text-decoration: none;
-    color: #e7e7e7!important;
-    font-size: 13px;
+.bg {
+  background-color: var(--background);
+}
+
+.primary {
+  background-color: var(--primary);
+}
+
+.secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.accent {
+  background-color: var(--accent);
+}
+
+.primary-text {
+  color: var(--primary);
+}
+
+footer,
+footer .text-body {
+  text-decoration: none;
+  color: #e7e7e7 !important;
+  font-size: 13px;
 }
 
 footer .text-body {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .list-group {
-    padding: 0;
-  }
+  padding: 0;
+}
 
-  /**/
+/**/
 
-  /*
+/*
   .myswiper {
     position: relative;
     padding-bottom: 40px;
   }
 */
-  .card {
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .card__title {
-    text-align: center;
-    transition: opacity .3s;
-  }
-
-  .card-text {
-    font-size: 14px;
-  }
-
-  .swiper-slide:not(.swiper-slide-active) .card__title {
-    opacity: 0;
-  }
-
-  .swiper-slide {
-    width: 25%;
+.card {
+  height: 100%;
+  overflow: hidden;
 }
 
-.swiper-button-prev, .swiper-button-next {
+.card__title {
+  text-align: center;
+  transition: opacity 0.3s;
+}
+
+.card-text {
+  font-size: 14px;
+}
+
+.swiper-slide:not(.swiper-slide-active) .card__title {
+  opacity: 0;
+}
+
+.swiper-slide {
+  width: 25%;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
   color: var(--primary);
 }
 
@@ -88,7 +94,7 @@ footer .text-body {
   padding: 0 50px;
 }
 
-.swiper::before{
+.swiper::before {
   content: "";
   display: block;
   background: var(--background);
@@ -99,7 +105,8 @@ footer .text-body {
   width: 50px;
   z-index: 9;
 }
-.swiper::after{
+
+.swiper::after {
   content: "";
   display: block;
   background: var(--background);
@@ -111,20 +118,21 @@ footer .text-body {
   z-index: 9;
 }
 
-  /**/
-  .btn-dark:hover {
-    background: var(--accent);
-  }
+/**/
+.btn-dark:hover {
+  background: var(--accent);
+}
 .navbar-brand {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-  }
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
 
-.input-group-text a { /*centers mag icon*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.input-group-text a {
+  /*centers mag icon*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input-group .input-group-text:hover {
@@ -132,42 +140,42 @@ footer .text-body {
 }
 
 .nav-item {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .list-group-item p:first-of-type {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 /* */
-.card {
+#catalog .card {
   transition: box-shadow 0.3s ease;
 }
 
-.card:hover {
+#catalog .card:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 /* */
 
 section > h2 {
-    width: 100%; 
-    text-align: center; 
-    border-bottom: 1px solid #828282; 
-    line-height: 0.1em;
-    margin: 10px 0 20px; 
-    padding: 0.2em;
-    font-size: 25px;
- } 
- 
-section > h2 span { 
-     padding: 5px 20px; 
-     border-style: solid;
-     border-width: 1px;
-     border-color: #828282;
-     background-color: rgb(255, 255, 255)!important;
- }
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #828282;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  padding: 0.2em;
+  font-size: 25px;
+}
 
- .counter {
+section > h2 span {
+  padding: 5px 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #828282;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.counter {
   background-color: rgb(245, 244, 245);
   padding: 10px 0;
   border-radius: 10px;

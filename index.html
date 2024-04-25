@@ -1,201 +1,190 @@
 <!DOCTYPE html>
 <html lang="pl">
-  
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="icon" type="image/x-icon" href="images/favicon.svg">
-    <title>Fabularium - sklep z książkami dla każdego</title>
-    
-  </head>
-<!--or add some img w/ corporate artstyle instead of the books-->
-  <body class="bg">
-    <header class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
-      <div class="container-fluid d-flex justify-content-around w-75">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-          <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-2"/>
-          Fabularium</a>
-          <form class="w-75">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Wpisz tytuł, autora lub IBSN...">
-                <span class="input-group-text">
-                  <a href="#">
-                    <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
-                  </a>
-                </span>
-            </div>
-          </form>
-          <ul class="navbar-nav d-flex align-items-center ms-2">
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><img
-                  src="images/shopping-cart-icon.svg"
-                  width="32"
-                  height="32"
-                  alt="Logo"
-              /></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><img
-                  src="images/user-icon.svg"
-                  width="28"
-                  height="28"
-                  alt="Logo"
-              /></a>
-            </li>
-          </ul>
-      </div>
-    </header>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <nav class="navbar navbar-expand-lg navbar-dark primary p-0">
-      <div class="container-fluid d-flex justify-content-around w-50">
-        <ul class="navbar-nav flex-row">
-          <li class="nav-item me-3">
-            <a class="nav-link" href="index.html">Strona główna</a>
-          </li>
-          <li class="nav-item me-3">
-            <a class="nav-link" href="pages/katalog.html">Katalog</a>
-          </li>
-          <li class="nav-item me-3">
-            <a class="nav-link" href="pages/bestsellery.html">Bestsellery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/o-nas.html">O nas</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+  <title>Fabularium - sklep z książkami dla każdego</title>
 
-  <div class="d-flex justify-content-center align-items-center py-5" 
-  style="background-image: url('images/books-alt.png');">
-<section class="jumbotron py-4 w-75">
-  <div class="w-75 me-5 ms-3">
-  <h1 class="display-4 mb-4">Odkryj świat literatury!</h1>
-  <p class="lead me-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi neque saepe corrupti deleniti dicta reprehenderit itaque odio doloremque assumenda ab. Architecto eveniet velit reprehenderit laboriosam animi ipsa perspiciatis non vero!</p>
-  <p class="lead me-5">
-    <a class="btn secondary btn-dark border-0 mt-4" href="#" role="button">Zobacz wszystkie produkty</a>
-  </p>
-</div>
-</section>
-</div>
+</head>
 
-<section class="container-fluid bg w-75 mt-5">
-  <ul class="list-group flex-row flex-wrap justify-content-between">
-    <li class="list-group-item bg border-0 ">
-      <div class="d-flex flex-column align-items-center">
-        <img src="images/fast-delivery-icon.svg" alt="Image 1" style="width: 50px; height: 50px;">
-        <p class="text-center mb-0 mt-2">Free shipping</p>
-        <p class="text-center">Lorem ipsum dolor sit consectetur</p>
-      </div>
-    </li>
-    <li class="list-group-item bg border-0">
-      <div class="d-flex flex-column align-items-center">
-        <img src="images/lock-icon.svg" alt="Image 2" style="width: 50px; height: 50px;">
-        <p class="text-center mb-0 mt-2">Secure payment</p>
-        <p class="text-center">Lorem ipsum dolor sit consectetur</p>
-      </div>
-    </li>
-    <li class="list-group-item bg border-0">
-      <div class="d-flex flex-column align-items-center">
-        <img src="images/customer-service-icon.svg" alt="Image 3" style="width: 50px; height: 50px;">
-        <p class="text-center mb-0 mt-2">24/7 customer service</p>
-        <p class="text-center">Lorem ipsum dolor sit consectetur</p>
-      </div>
-    </li>
-    <li class="list-group-item bg border-0">
-      <div class="d-flex flex-column align-items-center">
-        <img src="images/arrow-icon.svg" alt="Image 4" style="width: 50px; height: 50px;">
-        <p class="text-center mb-0 mt-2">Easy returns</p>
-        <p class="text-center">Lorem ipsum dolor sit consectetur</p>
-      </div>
-    </li>
-  </ul>
-</section>
+<body class="bg">
+  <header class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+    <div class="container-fluid d-flex justify-content-around w-75">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-2" />
+        Fabularium</a>
+      <form class="w-75">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Wpisz tytuł, autora lub IBSN...">
+          <span class="input-group-text">
+            <a href="#">
+              <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
+            </a>
+          </span>
+        </div>
+      </form>
+      <ul class="navbar-nav d-flex align-items-center ms-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><img src="images/shopping-cart-icon.svg" width="32" height="32" alt="Logo" /></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><img src="images/user-icon.svg" width="28" height="28" alt="Logo" /></a>
+        </li>
+      </ul>
+    </div>
+  </header>
 
-<section class="container-fluid bg mt-5 w-75">
-  <h2 class="text-center my-5"><span class="bg">Polecane książki</span></h2>
-  <div class="row text-center">
+  <nav class="navbar navbar-expand-lg navbar-dark primary p-0">
+    <div class="container-fluid d-flex justify-content-around w-50">
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item me-3">
+          <a class="nav-link" href="index.html">Strona główna</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="pages/katalog.html">Katalog</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="pages/bestsellery.html">Bestsellery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="pages/o-nas.html">O nas</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="d-flex justify-content-center align-items-center py-5"
+    style="background-image: url('images/books-alt.png');">
+    <section class="jumbotron py-4 w-75">
+      <div class="w-75 me-5 ms-3">
+        <h1 class="display-4 mb-4">Odkryj świat literatury!</h1>
+        <p class="lead me-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi neque saepe corrupti
+          deleniti dicta reprehenderit itaque odio doloremque assumenda ab. Architecto eveniet velit reprehenderit
+          laboriosam animi ipsa perspiciatis non vero!</p>
+        <p class="lead me-5">
+          <a class="btn secondary btn-dark border-0 mt-4" href="pages/katalog.html" role="button">Zobacz wszystkie
+            produkty</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <section class="container-fluid bg w-75 mt-5">
+    <ul class="list-group flex-row flex-wrap justify-content-between">
+      <li class="list-group-item bg border-0 ">
+        <div class="d-flex flex-column align-items-center">
+          <img src="images/fast-delivery-icon.svg" alt="Image 1" style="width: 50px; height: 50px;">
+          <p class="text-center mb-0 mt-2">Free shipping</p>
+          <p class="text-center">Lorem ipsum dolor sit consectetur</p>
+        </div>
+      </li>
+      <li class="list-group-item bg border-0">
+        <div class="d-flex flex-column align-items-center">
+          <img src="images/lock-icon.svg" alt="Image 2" style="width: 50px; height: 50px;">
+          <p class="text-center mb-0 mt-2">Secure payment</p>
+          <p class="text-center">Lorem ipsum dolor sit consectetur</p>
+        </div>
+      </li>
+      <li class="list-group-item bg border-0">
+        <div class="d-flex flex-column align-items-center">
+          <img src="images/customer-service-icon.svg" alt="Image 3" style="width: 50px; height: 50px;">
+          <p class="text-center mb-0 mt-2">24/7 customer service</p>
+          <p class="text-center">Lorem ipsum dolor sit consectetur</p>
+        </div>
+      </li>
+      <li class="list-group-item bg border-0">
+        <div class="d-flex flex-column align-items-center">
+          <img src="images/arrow-icon.svg" alt="Image 4" style="width: 50px; height: 50px;">
+          <p class="text-center mb-0 mt-2">Easy returns</p>
+          <p class="text-center">Lorem ipsum dolor sit consectetur</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container-fluid bg mt-5 w-75">
+    <h2 class="text-center my-5"><span class="bg">Polecane książki</span></h2>
+    <div class="row text-center">
       <div class="swiper">
         <div class="swiper-wrapper">
 
           <div class="swiper-slide">
-              <div class="card align-items-center border-1">
-                <img src="images/cover1.jpg" class="mt-3" alt="Book 1" style="width: 100px;">
-                <div class="card-body mx-2">
-                  <h5 class="card-title">Tytuł książki pierwszy</h5>
-                  <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
-                  <button type="button" class="btn btn-dark secondary mt-2 border-0">Zamów</button>
-                </div>
+            <div class="card align-items-center border-1">
+              <img src="images/cover1.jpg" class="mt-3" alt="Book 1" style="width: 100px;">
+              <div class="card-body mx-2">
+                <h5 class="card-title">Tytuł książki pierwszy</h5>
+                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
               </div>
             </div>
-
-          <div class="swiper-slide">
-              <div class="card align-items-center border-1">
-                <img src="images/cover2.jpeg" class="mt-3" alt="Book 2" style="width: 100px;">
-                <div class="card-body mx-2">
-                  <h5 class="card-title">Tytuł książki drugi</h5>
-                  <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
-                  <button type="button" class="btn btn-dark secondary mt-2 border-0">Zamów</button>
-                </div>
-              </div>
-            </div>
-
-          <div class="swiper-slide">
-              <div class="card align-items-center border-1">
-                <img src="images/cover3.png" class="mt-3" alt="Book 3" style="width: 100px;">
-                <div class="card-body mx-2">
-                  <h5 class="card-title">Tytuł książki trzeci</h5>
-                  <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
-                  <button type="button" class="btn btn-dark secondary mt-2 border-0">Zamów</button>
-                </div>
-              </div>
-            </div>
-
-          <div class="swiper-slide">
-              <div class="card align-items-center border-1">
-                <img src="images/cover4.jpg" class="mt-3" alt="Book 4" style="width: 100px;">
-                <div class="card-body mx-2">
-                  <h5 class="card-title">Tytuł książki czwarty</h5>
-                  <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
-                  <button type="button" class="btn btn-dark secondary mt-2 border-0">Zamów</button>
-                </div>
-              </div>
           </div>
 
           <div class="swiper-slide">
-              <div class="card align-items-center border-1">
-                <img src="images/cover5.jpg" class="mt-3" alt="Book 5" style="width: 100px;">
-                <div class="card-body mx-2">
-                  <h5 class="card-title">Tytuł książki piąty</h5>
-                  <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
-                  <button type="button" class="btn btn-dark secondary mt-2 border-0">Zamów</button>
-                </div>
+            <div class="card align-items-center border-1">
+              <img src="images/cover2.jpeg" class="mt-3" alt="Book 2" style="width: 100px;">
+              <div class="card-body mx-2">
+                <h5 class="card-title">Tytuł książki drugi</h5>
+                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
               </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card align-items-center border-1">
+              <img src="images/cover3.png" class="mt-3" alt="Book 3" style="width: 100px;">
+              <div class="card-body mx-2">
+                <h5 class="card-title">Tytuł książki trzeci</h5>
+                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card align-items-center border-1">
+              <img src="images/cover4.jpg" class="mt-3" alt="Book 4" style="width: 100px;">
+              <div class="card-body mx-2">
+                <h5 class="card-title">Tytuł książki czwarty</h5>
+                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card align-items-center border-1">
+              <img src="images/cover5.jpg" class="mt-3" alt="Book 5" style="width: 100px;">
+              <div class="card-body mx-2">
+                <h5 class="card-title">Tytuł książki piąty</h5>
+                <p class="card-text">Lorem adipisicing ipsum dolor adipisicing.</p>
+                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<footer class="primary text-center mt-5">
-  <div class="text-center p-2">
-    © 2024 Copyright:
-    <a class="text-body" href="https://github.com/razny">razny</a>
-  </div>
-</footer>
+  <footer class="primary text-center mt-5">
+    <div class="text-center p-2">
+      © 2024 Copyright:
+      <a class="text-body" href="https://github.com/razny">razny</a>
+    </div>
+  </footer>
 
-<script src="scripts/swiper.js"></script>
+  <script src="scripts/swiper.js"></script>
 </body>
+
 </html>
