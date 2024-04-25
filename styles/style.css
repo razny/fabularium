@@ -142,6 +142,17 @@ footer .text-body {
     font-weight: 600;
 }
 
+/* */
+.card {
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* */
 
 h2 {
     width: 100%; 
