@@ -10,9 +10,21 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/media-sizes.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.svg">
   <title>Fabularium - sklep z książkami dla każdego</title>
+<!--TO DO:
+  -responsiveness on sm+md devices (lg is def?)
+        - navbar.... expanding......
+        - please make it look good on mobile
+  -why does the swiper not work outside of local server
+  -make it possible to add comments to books (+php?)
+  -plug up php sql db to make book catalogue Complete
+  - search function mayb
+  -bestsellers still??the webpage??maybe
+  - how to add subpage for Every Product (+comments should be added to a particular entry, not to id which can change(?) because if i remove sth the enumeration would change)
 
+-->
 </head>
 
 <body class="bg">
@@ -65,8 +77,8 @@
 
   <div class="jumbotron position-relative d-flex justify-content-center align-items-center py-5">
     <div class="mask"></div>
-    <section class="py-4 w-75 position-relative z-index-1">
-      <div class="w-75 me-5 ms-3">
+    <section class="py-4 w-md-75 w-l-75 w-xl-75 position-relative z-index-1">
+      <div class="w-md-75 w-l-75 w-xl-75 me-5 ms-3">
         <h1 class="display-4 mb-4">Odkryj świat literatury!</h1>
         <p class="lead me-5">Oferujemy szeroki wybór tytułów, które zaspokoją nawet najbardziej wymagające gusta
           czytelnicze i pozwolą Ci zgłębić tematykę, która Cię interesuje. Nasza księgarnia to nie tylko miejsce, gdzie
@@ -80,7 +92,7 @@
     </section>
   </div>
 
-  <section class="container-fluid bg mt-5 w-75">
+  <section class="container-fluid bg mt-5 w-md-75">
     <h2 class="text-center my-5"><span class="bg">Polecane książki</span></h2>
     <div class="row text-center">
       <div class="swiper">

@@ -1,8 +1,7 @@
-var mySwiper = new Swiper ('.swiper', {
+var mySwiper = new Swiper('.swiper', {
     loop: true,
-    slidesPerView: 'auto',
     centeredSlides: false,
-        autoplay: {
+    autoplay: {
         enabled: true,
         delay: 1600,
         disableOnInteraction: false,
@@ -13,4 +12,14 @@ var mySwiper = new Swiper ('.swiper', {
         prevEl: '.swiper-button-prev',
     },
     observer: false,
-  });
+    breakpoints: {
+        // When window width is <= 768px (mobile)
+        768: {
+            slidesPerView: 1,
+        },
+        // When window width is > 768px (desktop)
+        992: {
+            slidesPerView: 'auto',
+        }
+    }
+});
