@@ -23,13 +23,11 @@
                         <form>
                             <div class="mb-3">
                                 <label for="username" class="form-label">Nazwa użytkownika</label>
-                                <input type="text" class="form-control" id="username" name="username"
-                                    placeholder="Wprowadź nazwę" required>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Wprowadź nazwę" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Hasło</label>
-                                <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="Wprowadź hasło" required>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Wprowadź hasło" required>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Zaloguj się</button>

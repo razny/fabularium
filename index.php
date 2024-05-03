@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="styles/media-sizes.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.svg">
   <title>Fabularium - sklep z książkami dla każdego</title>
-<!--TO DO:
+  <!--TO DO:
   -responsiveness on sm+md devices (lg is def?)
         - navbar.... expanding......
         - please make it look good on mobile
@@ -28,52 +28,10 @@
 </head>
 
 <body class="bg">
-  <header class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
-    <div class="container-fluid d-flex justify-content-around w-75">
-      <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-2" />
-        Fabularium</a>
-      <form class="w-75">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Wpisz tytuł, autora lub IBSN...">
-          <span class="input-group-text">
-            <a href="#">
-              <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
-            </a>
-          </span>
-        </div>
-      </form>
-      <ul class="navbar-nav d-flex align-items-center ms-2">
-        <li class="nav-item">
-          <a class="nav-link" href="pages/koszyk.php"><img src="images/shopping-cart-icon.svg" width="32" height="32"
-              alt="Logo" /></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pages/logowanie.php"><img src="images/user-icon.svg" width="28" height="28"
-              alt="Logo" /></a>
-        </li>
-      </ul>
-    </div>
-  </header>
 
-  <nav class="navbar navbar-expand-lg navbar-dark primary p-0">
-    <div class="container-fluid d-flex justify-content-around w-50">
-      <ul class="navbar-nav flex-row">
-        <li class="nav-item me-3">
-          <a class="nav-link" href="index.php">Strona główna</a>
-        </li>
-        <li class="nav-item me-3">
-          <a class="nav-link" href="pages/katalog.php">Katalog</a>
-        </li>
-        <li class="nav-item me-3">
-          <a class="nav-link" href="pages/bestsellery.php">Bestsellery</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pages/o-nas.php">O nas</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <!--header start -->
+  <?php include("pages/includes/header.php"); ?>
+  <!--header end -->
 
   <div class="jumbotron position-relative d-flex justify-content-center align-items-center py-5">
     <div class="mask"></div>
@@ -159,12 +117,9 @@
     </div>
   </section>
 
-  <footer class="primary text-center mt-5">
-    <div class="text-center p-2">
-      © 2024 Copyright:
-      <a class="text-body" href="https://github.com/razny">razny</a>
-    </div>
-  </footer>
+  <!--footer start -->
+  <?php include("pages/includes/footer.php"); ?>
+  <!--footer end -->
 
   <script src="scripts/swiper.js"></script>
 </body>
