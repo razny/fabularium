@@ -16,10 +16,9 @@
   <!--hedaer end -->
 
   <div class="d-flex align-items-center justify-content-center">
-    <section class="my-5 px-2 w-75">
-
-      <section class="py-5">
-        <div class="container px-4 px-lg-5">
+    <section class="my-5 w-75">
+      <section class="py-3">
+        <div class="container">
           <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/245x350/dee2e6/6c757d.jpg" style="max-width: 400px; height: auto;" alt="..." /></div>
             <div class="col-md-6">
@@ -63,13 +62,87 @@
         </div>
       </section>
 
+      <section>
+        <hr>
+        <div class="container mt-5">
+          <h2 class="mb-4">Product Reviews</h2>
 
-    </section>
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">John Doe</h5>
+                  <p class="card-text">January 15, 2024</p>
+                  <p class="card-text">This product exceeded my expectations. It's well-made, durable, and performs exactly as described.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">Jane Smith</h5>
+                  <p class="card-text">February 3, 2024</p>
+                  <p class="card-text">I've been using this product for months now and it's still as good as new. I would definitely recommend it to others.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">Alex Johnson</h5>
+                  <p class="card-text">March 10, 2024</p>
+                  <p class="card-text">I'm impressed with the quality of this product. It's sturdy, reliable, and worth every penny.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="accountName">Account Name</label>
+                      <input type="text" class="form-control" id="accountName" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                      <label for="datePosted">Date Posted</label>
+                      <input type="text" class="form-control" id="datePosted" readonly>
+                    </div>
+                    <div class="form-group">
+                      <label for="comment">Comment</label>
+                      <textarea class="form-control" id="comment" rows="3" placeholder="Enter your review"></textarea>
+                    </div>
+                    <button type="submit" class="btn secondary">Submit Review</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
   </div>
 
   <!--footer start -->
   <?php include("includes/footer.php"); ?>
   <!--footer end -->
+
+  <script>
+    // Get current date and format it
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('en-US');
+
+    // Set the formatted date as the value of the datePosted input field
+    document.getElementById('datePosted').value = formattedDate;
+  </script>
 
 </body>
 
