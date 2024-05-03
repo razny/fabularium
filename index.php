@@ -45,11 +45,11 @@
       </form>
       <ul class="navbar-nav d-flex align-items-center ms-2">
         <li class="nav-item">
-          <a class="nav-link" href="pages/koszyk.html"><img src="images/shopping-cart-icon.svg" width="32" height="32"
+          <a class="nav-link" href="pages/koszyk.php"><img src="images/shopping-cart-icon.svg" width="32" height="32"
               alt="Logo" /></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="pages/logowanie.html"><img src="images/user-icon.svg" width="28" height="28"
+          <a class="nav-link" href="pages/logowanie.php"><img src="images/user-icon.svg" width="28" height="28"
               alt="Logo" /></a>
         </li>
       </ul>
@@ -60,16 +60,16 @@
     <div class="container-fluid d-flex justify-content-around w-50">
       <ul class="navbar-nav flex-row">
         <li class="nav-item me-3">
-          <a class="nav-link" href="index.html">Strona główna</a>
+          <a class="nav-link" href="index.php">Strona główna</a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link" href="pages/katalog.html">Katalog</a>
+          <a class="nav-link" href="pages/katalog.php">Katalog</a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link" href="pages/bestsellery.html">Bestsellery</a>
+          <a class="nav-link" href="pages/bestsellery.php">Bestsellery</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="pages/o-nas.html">O nas</a>
+          <a class="nav-link" href="pages/o-nas.php">O nas</a>
         </li>
       </ul>
     </div>
@@ -85,7 +85,7 @@
           możesz znaleźć książki - to przestrzeń, w której marzenia o literackich podróżach stają się rzeczywistością.
         </p>
         <p class="lead me-5">
-          <a class="btn secondary btn-dark border-0 mt-4" href="pages/katalog.html" role="button">Zobacz wszystkie
+          <a class="btn secondary btn-dark border-0 mt-4" href="pages/katalog.php" role="button">Zobacz wszystkie
             produkty</a>
         </p>
       </div>

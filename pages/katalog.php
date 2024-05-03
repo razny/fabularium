@@ -43,16 +43,16 @@
     <div class="container-fluid d-flex justify-content-around w-50">
       <ul class="navbar-nav flex-row">
         <li class="nav-item me-3">
-          <a class="nav-link" href="../index.html">Strona główna</a>
+          <a class="nav-link" href="../index.php">Strona główna</a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link" href="katalog.html">Katalog</a>
+          <a class="nav-link" href="katalog.php">Katalog</a>
         </li>
         <li class="nav-item me-3">
-          <a class="nav-link" href="bestsellery.html">Bestsellery</a>
+          <a class="nav-link" href="bestsellery.php">Bestsellery</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="o-nas.html">O nas</a>
+          <a class="nav-link" href="o-nas.php">O nas</a>
         </li>
       </ul>
     </div>
@@ -99,12 +99,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
@@ -117,12 +117,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
@@ -135,12 +135,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
@@ -153,12 +153,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
@@ -171,12 +171,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
@@ -189,12 +189,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
@@ -207,12 +207,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
@@ -225,12 +225,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
@@ -243,12 +243,12 @@
                 <div class="col-6 col-md-6 col-lg-4 mb-3">
                   <div class="card h-100 border-0">
                     <div class="card-img-top mt-4">
-                      <a href="produkt.html"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
+                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef"
                           class="img-fluid mx-auto d-block" alt="Card image cap"></a>
                     </div>
                     <div class="card-body text-center">
                       <h5 class="card-title mb-1">
-                        <a href="produkt.html" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
+                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
                       </h5>
                       <p class="card-text mb-2 small text-secondary">Autor utworu</p>
                       <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>

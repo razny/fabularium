@@ -42,16 +42,16 @@
         <div class="container-fluid d-flex justify-content-around w-50">
             <ul class="navbar-nav flex-row">
                 <li class="nav-item me-3">
-                    <a class="nav-link" href="../index.html">Strona główna</a>
+                    <a class="nav-link" href="../index.php">Strona główna</a>
                 </li>
                 <li class="nav-item me-3">
-                    <a class="nav-link" href="katalog.html">Katalog</a>
+                    <a class="nav-link" href="katalog.php">Katalog</a>
                 </li>
                 <li class="nav-item me-3">
-                    <a class="nav-link" href="bestsellery.html">Bestsellery</a>
+                    <a class="nav-link" href="bestsellery.php">Bestsellery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="o-nas.html">O nas</a>
+                    <a class="nav-link" href="o-nas.php">O nas</a>
                 </li>
             </ul>
         </div>
