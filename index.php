@@ -30,7 +30,7 @@
 <body class="bg">
 
   <!--header start -->
-  <?php include("pages/includes/header.php"); ?>
+  <?php include("includes/header.php"); ?>
   <!--header end -->
 
   <div class="jumbotron position-relative d-flex justify-content-center align-items-center py-5">
@@ -43,7 +43,7 @@
           możesz znaleźć książki - to przestrzeń, w której marzenia o literackich podróżach stają się rzeczywistością.
         </p>
         <p class="lead me-5">
-          <a class="btn primary btn-dark border-0 mt-4" href="pages/katalog.php" role="button">Zobacz wszystkie
+          <a class="btn primary btn-dark border-0 mt-4" href="katalog.php" role="button">Zobacz wszystkie
             produkty</a>
         </p>
       </div>
@@ -118,7 +118,7 @@
   </section>
 
   <!--footer start -->
-  <?php include("pages/includes/footer.php"); ?>
+  <?php include("includes/footer.php"); ?>
   <!--footer end -->
 
   <script src="scripts/swiper.js"></script>

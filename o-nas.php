@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/style.css" />
-  <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title>Fabularium - o nas</title>
@@ -24,7 +24,7 @@
         <div class="container">
           <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
             <div class="col-12 col-lg-6 col-xl-5 align-self-start">
-              <img class="img-fluid rounded mb-4 mt-2" src="../images/team.jpg" alt="">
+              <img class="img-fluid rounded mb-4 mt-2" src="images/team.jpg" alt="">
             </div>
             <div class="col-12 col-lg-6 col-xl-7">
               <div class="row justify-content-xl-center">
@@ -41,7 +41,7 @@
                       <div class="col-12 col-md-6">
                         <div class="d-flex">
                           <div class="me-4 text-primary">
-                            <img src="../images/victory-motivation-icon.svg" alt="" class="icon" width="32" height="32">
+                            <img src="images/victory-motivation-icon.svg" alt="" class="icon" width="32" height="32">
                           </div>
                           <div>
                             <h4 class="mb-3">Profesjonalizm</h4>
@@ -54,7 +54,7 @@
                       <div class="col-12 col-md-6">
                         <div class="d-flex">
                           <div class="me-4 text-primary">
-                            <img src="../images/hands-helping-icon.svg" alt="" class="icon" width="32" height="32">
+                            <img src="images/hands-helping-icon.svg" alt="" class="icon" width="32" height="32">
                           </div>
                           <div>
                             <h4 class="mb-3">Zaangażowanie</h4>
@@ -112,7 +112,7 @@
   <?php include("includes/footer.php"); ?>
   <!--footer end -->
 
-  <script src="../scripts/counter.js"></script>
+  <script src="scripts/counter.js"></script>
 
 </body>
 
