@@ -27,7 +27,7 @@
                 <!-- Dropdown column -->
                 <div class="col-md-6">
                   <div class="dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                    <button type="button" class="btn btn-dark secondary border-0 dropdown-toggle" data-bs-toggle="dropdown">
                       Sortuj wg:
                     </button>
                     <ul class="dropdown-menu">
@@ -226,7 +226,7 @@
             <div class="mb-3">
               <label for="price-range" class="form-label">Cena (zł)</label>
               <select class="form-select" id="price-range">
-                <option value="">Wybierz zakres cenowy...</option>
+                <option value="" disabled selected>Wybierz zakres cenowy...</option>
                 <option value="0-10">0 - 10 zł</option>
                 <option value="10-20">10 - 20 zł</option>
                 <option value="20-30">20 - 30 zł</option>
@@ -235,6 +235,7 @@
                 <option value="50+">Powyżej 50 zł</option>
               </select>
             </div>
+
 
             <label class="form-label">Category Filter</label>
             <div>

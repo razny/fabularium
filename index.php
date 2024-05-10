@@ -43,7 +43,7 @@
           możesz znaleźć książki - to przestrzeń, w której marzenia o literackich podróżach stają się rzeczywistością.
         </p>
         <p class="lead me-5">
-          <a class="btn secondary btn-dark border-0 mt-4" href="pages/katalog.php" role="button">Zobacz wszystkie
+          <a class="btn primary btn-dark border-0 mt-4" href="pages/katalog.php" role="button">Zobacz wszystkie
             produkty</a>
         </p>
       </div>

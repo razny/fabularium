@@ -45,6 +45,14 @@ body {
 
 /*********************************/
 
+.form-control:focus {
+  box-shadow: 0 .1rem .1rem var(--primary);
+  border-color: var(--secondary);
+  outline: none;
+}
+
+/*********************************/
+
 footer,
 footer .text-body {
   text-decoration: none;
@@ -98,6 +106,37 @@ footer .text-body {
 }
 
 /*********************************/
+
+.form-select:focus {
+  box-shadow: 0 .1rem .2rem var(--secondary);
+  border-color: var(--secondary);
+  outline: none;
+}
+
+.page-link {
+  color: var(--accent);
+}
+
+.page-link .active {
+  background-color: var(--primary);
+}
+
+.page-link:hover {
+  color: var(--primary);
+}
+
+.page-item {
+  color: var(--primary);
+}
+
+.page-item.active .page-link {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--background);
+}
+
+/*********************************/
+
 .swiper-slide:not(.swiper-slide-active) .card__title {
   opacity: 0;
 }
