@@ -34,7 +34,7 @@
                                     <tr>
                                         <th scope="row">
                                             <div class="d-flex align-items-center">
-                                                <img src="../images/cover2.jpeg" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
+                                                <img src="images/cover2.jpeg" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
                                                 <div class="flex-column ms-4">
                                                     <p class="mb-2">Thinking, Fast and Slow</p>
                                                     <p class="mb-0 text-secondary">Daniel Kahneman</p>
@@ -53,7 +53,7 @@
                                     <tr>
                                         <th scope="row" class="border-bottom-0">
                                             <div class="d-flex align-items-center">
-                                                <img src="../images/cover5.jpg" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
+                                                <img src="images/cover5.jpg" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
                                                 <div class="flex-column ms-4">
                                                     <p class="mb-2">Homo Deus: A Brief History of Tomorrow</p>
                                                     <p class="mb-0 text-secondary">Yuval Noah Harari</p>
