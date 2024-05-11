@@ -1,7 +1,7 @@
 <header class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
     <div class="container-fluid w-l-75 w-xl-75">
         <a class="navbar-brand" href="index.php">
-            <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-2" />
+            <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-1" />
             Fabularium
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

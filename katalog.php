@@ -10,6 +10,8 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.svg">
   <title>Fabularium - katalog</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.infinitescroll/3.0.6/jquery.infinitescroll.min.js"></script>
 </head>
 
 <body class="bg">
@@ -54,159 +56,44 @@
                   </div>
                 </div>
 
+
                 <!-- Product cards -->
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "blank";
 
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
+                $conn = new mysqli($servername, $username, $password, $dbname);
 
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
+                $sql = "SELECT * FROM pierwsze50  ORDER BY RAND() LIMIT 18";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                ?>
+                    <div class="col-6 col-md-6 col-lg-4 mb-3">
+                      <div class="card h-100 border-0">
+                        <div class="card-img-top mt-4">
+                          <a href="produkt.php"><img src="<?php echo $row["Okladka"]; ?>" class="img-fluid mx-auto d-block" alt="Card image cap" style="height:200px"></a>
+                        </div>
+                        <div class="card-body text-center d-flex flex-column">
+                          <h5 class="card-title mb-1">
+                            <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none"><?php echo $row["Tytul"]; ?></a>
+                          </h5>
+                          <p class="card-text mb-2 small text-secondary"><?php echo $row["Autor"]; ?></p>
+                          <h6 class="card-price font-weight-bold text-dark"><?php echo $row["Cena"]; ?> zł</h6>
+                          <div class="mt-auto"> <!-- Use mt-auto to push the button to the bottom of the card body -->
+                            <button type="button" class="btn btn-dark btn-sm secondary border-0">Dodaj do koszyka</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
 
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
+                <?php
+                  }
+                }
+                ?>
 
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                  <div class="card h-100 border-0">
-                    <div class="card-img-top mt-4">
-                      <a href="produkt.php"><img src="https://via.placeholder.com/140x200/5fa9f8/efefef" class="img-fluid mx-auto d-block" alt="Card image cap"></a>
-                    </div>
-                    <div class="card-body text-center">
-                      <h5 class="card-title mb-1">
-                        <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none">Nazwa książki</a>
-                      </h5>
-                      <p class="card-text mb-2 small text-secondary">Autor utworu</p>
-                      <h6 class="card-price font-weight-bold text-dark">49.99zł</h6>
-                      <button type="button" class="btn btn-dark btn-sm mt-2 secondary border-0">Dodaj do
-                        koszyka</button>
-                    </div>
-                  </div>
-                </div>
                 <!-- pagination - bottom -->
                 <div class="col-md-12 mt-3">
                   <ul class="pagination justify-content-end">
@@ -237,28 +124,40 @@
               </select>
             </div>
 
+            <?php
+            $sql = "SELECT DISTINCT kategoria FROM pierwsze50"; // Modify the query to select only unique values of "kategoria"
+            $result = $conn->query($sql);
 
-            <label class="form-label">Category Filter</label>
+            $genres = [];
+            if ($result->num_rows > 0) {
+              // output data of each row
+              while ($row = $result->fetch_assoc()) {
+                // Explode the categories by comma and add each separately to the genres array
+                $categories = explode(",", $row["kategoria"]);
+                foreach ($categories as $category) {
+                  $genres[] = trim($category); // Trim to remove any leading or trailing spaces
+                }
+              }
+
+              // Sort the genres alphabetically
+              sort($genres);
+            } else {
+              echo "0 results";
+            }
+
+            $conn->close();
+            ?>
+
+            <label class="form-label">Gatunki</label>
             <div>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Fiction</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Non-Fiction</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Biography</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Fantasy</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Science Fiction</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Mystery</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Thriller</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Romance</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Historical</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Self-Help</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Business</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Travel</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Cookbook</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Art</a>
-              <a href="#" class="text-decoration-none d-block mb-2 primary-text">Music</a>
+              <?php
+              // Output sorted genres in the specified HTML format
+              foreach ($genres as $genre) {
+                echo '<a href="#" class="text-decoration-none d-block mb-2 primary-text">' . $genre . '</a>';
+              }
+              ?>
             </div>
           </div>
-
-        </div>
     </section>
   </div>
 
@@ -269,3 +168,14 @@
 </body>
 
 </html>
+<script>
+  $(document).ready(function() {
+    $('#card-container').infiniteScroll({
+      path: 'fetch_data.php', // URL to your server-side script for fetching data
+      append: '.col-md-6', // Selector for the element to append new data to
+      history: false,
+      scrollThreshold: false,
+      status: '.page-load-status', // Selector for loading status element
+    });
+  });
+</script>

@@ -20,12 +20,26 @@
     <section class="my-5 w-75">
       <section class="py-3">
         <div class="container">
+        <?php
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "blank";
+
+          $conn = new mysqli($servername, $username, $password, $dbname);
+
+          //$sql = "SELECT * FROM pierwsze50";
+          $sql = "SELECT * FROM pierwsze50 ORDER BY RAND() LIMIT 1";
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+          ?>
           <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/245x350/dee2e6/6c757d.jpg" style="max-width: 400px; height: auto;" alt="..." /></div>
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="<?php echo $row["Okladka"]; ?>" style="max-width: 350px; height: auto;" alt="..." /></div>
             <div class="col-md-6">
-              <h1 class="display-5 fw-bolder mb-3">Strona przykładowego produktu</h1>
+              <h1 class="display-5 fw-bolder mb-3"><?php echo $row["Tytul"]; ?></h1>
               <div class="fs-5 mb-5">
-                <span style="color: #908f8f">24,99zł</span>
+                <span style="color: #908f8f"><?php echo $row["Cena"]; ?> zł</span>
               </div>
               <p class="lead mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem
                 quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus
@@ -36,28 +50,32 @@
                   <tbody>
                     <tr>
                       <th style="width: 30%;" scope="row">Autor:</th>
-                      <td class="small">John Doe</td>
+                      <td class="small"><?php echo $row["Autor"]; ?></td>
                     </tr>
                     <tr>
                       <th style="width: 30%;" scope="row">Wydawnictwo:</th>
-                      <td class="small">Example Publisher</td>
+                      <td class="small"><?php echo $row["Wydawnictwo"]; ?></td>
                     </tr>
                     <tr>
-                      <th style="width: 30%;" scope="row">Data wydania:</th>
-                      <td class="small">January 1, 2023</td>
+                      <th style="width: 30%;" scope="row">Data premiery:</th>
+                      <td class="small"><?php echo $row["Data premiery"]; ?></td>
                     </tr>
                     <tr>
                       <th style="width: 30%;" scope="row">ISBN:</th>
-                      <td class="small">978-3-16-148410-0</td>
+                      <td class="small"><?php echo $row["ISBN"]; ?></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-
               <div class="d-flex">
                 <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
                 <button type="button" class="btn btn-dark secondary border-0">Dodaj do koszyka</button>
               </div>
+              <?php
+            }
+          }
+              $conn->close();
+?>
             </div>
           </div>
         </div>

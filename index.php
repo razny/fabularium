@@ -38,7 +38,7 @@
     <div class="mask"></div>
     <section class="py-4 w-md-75 w-l-75 w-xl-75 position-relative z-index-1">
       <div class="w-md-75 w-l-75 w-xl-75 me-5 ms-3">
-        <h1 class="display-4 mb-4">Odkryj świat literatury!</h1>
+        <h1 class="display-4 mb-4" style="font-weight: 400;">Odkryj świat literatury!</h1>
         <p class="lead me-5">Oferujemy szeroki wybór tytułów, które zaspokoją nawet najbardziej wymagające gusta
           czytelnicze i pozwolą Ci zgłębić tematykę, która Cię interesuje. Nasza księgarnia to nie tylko miejsce, gdzie
           możesz znaleźć książki - to przestrzeń, w której marzenia o literackich podróżach stają się rzeczywistością.
@@ -56,61 +56,35 @@
     <div class="row text-center">
       <div class="swiper">
         <div class="swiper-wrapper">
+          <?php
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "blank";
 
-          <div class="swiper-slide">
-            <div class="card align-items-center border-1">
-              <img src="images/cover1.jpg" class="mt-3" alt="Book 1" style="width: 100px;">
-              <div class="card-body mx-2">
-                <h5 class="card-title">Tytuł książki pierwszy</h5>
-                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
-                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
-              </div>
-            </div>
-          </div>
+          $conn = new mysqli($servername, $username, $password, $dbname);
 
-          <div class="swiper-slide">
-            <div class="card align-items-center border-1">
-              <img src="images/cover2.jpeg" class="mt-3" alt="Book 2" style="width: 100px;">
-              <div class="card-body mx-2">
-                <h5 class="card-title">Tytuł książki drugi</h5>
-                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
-                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
+          $sql = "SELECT * FROM pierwsze50 ORDER BY RAND() LIMIT 5";
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+          ?>
+              <div class="swiper-slide">
+                <div class="card align-items-center border-2" style="height: 348px;">
+                  <img src="<?php echo $row["Okladka"]; ?>" class="mt-3" alt="Book Cover" style="width: 100px; height: 300px;">
+                  <div class="card-body mx-1 d-flex flex-column justify-content-around">
+                    <h5 class="card-title"><?php echo $row["Tytul"]; ?></h5>
+                    <p class="card-text text-secondary"><?php echo $row["Autor"]; ?></p>
+                    <h6 class="card-price font-weight-bold text-dark"><?php echo $row["Cena"]; ?> zł</h6>
+                    <button type="button" class="btn btn-dark secondary mt-1 border-0 mx-4">Dodaj do koszyka</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card align-items-center border-1">
-              <img src="images/cover3.png" class="mt-3" alt="Book 3" style="width: 100px;">
-              <div class="card-body mx-2">
-                <h5 class="card-title">Tytuł książki trzeci</h5>
-                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
-                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card align-items-center border-1">
-              <img src="images/cover4.jpg" class="mt-3" alt="Book 4" style="width: 100px;">
-              <div class="card-body mx-2">
-                <h5 class="card-title">Tytuł książki czwarty</h5>
-                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
-                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card align-items-center border-1">
-              <img src="images/cover5.jpg" class="mt-3" alt="Book 5" style="width: 100px;">
-              <div class="card-body mx-2">
-                <h5 class="card-title">Tytuł książki piąty</h5>
-                <p class="card-text text-secondary">Lorem adipisicing ipsum dolor</p>
-                <button type="button" class="btn btn-dark secondary mt-2 border-0">Dodaj do koszyka</button>
-              </div>
-            </div>
-          </div>
+          <?php
+            }
+          }
+          $conn->close();
+          ?>
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>

@@ -81,31 +81,62 @@
           <div class="col text-center mb-3">
             <h2>Nasz sklep w liczbach</h2>
           </div>
+          <?php
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "blank";
+
+          $conn = new mysqli($servername, $username, $password, $dbname);
+
+          $sql = "SELECT * FROM pierwsze50";
+          $result = $conn->query($sql);
+
+          $count_sql = "SELECT COUNT(DISTINCT autor) AS total_authors, COUNT(*) AS total_books FROM pierwsze50";
+          $count_result = $conn->query($count_sql);
+          $counts = $count_result->fetch_assoc();
+
+          $total_categories = 0; // Initialize total_categories variable
+
+          $sql = "SELECT DISTINCT kategoria FROM pierwsze50"; // Modify the query to select only unique values of "kategoria"
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+              // Explode the categories by comma and count each separately
+              $categories = explode(",", $row["kategoria"]);
+              $total_categories += count($categories);
+            }
+          }
+
+          $conn->close();
+          ?>
 
         </div>
         <div class="row text-center">
           <div class="col">
             <div class="counter">
               <i class="fa fa-2x"></i>
-              <h2 class="timer count-title count-number" data-to="8237" data-speed="600"></h2>
+              <h2 class="timer count-title count-number" data-to="<?php echo $counts['total_books']; ?>" data-speed="3000"></h2>
               <p class="count-text mb-3">Książek w magazynie</p>
             </div>
           </div>
           <div class="col">
             <div class="counter">
               <i class="fa fa-2x"></i>
-              <h2 class="timer count-title count-number" data-to="55" data-speed="600"></h2>
-              <p class="count-text mb-3">Dostępnych gatunków</p>
+              <h2 class="timer count-title count-number" data-to="<?php echo $counts['total_authors']; ?>" data-speed="3000"></h2>
+              <p class="count-text mb-3">Różnych autorów</p>
             </div>
           </div>
           <div class="col">
             <div class="counter">
               <i class="fa fa-2x"></i>
-              <h2 class="timer count-title count-number" data-to="2192" data-speed="600"></h2>
-              <p class="count-text mb-3">Różnych autorów</p>
+              <h2 class="timer count-title count-number" data-to="<?php echo $total_categories; ?>" data-speed="3000"></h2>
+              <p class="count-text mb-3">Dostępnych kategorii</p>
             </div>
           </div>
-
+        </div>
     </section>
   </div>
 
