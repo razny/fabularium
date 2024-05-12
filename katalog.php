@@ -18,7 +18,6 @@
   <!--header start -->
   <?php include("includes/header.php"); ?>
   <!--header end -->
-
   <div class="d-flex align-items-center justify-content-center" id="catalog">
     <section class="my-3 px-2 w-75">
       <div class="container pt-5">
@@ -27,6 +26,58 @@
             <div class="container-fluid">
               <div class="row">
 
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "blank";
+
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                // Define the default sorting order
+                $sort_order = "RAND()"; // Default to random order
+
+                // Check if a sorting option is selected
+                if (isset($_GET['sort'])) {
+                  // Set the sorting order based on the selected option
+                  switch ($_GET['sort']) {
+                    case 'asc':
+                      $sort_order = "Tytul ASC";
+                      break;
+                    case 'desc':
+                      $sort_order = "Tytul DESC";
+                      break;
+                    case 'price_asc':
+                      $sort_order = "Cena ASC";
+                      break;
+                    case 'price_desc':
+                      $sort_order = "Cena DESC";
+                      break;
+                    default:
+                      $sort_order = "RAND()";
+                      break;
+                  }
+                }
+                function getPriceConditions($price_range)
+                {
+                  switch ($price_range) {
+                    case "0-10":
+                      return "Cena BETWEEN 0 AND 10";
+                    case "10-20":
+                      return "Cena BETWEEN 10 AND 20";
+                    case "20-30":
+                      return "Cena BETWEEN 20 AND 30";
+                    case "30-40":
+                      return "Cena BETWEEN 30 AND 40";
+                    case "40-50":
+                      return "Cena BETWEEN 40 AND 50";
+                    case "50+":
+                      return "Cena > 50";
+                    default:
+                      return ""; // No price condition applied
+                  }
+                }
+                ?>
+
                 <!-- Dropdown column -->
                 <div class="col-md-6">
                   <div class="dropdown">
@@ -34,11 +85,11 @@
                       Sortuj wg:
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Trafność</a></li>
-                      <li><a class="dropdown-item" href="#">Nazwy: A do Z</a></li>
-                      <li><a class="dropdown-item" href="#">Nazwy: Z do A</a></li>
-                      <li><a class="dropdown-item" href="#">Cena: od najniższej</a></li>
-                      <li><a class="dropdown-item" href="#">Cena: od najwyższej</a></li>
+                      <li><a class="dropdown-item" href="?sort=rand">Trafność</a></li>
+                      <li><a class="dropdown-item" href="?sort=asc">Nazwy: A do Z</a></li>
+                      <li><a class="dropdown-item" href="?sort=desc">Nazwy: Z do A</a></li>
+                      <li><a class="dropdown-item" href="?sort=price_asc">Cena: od najniższej</a></li>
+                      <li><a class="dropdown-item" href="?sort=price_desc">Cena: od najwyższej</a></li>
                     </ul>
                   </div>
                 </div>
@@ -56,17 +107,26 @@
                   </div>
                 </div>
 
-
                 <!-- Product cards -->
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blank";
+                if (isset($_GET['Cena'])) {
+                  $price_range = $_GET['Cena'];
+                  $price_conditions = getPriceConditions($price_range);
+                  if (isset($_GET['category'])) {
+                    $selected_category = $_GET['category'];
+                    $sql = "SELECT * FROM pierwsze50 WHERE Kategoria LIKE '%$selected_category%' AND $price_conditions ORDER BY $sort_order LIMIT 18";
+                  } else {
+                    $sql = "SELECT * FROM pierwsze50 WHERE $price_conditions ORDER BY $sort_order LIMIT 18";
+                  }
+                } else {
+                  if (isset($_GET['category'])) {
+                    $selected_category = $_GET['category'];
+                    $sql = "SELECT * FROM pierwsze50 WHERE Kategoria LIKE '%$selected_category%' ORDER BY $sort_order LIMIT 18";
+                  } else {
+                    $sql = "SELECT * FROM pierwsze50 ORDER BY $sort_order LIMIT 18";
+                  }
+                }
 
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                $sql = "SELECT * FROM pierwsze50  ORDER BY RAND() LIMIT 18";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
@@ -91,19 +151,11 @@
 
                 <?php
                   }
+                } else {
+                  echo "Nie znaleziono żadnych produktów.";
                 }
                 ?>
 
-                <!-- pagination - bottom -->
-                <div class="col-md-12 mt-3">
-                  <ul class="pagination justify-content-end">
-                    <li class="page-item"><a class="page-link" href="#">Poprzednia</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Następna</a></li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
@@ -112,16 +164,18 @@
             <h4 class="mb-3">Filtruj</h4>
             <!-- Price Filter -->
             <div class="mb-3">
-              <label for="price-range" class="form-label">Cena (zł)</label>
-              <select class="form-select" id="price-range">
-                <option value="" disabled selected>Wybierz zakres cenowy...</option>
-                <option value="0-10">0 - 10 zł</option>
-                <option value="10-20">10 - 20 zł</option>
-                <option value="20-30">20 - 30 zł</option>
-                <option value="30-40">30 - 40 zł</option>
-                <option value="40-50">40 - 50 zł</option>
-                <option value="50+">Powyżej 50 zł</option>
-              </select>
+              <form id="price-filter-form" method="GET"> <!-- Added an ID to the form for easier reference -->
+                <label for="price-range" class="form-label">Cena (zł)</label>
+                <select class="form-select" id="price-range" name="Cena" onchange="document.getElementById('price-filter-form').submit()"> <!-- Added onchange event to submit the form -->
+                  <option value="" disabled selected>Wybierz zakres cenowy...</option>
+                  <option value="0-10">0 - 10 zł</option>
+                  <option value="10-20">10 - 20 zł</option>
+                  <option value="20-30">20 - 30 zł</option>
+                  <option value="30-40">30 - 40 zł</option>
+                  <option value="40-50">40 - 50 zł</option>
+                  <option value="50+">Powyżej 50 zł</option>
+                </select>
+              </form>
             </div>
 
             <?php
@@ -148,15 +202,16 @@
             $conn->close();
             ?>
 
-            <label class="form-label">Gatunki</label>
+            <h4 class="mb-3">Kategorie</h4>
             <div>
               <?php
-              // Output sorted genres in the specified HTML format
               foreach ($genres as $genre) {
-                echo '<a href="#" class="text-decoration-none d-block mb-2 primary-text">' . $genre . '</a>';
+                // Output genres as clickable links within the form
+                echo '<a href="' . $_SERVER['PHP_SELF'] . '?category=' . urlencode($genre) . '" class="text-decoration-none d-block mb-2 primary-text">' . $genre . '</a>';
               }
               ?>
             </div>
+
           </div>
     </section>
   </div>
@@ -167,15 +222,5 @@
 
 </body>
 
+
 </html>
-<script>
-  $(document).ready(function() {
-    $('#card-container').infiniteScroll({
-      path: 'fetch_data.php', // URL to your server-side script for fetching data
-      append: '.col-md-6', // Selector for the element to append new data to
-      history: false,
-      scrollThreshold: false,
-      status: '.page-load-status', // Selector for loading status element
-    });
-  });
-</script>
