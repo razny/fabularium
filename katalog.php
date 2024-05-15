@@ -202,6 +202,7 @@
             $conn->close();
             ?>
 
+
             <h4 class="mb-3">Kategorie</h4>
             <div>
               <?php
@@ -212,9 +213,12 @@
               ?>
             </div>
 
+
           </div>
     </section>
   </div>
+
+
 
   <!--footer start -->
   <?php include("includes/footer.php"); ?>

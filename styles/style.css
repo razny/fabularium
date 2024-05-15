@@ -135,6 +135,17 @@ footer .text-body {
   color: var(--background);
 }
 
+.no-border {
+  border: none;
+  background: none;
+  padding: 0; /* Adjust padding if necessary */
+}
+
+.no-border:hover, .no-border:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 /*********************************/
 
 .swiper-slide:not(.swiper-slide-active) .card__title {

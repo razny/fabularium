@@ -8,13 +8,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <form class="w-100 d-none d-sm-block">
+            <form class="w-100 d-none d-sm-block" action="search.php" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Wpisz tytuł, autora lub IBSN...">
+                    <input type="text" class="form-control" name="search_query" placeholder="Wpisz tytuł, autora lub IBSN...">
                     <span class="input-group-text">
-                        <a href="#">
+                        <button type="submit" class="input-group-text">
                             <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
-                        </a>
+                        </button>
                     </span>
                 </div>
             </form>
