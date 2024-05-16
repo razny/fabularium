@@ -18,17 +18,15 @@
   -responsiveness on sm+md devices (lg is def?)
         - navbar.... expanding......
         - please make it look good on mobile 
-  - how to add subpage for Every Product
-  - client opinions 
+  - php log in/register
+  - option to add books if its an admin acc
+  - cart (if youre logged in !!)
+  - canvas anim
 -->
 </head>
 
 <body class="bg">
-
-  <!--header start -->
   <?php include("includes/header.php"); ?>
-  <!--header end -->
-
   <div class="jumbotron position-relative d-flex justify-content-center align-items-center py-5">
     <div class="mask"></div>
     <section class="py-4 w-md-75 w-l-75 w-xl-75 position-relative z-index-1">
@@ -86,11 +84,7 @@
       </div>
     </div>
   </section>
-
-  <!--footer start -->
   <?php include("includes/footer.php"); ?>
-  <!--footer end -->
-
   <script src="scripts/swiper.js"></script>
 </body>
 

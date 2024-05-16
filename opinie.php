@@ -20,7 +20,6 @@
     <section class="my-5 px-2 w-75">
       <h3 class="text-center mb-3">Opinie klientów o naszym sklepie</h3>
       <hr>
-
       <div class="container">
         <?php
         // Connect to the database
@@ -51,8 +50,8 @@
         mysqli_close($conn);
         ?>
 
-        <hr class="mt-5 ">
-        <h4 class="card-title mb-4">Podziel się swoją opinią!</h4>
+        <hr class="mt-2 ">
+        <h4 class="card-title my-4">Podziel się swoją opinią!</h4>
         <form action="opinie.php" method="POST">
           <div class="form-group">
             <label for="nazwa">Nazwa:</label>

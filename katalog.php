@@ -128,33 +128,54 @@
                 }
 
                 $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
+                if ($result === false) {
+                    // Error handling for query execution failure
+                    echo "Error: " . $conn->error;
+                } else {
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
                 ?>
-                    <div class="col-6 col-md-6 col-lg-4 mb-3">
-                      <div class="card h-100 border-0">
+                
+                <div class="col-6 col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100 border-0">
                         <div class="card-img-top mt-4">
-                          <a href="produkt.php"><img src="<?php echo $row["Okladka"]; ?>" class="img-fluid mx-auto d-block" alt="Card image cap" style="height:200px"></a>
+                            <a href="produkt.php?ID=<?php echo htmlspecialchars($row['ID']); ?>">
+                                <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" 
+                                     class="img-fluid mx-auto d-block" 
+                                     alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" 
+                                     style="height:200px">
+                            </a>
                         </div>
                         <div class="card-body text-center d-flex flex-column">
-                          <h5 class="card-title mb-1">
-                            <a href="produkt.php" class="font-weight-bold text-dark text-decoration-none"><?php echo $row["Tytul"]; ?></a>
-                          </h5>
-                          <p class="card-text mb-2 small text-secondary"><?php echo $row["Autor"]; ?></p>
-                          <h6 class="card-price font-weight-bold text-dark"><?php echo $row["Cena"]; ?> zł</h6>
-                          <div class="mt-auto"> <!-- Use mt-auto to push the button to the bottom of the card body -->
-                            <button type="button" class="btn btn-dark btn-sm secondary border-0">Dodaj do koszyka</button>
-                          </div>
+                            <h5 class="card-title mb-1">
+                                <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>" 
+                                   class="font-weight-bold text-dark text-decoration-none">
+                                    <?php echo htmlspecialchars($row['Tytul']); ?>
+                                </a>
+                            </h5>
+                            <p class="card-text mb-2 small text-secondary">
+                                <?php echo htmlspecialchars($row['Autor']); ?>
+                            </p>
+                            <h6 class="card-price font-weight-bold text-dark">
+                                <?php echo htmlspecialchars($row['Cena']); ?> zł
+                            </h6>
+                            <div class="mt-auto">
+                                <button type="button" class="btn btn-dark btn-sm secondary border-0">
+                                    Dodaj do koszyka
+                                </button>
+                            </div>
                         </div>
-                      </div>
                     </div>
-
+                </div>
+                
                 <?php
-                  }
-                } else {
-                  echo "Nie znaleziono żadnych produktów.";
+                        }
+                    } else {
+                        echo "No results found.";
+                    }
                 }
                 ?>
+                
 
               </div>
             </div>
