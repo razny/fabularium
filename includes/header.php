@@ -1,3 +1,17 @@
+<?php
+session_start();
+/*
+// Check if the user is logged in
+if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+    $user_id = $_SESSION['user_id'];
+    $username = $_SESSION['username'];
+
+    // Echo the user information
+    echo "Logged in as: $username (User ID: $user_id)";
+}
+*/
+?>
+
 <header class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
     <div class="container-fluid w-l-75 w-xl-75">
         <a class="navbar-brand" href="index.php">
@@ -36,7 +50,7 @@
                         <img src="images/shopping-cart-icon.svg" width="32" height="32" alt="Logo" />
                     </a>
                 </li>
-                <li class="nav-item d-none d-sm-block">
+                <li class="nav-item d-none d-sm-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo isset($_SESSION['username']) ? 'Twój login: ' . $_SESSION['username'] : 'Gość'; ?>">
                     <a class="nav-link" href="logowanie.php">
                         <img src="images/user-icon.svg" width="28" height="28" alt="Logo" />
                     </a>
@@ -73,3 +87,10 @@
         }
     }
 </style>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+</script>
