@@ -17,14 +17,9 @@
   <!--TO DO:
   -responsiveness on sm+md devices (lg is def?)
         - navbar.... expanding......
-        - please make it look good on mobile
-  -why does the swiper not work outside of local server
-  -make it possible to add comments to books (+php?)
-  -plug up php sql db to make book catalogue Complete
-  - search function mayb
-  -bestsellers still??the webpage??maybe
-  - how to add subpage for Every Product (+comments should be added to a particular entry, not to id which can change(?) because if i remove sth the enumeration would change)
-
+        - please make it look good on mobile 
+  - how to add subpage for Every Product
+  - client opinions 
 -->
 </head>
 

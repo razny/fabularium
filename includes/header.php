@@ -26,10 +26,10 @@
                     <a class="nav-link" href="katalog.php">Katalog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="bestsellery.php">Bestsellery</a>
+                    <a class="nav-link" href="o-nas.php">O nas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="o-nas.php">O nas</a>
+                    <a class="nav-link" href="opinie.php">Opinie</a>
                 </li>
                 <li class="nav-item d-none d-sm-block">
                     <a class="nav-link" href="koszyk.php">
