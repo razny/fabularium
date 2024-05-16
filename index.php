@@ -19,8 +19,6 @@
   -responsiveness on sm+md devices (lg is def?)
         - navbar.... expanding......
         - please make it look good on mobile 
-  - php log in/register
-  - option to add books if its an admin acc
   - cart (if youre logged in !!)
   - canvas anim
 -->

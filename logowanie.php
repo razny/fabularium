@@ -33,6 +33,15 @@
                             <form action="includes/logout.php" method="POST">
                                 <button type="submit" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Wyloguj się</button>
                             </form>
+                            <?php
+                            // Sprawdzenie czy zalogowany użytkownik jest adminem
+                            if ($_SESSION['username'] == 'admin') {
+                            ?>
+                                <!-- Dodaj przycisk "Dodaj książkę" -->
+                                <a href="add_book.php" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Dodaj książkę</a>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
