@@ -56,7 +56,9 @@
           ?>
               <div class="swiper-slide">
                 <div class="card align-items-center border-2" style="height: 348px;">
-                  <img src="<?php echo $row["Okladka"]; ?>" class="mt-3" alt="Book Cover" style="width: 100px; height: 300px;">
+                  <a href="produkt.php?ID=<?php echo htmlspecialchars($row['ID']); ?>">
+                    <img src="<?php echo htmlspecialchars($row["Okladka"]); ?>" class="mt-3" alt="Book Cover" style="width: 90px; height: 150px;">
+                  </a>
                   <div class="card-body mx-1 d-flex flex-column justify-content-around">
                     <h5 class="card-title"><?php echo $row["Tytul"]; ?></h5>
                     <p class="card-text text-secondary"><?php echo $row["Autor"]; ?></p>
