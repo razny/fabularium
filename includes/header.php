@@ -1,15 +1,15 @@
 <?php
 session_start();
-/*
+
 // Check if the user is logged in
 if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     $user_id = $_SESSION['user_id'];
     $username = $_SESSION['username'];
-
+/*
     // Echo the user information
     echo "Logged in as: $username (User ID: $user_id)";
-}
 */
+}
 ?>
 
 <header class="navbar navbar-expand-sm navbar-light bg-light sticky-top">

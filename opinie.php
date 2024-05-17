@@ -12,10 +12,7 @@
 </head>
 
 <body class="bg">
-  <!--header start -->
   <?php include("includes/header.php"); ?>
-  <!--header end -->
-
   <div class="d-flex align-items-center justify-content-center">
     <section class="my-5 px-2 w-75">
       <h3 class="text-center mb-3">Opinie klientów o naszym sklepie</h3>
@@ -52,17 +49,33 @@
 
         <hr class="mt-2 ">
         <h4 class="card-title my-4">Podziel się swoją opinią!</h4>
-        <form action="opinie.php" method="POST">
-          <div class="form-group">
-            <label for="nazwa">Nazwa:</label>
-            <input type="text" class="form-control" id="nazwa" name="nazwa" required>
-          </div>
-          <div class="form-group">
-            <label for="wiad">Wiadomość:</label>
-            <textarea class="form-control" id="wiad" name="wiad" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-dark secondary border-0" name="submit">Wyślij</button>
-        </form>
+        <?php
+        // Sprawdź, czy użytkownik jest zalogowany
+        if (!isset($_SESSION['username'])) {
+          // Wyświetl komunikat dla niezalogowanych użytkowników
+          echo "<div class='alert alert-light text-center' role='alert'>Tylko zalogowani użytkownicy mogą dodawać komentarze!</div>";
+        } else {
+          // Wyświetl formularz dodawania komentarza
+        ?>
+          <form action="opinie.php" method="POST">
+            <div class="form-group">
+              <label for="nazwa">Nazwa:</label>
+              <?php
+              // Pobierz nazwę użytkownika z sesji
+              $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+
+              // Wyświetl pole "Nazwa" z nazwą użytkownika jako wartością domyślną
+              echo "<input type='text' class='form-control' id='nazwa' name='nazwa' value='$username' readonly>";
+              ?>
+            </div>
+            <div class="form-group">
+              <label for="wiad">Wiadomość:</label>
+              <textarea class="form-control" id="wiad" name="wiad" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark secondary border-0" name="submit">Wyślij</button>
+          </form>
+        <?php } ?>
+
 
       </div>
     </section>

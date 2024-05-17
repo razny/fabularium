@@ -15,13 +15,6 @@
   <link rel="stylesheet" href="styles/media-sizes.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.svg">
   <title>Fabularium - sklep z książkami dla każdego</title>
-  <!--TO DO:
-  -responsiveness on sm+md devices (lg is def?)
-        - navbar.... expanding......
-        - please make it look good on mobile 
-  - cart (if youre logged in !!)
-  - canvas anim
--->
 </head>
 
 <body class="bg">
