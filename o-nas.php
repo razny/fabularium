@@ -116,7 +116,24 @@
             <div class="counter">
               <i class="fa fa-2x"></i>
               <h2 class="timer count-title count-number" data-to="<?php echo $counts['total_books']; ?>" data-speed="3000"></h2>
-              <p class="count-text mb-3">Książek w magazynie</p>
+              <p class="count-text mb-3">
+                <?php
+                // Get the last digit of the total count
+                $last_digit = substr($counts['total_books'], -1);
+
+                // Check the last digit to determine the correct plural form
+                switch ($last_digit) {
+                  case '2':
+                  case '3':
+                  case '4':
+                    echo "Książki w magazynie";
+                    break;
+                  default:
+                    echo "Książek w magazynie";
+                    break;
+                }
+                ?>
+              </p>
             </div>
           </div>
           <div class="col">

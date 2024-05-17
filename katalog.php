@@ -8,10 +8,9 @@
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
   <link rel="stylesheet" href="styles/media-sizes.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.svg">
-  <title>Fabularium - katalog</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.infinitescroll/3.0.6/jquery.infinitescroll.min.js"></script>
+  <title>Fabularium - katalog</title>
 </head>
 
 <body class="bg">
@@ -116,16 +115,16 @@
                   $price_conditions = getPriceConditions($price_range);
                   if (isset($_GET['category'])) {
                     $selected_category = $_GET['category'];
-                    $sql = "SELECT * FROM pierwsze50 WHERE Kategoria LIKE '%$selected_category%' AND $price_conditions ORDER BY $sort_order LIMIT 18";
+                    $sql = "SELECT * FROM pierwsze50 WHERE Kategoria LIKE '%$selected_category%' AND $price_conditions ORDER BY $sort_order";
                   } else {
-                    $sql = "SELECT * FROM pierwsze50 WHERE $price_conditions ORDER BY $sort_order LIMIT 18";
+                    $sql = "SELECT * FROM pierwsze50 WHERE $price_conditions ORDER BY $sort_order";
                   }
                 } else {
                   if (isset($_GET['category'])) {
                     $selected_category = $_GET['category'];
-                    $sql = "SELECT * FROM pierwsze50 WHERE Kategoria LIKE '%$selected_category%' ORDER BY $sort_order LIMIT 18";
+                    $sql = "SELECT * FROM pierwsze50 WHERE Kategoria LIKE '%$selected_category%' ORDER BY $sort_order";
                   } else {
-                    $sql = "SELECT * FROM pierwsze50 ORDER BY $sort_order LIMIT 18";
+                    $sql = "SELECT * FROM pierwsze50 ORDER BY $sort_order";
                   }
                 }
 
@@ -159,7 +158,7 @@
                             </h6>
                             <div class="mt-auto">
                               <form action="includes/add_to_cart.php" method="POST">
-                                <input type="hidden" name="item_id" value="<?php echo $row['ID']?>"> <!-- Replace with your item ID -->
+                                <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>"> <!-- Replace with your item ID -->
                                 <button type="submit" class="btn btn-dark btn-sm secondary border-0">
                                   Dodaj do koszyka
                                 </button>

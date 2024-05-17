@@ -5,10 +5,6 @@ session_start();
 if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     $user_id = $_SESSION['user_id'];
     $username = $_SESSION['username'];
-/*
-    // Echo the user information
-    echo "Logged in as: $username (User ID: $user_id)";
-*/
 }
 ?>
 
@@ -24,11 +20,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <form class="w-100 d-none d-sm-block" action="search.php" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="search_query" placeholder="Wpisz tytuł, autora lub IBSN...">
+                    <input type="text" class="form-control" name="search_query" placeholder="Wpisz tytuł, autora lub IBSN..." required>
                     <span class="input-group-text">
-                        <button type="submit" class="input-group-text">
-                            <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
-                        </button>
+                        <div class="col-auto">
+                            <button type="submit" name="submit" class="btn btn-link p-0 d-flex justify-content-center align-items-center">
+                                <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
+                            </button>
+                        </div>
                     </span>
                 </div>
             </form>
@@ -76,7 +74,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 
     </div>
 </header>
-
 
 <style>
     /* Custom CSS for collapsing the navbar links into a column */
