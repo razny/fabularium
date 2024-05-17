@@ -15,9 +15,11 @@
 </head>
 
 <body class="bg">
-  <!--header start -->
-  <?php include("includes/header.php"); ?>
-  <!--header end -->
+  <?php include("includes/header.php");
+  if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+  }
+  ?>
   <div class="d-flex align-items-center justify-content-center" id="catalog">
     <section class="my-3 px-2 w-75">
       <div class="container pt-5">
@@ -129,53 +131,52 @@
 
                 $result = $conn->query($sql);
                 if ($result === false) {
-                    // Error handling for query execution failure
-                    echo "Error: " . $conn->error;
+                  // Error handling for query execution failure
+                  echo "Error: " . $conn->error;
                 } else {
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
+                  if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
                 ?>
-                
-                <div class="col-6 col-md-6 col-lg-4 mb-3">
-                    <div class="card h-100 border-0">
-                        <div class="card-img-top mt-4">
+
+                      <div class="col-6 col-md-6 col-lg-4 mb-3">
+                        <div class="card h-100 border-0">
+                          <div class="card-img-top mt-4">
                             <a href="produkt.php?ID=<?php echo htmlspecialchars($row['ID']); ?>">
-                                <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" 
-                                     class="img-fluid mx-auto d-block" 
-                                     alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" 
-                                     style="height:200px">
+                              <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid mx-auto d-block" alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" style="height:200px">
                             </a>
-                        </div>
-                        <div class="card-body text-center d-flex flex-column">
+                          </div>
+                          <div class="card-body text-center d-flex flex-column">
                             <h5 class="card-title mb-1">
-                                <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>" 
-                                   class="font-weight-bold text-dark text-decoration-none">
-                                    <?php echo htmlspecialchars($row['Tytul']); ?>
-                                </a>
+                              <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>" class="font-weight-bold text-dark text-decoration-none">
+                                <?php echo htmlspecialchars($row['Tytul']); ?>
+                              </a>
                             </h5>
                             <p class="card-text mb-2 small text-secondary">
-                                <?php echo htmlspecialchars($row['Autor']); ?>
+                              <?php echo htmlspecialchars($row['Autor']); ?>
                             </p>
                             <h6 class="card-price font-weight-bold text-dark">
-                                <?php echo htmlspecialchars($row['Cena']); ?> zł
+                              <?php echo htmlspecialchars($row['Cena']); ?> zł
                             </h6>
                             <div class="mt-auto">
-                                <button type="button" class="btn btn-dark btn-sm secondary border-0">
-                                    Dodaj do koszyka
+                              <form action="includes/add_to_cart.php" method="POST">
+                                <input type="hidden" name="item_id" value="<?php echo $row['ID']?>"> <!-- Replace with your item ID -->
+                                <button type="submit" class="btn btn-dark btn-sm secondary border-0">
+                                  Dodaj do koszyka
                                 </button>
+                              </form>
                             </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-                
+                      </div>
+
                 <?php
-                        }
-                    } else {
-                        echo "No results found.";
                     }
+                  } else {
+                    echo "No results found.";
+                  }
                 }
                 ?>
-                
+
 
               </div>
             </div>
@@ -238,13 +239,7 @@
           </div>
     </section>
   </div>
-
-
-
-  <!--footer start -->
   <?php include("includes/footer.php"); ?>
-  <!--footer end -->
-
 </body>
 
 

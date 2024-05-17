@@ -14,10 +14,7 @@
 </head>
 
 <body class="bg">
-  <!--header start -->
   <?php include("includes/header.php"); ?>
-  <!--header end -->
-
   <div class="d-flex align-items-center justify-content-center">
     <section class="my-3 px-2 w-75">
 
@@ -139,11 +136,7 @@
         </div>
     </section>
   </div>
-
-  <!--footer start -->
   <?php include("includes/footer.php"); ?>
-  <!--footer end -->
-
   <script src="scripts/counter.js"></script>
 
 </body>

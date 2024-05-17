@@ -12,10 +12,7 @@
 </head>
 
 <body class="bg">
-  <!--header start -->
   <?php include("includes/header.php"); ?>
-  <!--hedaer end -->
-
   <div class="d-flex align-items-center justify-content-center">
     <section class="my-5 w-75 py-3">
       <div class="container">
@@ -24,15 +21,10 @@
         $username = "root";
         $password = "";
         $dbname = "blank";
-
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-        //$sql = "SELECT * FROM pierwsze50";
-        $sql = "SELECT * FROM pierwsze50 ORDER BY RAND() LIMIT 1";
-        $result = $conn->query($sql);
         if (isset($_GET['ID'])) {
           $id = intval($_GET['ID']); // Sanitize the input to ensure it's an integer
-
           // Fetch book details using the ID
           $sql = "SELECT * FROM pierwsze50 WHERE ID = $id";
           $result = $conn->query($sql);
@@ -52,7 +44,6 @@
                   <p class="lead mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem
                     quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus
                     ipsam minima ea iste laborum vero?</p>
-
                   <div class="mb-3">
                     <table class="table table-borderless">
                       <tbody>
@@ -75,9 +66,13 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                    <button type="button" class="btn btn-dark secondary border-0">Dodaj do koszyka</button>
+                  <div>
+                    <form action="includes/add_to_cart.php" method="POST">
+                      <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>"> <!-- Replace with your item ID -->
+                      <button type="submit" class="btn btn-dark secondary border-0">
+                        Dodaj do koszyka
+                      </button>
+                    </form>
                   </div>
             <?php
             } else {
@@ -95,9 +90,7 @@
     </section>
   </div>
 
-  <!--footer start -->
   <?php include("includes/footer.php"); ?>
-  <!--footer end -->
 </body>
 
 </html>

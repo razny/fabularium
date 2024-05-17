@@ -63,7 +63,12 @@
                     <h5 class="card-title"><?php echo $row["Tytul"]; ?></h5>
                     <p class="card-text text-secondary"><?php echo $row["Autor"]; ?></p>
                     <h6 class="card-price font-weight-bold text-dark"><?php echo $row["Cena"]; ?> zł</h6>
-                    <button type="button" class="btn btn-dark secondary mt-1 border-0 mx-4">Dodaj do koszyka</button>
+                    <form action="includes/add_to_cart.php" method="POST">
+                      <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>"> <!-- Replace with your item ID -->
+                      <button type="submit" class="btn btn-dark secondary border-0">
+                        Dodaj do koszyka
+                      </button>
+                    </form>
                   </div>
                 </div>
               </div>
