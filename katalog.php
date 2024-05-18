@@ -31,7 +31,7 @@
   }
 
   // Define the default sorting order
-  $sort_order = "RAND()";
+  $sort_order = "ID ASC";
 
   if (isset($_GET['sort'])) {
     switch ($_GET['sort']) {
@@ -48,7 +48,7 @@
         $sort_order = "Cena DESC";
         break;
       default:
-        $sort_order = "RAND()";
+        $sort_order = "ID ASC";
         break;
     }
   }
@@ -58,29 +58,40 @@
   $offset = ($current_page - 1) * $items_per_page;
 
   $sql = "SELECT * FROM pierwsze50";
-  $where_clauses = [];
-
+  // Additional clauses for filtering by category
   if (isset($_GET['category'])) {
     $selected_category = $_GET['category'];
     $where_clauses[] = "Kategoria LIKE '%$selected_category%'";
   }
 
+  // Check if there are any additional clauses
   if (!empty($where_clauses)) {
     $sql .= ' WHERE ' . implode(' AND ', $where_clauses);
   }
 
+  // Add sorting order
   $sql .= " ORDER BY $sort_order";
 
+  // Count total items (considering filters)
   $total_items_sql = "SELECT COUNT(*) as total FROM pierwsze50";
   if (!empty($where_clauses)) {
     $total_items_sql .= ' WHERE ' . implode(' AND ', $where_clauses);
   }
+
+  // Execute the query to get total items count
   $total_items_result = $conn->query($total_items_sql);
   $total_items = $total_items_result->fetch_assoc()['total'];
+
+  // Calculate total pages based on total items and items per page
   $total_pages = ceil($total_items / $items_per_page);
 
+  // Calculate offset based on current page
+  $offset = ($current_page - 1) * $items_per_page;
+
+  // Add LIMIT and OFFSET to the SQL query
   $sql .= " LIMIT $items_per_page OFFSET $offset";
 
+  // Execute the main query to fetch products for the current page
   $result = $conn->query($sql);
   if ($result === false) {
     echo "Error: " . $conn->error;
@@ -102,11 +113,11 @@
                       Sortuj wg:
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="?sort=rand">Trafność</a></li>
-                      <li><a class="dropdown-item" href="?sort=asc">Nazwy: A do Z</a></li>
-                      <li><a class="dropdown-item" href="?sort=desc">Nazwy: Z do A</a></li>
-                      <li><a class="dropdown-item" href="?sort=price_asc">Cena: od najniższej</a></li>
-                      <li><a class="dropdown-item" href="?sort=price_desc">Cena: od najwyższej</a></li>
+                      <li><a class="dropdown-item" href="?category=<?php echo isset($_GET['category']) ? urlencode($_GET['category']) : ''; ?>&sort=rand">Trafność</a></li>
+                      <li><a class="dropdown-item" href="?category=<?php echo isset($_GET['category']) ? urlencode($_GET['category']) : ''; ?>&sort=asc">Nazwy: A do Z</a></li>
+                      <li><a class="dropdown-item" href="?category=<?php echo isset($_GET['category']) ? urlencode($_GET['category']) : ''; ?>&sort=desc">Nazwy: Z do A</a></li>
+                      <li><a class="dropdown-item" href="?category=<?php echo isset($_GET['category']) ? urlencode($_GET['category']) : ''; ?>&sort=price_asc">Cena: od najniższej</a></li>
+                      <li><a class="dropdown-item" href="?category=<?php echo isset($_GET['category']) ? urlencode($_GET['category']) : ''; ?>&sort=price_desc">Cena: od najwyższej</a></li>
                     </ul>
                   </div>
                 </div>
@@ -212,7 +223,7 @@
             <div>
               <?php
               foreach ($genres as $genre) {
-                echo '<a href="' . $_SERVER['PHP_SELF'] . '?category=' . urlencode($genre) . '" class="text-decoration-none d-block mb-2 primary-text">' . $genre . '</a>';
+                echo '<a href="' . $_SERVER['PHP_SELF'] . '?category=' . urlencode($genre) . '&sort=' . urlencode(isset($_GET['sort']) ? $_GET['sort'] : '') . '" class="text-decoration-none d-block mb-2 primary-text">' . $genre . '</a>';
               }
               ?>
             </div>

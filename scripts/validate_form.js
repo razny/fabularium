@@ -13,15 +13,19 @@ function validateForm() {
         alert("Proszę podać pełne imię i nazwisko oddzielone spacją.");
         return false;
     }
-    
+
     if (!/^\d{16}$/.test(typeText)) {
         alert("Numer karty musi składać się z 16 cyfr.");
         return false;
     }
 
-
     if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(typeExp)) {
         alert("Nieprawidłowy format daty ważności. Wprowadź datę w formacie MM/RR.");
+        return false;
+    }
+
+    if (!/^\d+$/.test(typeCvv)) {
+        alert("CVV musi składać się tylko z cyfr.");
         return false;
     }
 
@@ -29,4 +33,5 @@ function validateForm() {
         alert("CVV musi składać się z 3 cyfr.");
         return false;
     }
+
 }
