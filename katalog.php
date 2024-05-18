@@ -14,11 +14,80 @@
 </head>
 
 <body class="bg">
-  <?php include("includes/header.php");
+  <?php
+  include("includes/header.php");
   if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
   }
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "blank";
+
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  // Define the default sorting order
+  $sort_order = "RAND()";
+
+  if (isset($_GET['sort'])) {
+    switch ($_GET['sort']) {
+      case 'asc':
+        $sort_order = "Tytul ASC";
+        break;
+      case 'desc':
+        $sort_order = "Tytul DESC";
+        break;
+      case 'price_asc':
+        $sort_order = "Cena ASC";
+        break;
+      case 'price_desc':
+        $sort_order = "Cena DESC";
+        break;
+      default:
+        $sort_order = "RAND()";
+        break;
+    }
+  }
+
+  $items_per_page = 15;
+  $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  $offset = ($current_page - 1) * $items_per_page;
+
+  $sql = "SELECT * FROM pierwsze50";
+  $where_clauses = [];
+
+  if (isset($_GET['category'])) {
+    $selected_category = $_GET['category'];
+    $where_clauses[] = "Kategoria LIKE '%$selected_category%'";
+  }
+
+  if (!empty($where_clauses)) {
+    $sql .= ' WHERE ' . implode(' AND ', $where_clauses);
+  }
+
+  $sql .= " ORDER BY $sort_order";
+
+  $total_items_sql = "SELECT COUNT(*) as total FROM pierwsze50";
+  if (!empty($where_clauses)) {
+    $total_items_sql .= ' WHERE ' . implode(' AND ', $where_clauses);
+  }
+  $total_items_result = $conn->query($total_items_sql);
+  $total_items = $total_items_result->fetch_assoc()['total'];
+  $total_pages = ceil($total_items / $items_per_page);
+
+  $sql .= " LIMIT $items_per_page OFFSET $offset";
+
+  $result = $conn->query($sql);
+  if ($result === false) {
+    echo "Error: " . $conn->error;
+    exit();
+  }
   ?>
+
   <div class="d-flex align-items-center justify-content-center" id="catalog">
     <section class="my-3 px-2 w-75">
       <div class="container pt-5">
@@ -27,59 +96,6 @@
             <div class="container-fluid">
               <div class="row">
 
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blank";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-                // Define the default sorting order
-                $sort_order = "RAND()"; // Default to random order
-
-                // Check if a sorting option is selected
-                if (isset($_GET['sort'])) {
-                  // Set the sorting order based on the selected option
-                  switch ($_GET['sort']) {
-                    case 'asc':
-                      $sort_order = "Tytul ASC";
-                      break;
-                    case 'desc':
-                      $sort_order = "Tytul DESC";
-                      break;
-                    case 'price_asc':
-                      $sort_order = "Cena ASC";
-                      break;
-                    case 'price_desc':
-                      $sort_order = "Cena DESC";
-                      break;
-                    default:
-                      $sort_order = "RAND()";
-                      break;
-                  }
-                }
-                function getPriceConditions($price_range)
-                {
-                  switch ($price_range) {
-                    case "0-10":
-                      return "Cena BETWEEN 0 AND 10";
-                    case "10-20":
-                      return "Cena BETWEEN 10 AND 20";
-                    case "20-30":
-                      return "Cena BETWEEN 20 AND 30";
-                    case "30-40":
-                      return "Cena BETWEEN 30 AND 40";
-                    case "40-50":
-                      return "Cena BETWEEN 40 AND 50";
-                    case "50+":
-                      return "Cena > 50";
-                    default:
-                      return ""; // No price condition applied
-                  }
-                }
-                ?>
-
-                <!-- Dropdown column -->
                 <div class="col-md-6">
                   <div class="dropdown">
                     <button type="button" class="btn btn-dark secondary border-0 dropdown-toggle" data-bs-toggle="dropdown">
@@ -95,48 +111,43 @@
                   </div>
                 </div>
 
-                <!-- Pagination column -->
+                <?php
+                // Function to build pagination links with optional parameters
+                function buildPaginationLink($page, $category = null, $sort = null)
+                {
+                  $url = "?page=$page";
+                  if ($category !== null) {
+                    $url .= "&category=" . urlencode($category);
+                  }
+                  if ($sort !== null) {
+                    $url .= "&sort=" . urlencode($sort);
+                  }
+                  return $url;
+                }
+
+                ?>
+
                 <div class="col-md-6">
                   <div class="col-md-12 mb-3">
                     <ul class="pagination justify-content-end">
-                      <li class="page-item"><a class="page-link" href="#">Poprzednia</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Następna</a></li>
+                      <?php if ($current_page > 1) : ?>
+                        <li class="page-item"><a class="page-link" href="<?php echo buildPaginationLink($current_page - 1, isset($_GET['category']) ? $_GET['category'] : null, isset($_GET['sort']) ? $_GET['sort'] : null); ?>">Poprzednia</a></li>
+                      <?php endif; ?>
+
+                      <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                        <li class="page-item <?php echo ($i === $current_page) ? 'active' : ''; ?>"><a class="page-link" href="<?php echo buildPaginationLink($i, isset($_GET['category']) ? $_GET['category'] : null, isset($_GET['sort']) ? $_GET['sort'] : null); ?>"><?php echo $i; ?></a></li>
+                      <?php endfor; ?>
+
+                      <?php if ($current_page < $total_pages) : ?>
+                        <li class="page-item"><a class="page-link" href="<?php echo buildPaginationLink($current_page + 1, isset($_GET['category']) ? $_GET['category'] : null, isset($_GET['sort']) ? $_GET['sort'] : null); ?>">Następna</a></li>
+                      <?php endif; ?>
                     </ul>
                   </div>
                 </div>
 
-                <!-- Product cards -->
-                <?php
-                if (isset($_GET['Cena'])) {
-                  $price_range = $_GET['Cena'];
-                  $price_conditions = getPriceConditions($price_range);
-                  if (isset($_GET['category'])) {
-                    $selected_category = $_GET['category'];
-                    $sql = "SELECT * FROM pierwsze50 WHERE Kategoria LIKE '%$selected_category%' AND $price_conditions ORDER BY $sort_order";
-                  } else {
-                    $sql = "SELECT * FROM pierwsze50 WHERE $price_conditions ORDER BY $sort_order";
-                  }
-                } else {
-                  if (isset($_GET['category'])) {
-                    $selected_category = $_GET['category'];
-                    $sql = "SELECT * FROM pierwsze50 WHERE Kategoria LIKE '%$selected_category%' ORDER BY $sort_order";
-                  } else {
-                    $sql = "SELECT * FROM pierwsze50 ORDER BY $sort_order";
-                  }
-                }
-
-                $result = $conn->query($sql);
-                if ($result === false) {
-                  // Error handling for query execution failure
-                  echo "Error: " . $conn->error;
-                } else {
-                  if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                ?>
-
+                <div class="row">
+                  <?php if ($result->num_rows > 0) : ?>
+                    <?php while ($row = $result->fetch_assoc()) : ?>
                       <div class="col-6 col-md-6 col-lg-4 mb-3">
                         <div class="card h-100 border-0">
                           <div class="card-img-top mt-4">
@@ -158,7 +169,7 @@
                             </h6>
                             <div class="mt-auto">
                               <form action="includes/add_to_cart.php" method="POST">
-                                <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>"> <!-- Replace with your item ID -->
+                                <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>">
                                 <button type="submit" class="btn btn-dark btn-sm secondary border-0">
                                   Dodaj do koszyka
                                 </button>
@@ -167,54 +178,28 @@
                           </div>
                         </div>
                       </div>
-
-                <?php
-                    }
-                  } else {
-                    echo "No results found.";
-                  }
-                }
-                ?>
-
-
+                    <?php endwhile; ?>
+                  <?php else : ?>
+                    <p>No results found.</p>
+                  <?php endif; ?>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
-            <h4 class="mb-3">Filtruj</h4>
-            <!-- Price Filter -->
-            <div class="mb-3">
-              <form id="price-filter-form" method="GET"> <!-- Added an ID to the form for easier reference -->
-                <label for="price-range" class="form-label">Cena (zł)</label>
-                <select class="form-select" id="price-range" name="Cena" onchange="document.getElementById('price-filter-form').submit()"> <!-- Added onchange event to submit the form -->
-                  <option value="" disabled selected>Wybierz zakres cenowy...</option>
-                  <option value="0-10">0 - 10 zł</option>
-                  <option value="10-20">10 - 20 zł</option>
-                  <option value="20-30">20 - 30 zł</option>
-                  <option value="30-40">30 - 40 zł</option>
-                  <option value="40-50">40 - 50 zł</option>
-                  <option value="50+">Powyżej 50 zł</option>
-                </select>
-              </form>
-            </div>
-
             <?php
-            $sql = "SELECT DISTINCT kategoria FROM pierwsze50"; // Modify the query to select only unique values of "kategoria"
+            $sql = "SELECT DISTINCT kategoria FROM pierwsze50";
             $result = $conn->query($sql);
 
             $genres = [];
             if ($result->num_rows > 0) {
-              // output data of each row
               while ($row = $result->fetch_assoc()) {
-                // Explode the categories by comma and add each separately to the genres array
                 $categories = explode(",", $row["kategoria"]);
                 foreach ($categories as $category) {
-                  $genres[] = trim($category); // Trim to remove any leading or trailing spaces
+                  $genres[] = trim($category);
                 }
               }
-
-              // Sort the genres alphabetically
               sort($genres);
             } else {
               echo "0 results";
@@ -223,23 +208,21 @@
             $conn->close();
             ?>
 
-
             <h4 class="mb-3">Kategorie</h4>
             <div>
               <?php
               foreach ($genres as $genre) {
-                // Output genres as clickable links within the form
                 echo '<a href="' . $_SERVER['PHP_SELF'] . '?category=' . urlencode($genre) . '" class="text-decoration-none d-block mb-2 primary-text">' . $genre . '</a>';
               }
               ?>
             </div>
 
-
           </div>
+        </div>
+      </div>
     </section>
   </div>
   <?php include("includes/footer.php"); ?>
 </body>
-
 
 </html>
