@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    // If not logged in, redirect to the login page or display a message
+    // If not logged in, redirect to the login page
     header('Location: ../logowanie.php');
     exit();
 }
@@ -12,12 +12,14 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['item_id'])) {
     $item_id = $_POST['item_id'];
 
+    // Check if the item is already in the cart
     if (isset($_SESSION['cart'][$item_id])) {
-        $_SESSION['cart'][$item_id]['quantity'] += 1;
+        // Item is already in the cart, return an error
+        $_SESSION['cart_error'] = "Ten przedmiot znajduje się już w twoim koszyku.";
     } else {
+        // Add the item to the cart
         $_SESSION['cart'][$item_id] = [
             'id' => $item_id,
-            'quantity' => 1,
         ];
     }
 

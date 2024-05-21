@@ -25,7 +25,7 @@
           $sql = "SELECT * FROM pierwsze50 WHERE ID = $id";
           $result = $conn->query($sql);
           if ($result === false) {
-            echo "Error: " . $conn->error;
+            echo "Nie znaleziono produktu.";
           } else {
             if ($result->num_rows > 0) {
               $row = $result->fetch_assoc();
@@ -37,9 +37,7 @@
                   <div class="fs-5 mb-5">
                     <span style="color: #908f8f"><?php echo $row["Cena"]; ?> zł</span>
                   </div>
-                  <p class="lead mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem
-                    quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus
-                    ipsam minima ea iste laborum vero?</p>
+                  <p class="lead mb-4"><?php echo $row["Opis"]; ?></p>
                   <div class="mb-3">
                     <table class="table table-borderless">
                       <tbody>
@@ -64,19 +62,26 @@
                   </div>
                   <div>
                     <form action="includes/add_to_cart.php" method="POST">
-                      <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>"> <!-- Replace with your item ID -->
-                      <button type="submit" class="btn btn-dark secondary border-0">
+                      <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
+                      <button type="submit" class="btn btn-dark btn-sm secondary border-0">
                         Dodaj do koszyka
                       </button>
                     </form>
+                    <?php
+                    // Check if there's a cart error and display it
+                    if (isset($_SESSION['cart_error'])) {
+                      echo '<script>alert("' . $_SESSION['cart_error'] . '");</script>';
+                      unset($_SESSION['cart_error']); // Unset the session variable
+                    }
+                    ?>
                   </div>
             <?php
             } else {
-              echo "No book found with this ID.";
+              echo "Nie znaleziono produktu o tym ID.";
             }
           }
         } else {
-          echo "No book ID specified.";
+          echo "Nie podano ID.";
         }
         $conn->close();
             ?>

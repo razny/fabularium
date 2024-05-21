@@ -39,7 +39,6 @@
                                 // Iterate through cart items
                                 foreach ($_SESSION['cart'] as $item) {
                                     $item_id = $item['id'];
-                                    $item_quantity = $item['quantity'];
 
                                     // Fetch product details from the database
                                     $sql = "SELECT ID, Tytul, Autor, Okladka, Cena FROM pierwsze50 WHERE ID = $item_id";
@@ -62,12 +61,6 @@
                                                     </div>
                                                 </td>
                                                 <?php
-                                                // Before rendering the quantity input field, update the quantity in the session if it's changed
-                                                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['quantity_' . $item_id])) {
-                                                    $new_quantity = $_POST['quantity_' . $item_id];
-                                                    $_SESSION['cart'][$item_id]['quantity'] = $new_quantity;
-                                                    $item_quantity = $new_quantity;
-                                                }
 
                                                 $item_total_price = $row['Cena'];
                                                 $totalPurchaseAmount += $item_total_price; ?>

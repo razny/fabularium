@@ -82,10 +82,6 @@
 
   // Execute the main query to fetch products for the current page
   $result = $conn->query($sql);
-  if ($result === false) {
-    echo "Error: " . $conn->error;
-    exit();
-  }
   ?>
 
   <section class="d-flex align-items-center justify-content-center" id="catalog">
@@ -167,11 +163,18 @@
                             </h6>
                             <div class="mt-auto">
                               <form action="includes/add_to_cart.php" method="POST">
-                                <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>">
+                                <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
                                 <button type="submit" class="btn btn-dark btn-sm secondary border-0">
                                   Dodaj do koszyka
                                 </button>
                               </form>
+                              <?php
+                              // Check if there's a cart error and display it
+                              if (isset($_SESSION['cart_error'])) {
+                                echo '<script>alert("' . $_SESSION['cart_error'] . '");</script>';
+                                unset($_SESSION['cart_error']); // Unset the session variable
+                              }
+                              ?>
                             </div>
                           </div>
                         </div>

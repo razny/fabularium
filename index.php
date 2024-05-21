@@ -53,11 +53,19 @@
                     <p class="card-text text-secondary"><?php echo $row["Autor"]; ?></p>
                     <h6 class="card-price font-weight-bold text-dark"><?php echo $row["Cena"]; ?> zł</h6>
                     <form action="includes/add_to_cart.php" method="POST">
-                      <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>">
-                      <button type="submit" class="btn btn-dark secondary border-0">
+                      <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
+                      <button type="submit" class="btn btn-dark btn-sm secondary border-0">
                         Dodaj do koszyka
                       </button>
                     </form>
+
+                    <?php
+                    // Check if there's a cart error and display it
+                    if (isset($_SESSION['cart_error'])) {
+                      echo '<script>alert("' . $_SESSION['cart_error'] . '");</script>';
+                      unset($_SESSION['cart_error']); // Unset the session variable
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
