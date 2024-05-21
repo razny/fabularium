@@ -16,4 +16,3 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
 // Redirect back to the cart page
 header("Location: ../koszyk.php");
 exit();
-?>

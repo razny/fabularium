@@ -2,28 +2,24 @@
 <html lang="pl">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/media-sizes.css" />
-  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fabularium - opinie klientów</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/media-sizes.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
 </head>
 
 <body class="bg">
   <?php include("includes/header.php"); ?>
+  <?php include("includes/conn.php"); ?>
   <div class="d-flex align-items-center justify-content-center">
     <section class="my-5 px-2 w-75">
       <h3 class="text-center mb-3">Opinie klientów o naszym sklepie</h3>
       <hr>
       <div class="container">
         <?php
-        // Connect to the database
-        $conn = mysqli_connect("localhost", "root", "", "blank");
-
         // Process form submission
         if (isset($_POST["submit"])) {
           $nazwa = $_POST["nazwa"];
@@ -77,16 +73,12 @@
             <button type="submit" class="btn btn-dark secondary border-0" name="submit">Wyślij</button>
           </form>
         <?php } ?>
-
-
       </div>
     </section>
   </div>
-
-  <!--footer start -->
   <?php include("includes/footer.php"); ?>
-  <!--footer end -->
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

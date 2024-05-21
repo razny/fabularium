@@ -3,25 +3,21 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-
-  <link rel="stylesheet" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/media-sizes.css" />
-  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fabularium - sklep z książkami dla każdego</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/media-sizes.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
 </head>
 
 <body class="bg">
   <?php include("includes/header.php"); ?>
-  <div class="jumbotron position-relative d-flex justify-content-center align-items-center py-5">
+  <?php include("includes/conn.php"); ?>
+  <section class="jumbotron position-relative d-flex justify-content-center align-items-center py-5">
     <div class="mask"></div>
-    <section class="py-4 w-md-75 w-l-75 w-xl-75 position-relative z-index-1">
+    <div class="py-4 w-md-75 w-l-75 w-xl-75 position-relative z-index-1">
       <div class="w-md-75 w-l-75 w-xl-75 me-5 ms-3">
         <h1 class="display-4 mb-4" style="font-weight: 400;">Odkryj świat literatury!</h1>
         <p class="lead me-5">Oferujemy szeroki wybór tytułów, które zaspokoją nawet najbardziej wymagające gusta
@@ -33,8 +29,8 @@
             produkty</a>
         </p>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
   <section class="container-fluid bg mt-5 w-md-75">
     <h2 class="text-center my-5"><span class="bg">Polecane książki</span></h2>
@@ -42,13 +38,6 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <?php
-          $servername = "localhost";
-          $username = "root";
-          $password = "";
-          $dbname = "blank";
-
-          $conn = new mysqli($servername, $username, $password, $dbname);
-
           $sql = "SELECT * FROM pierwsze50 ORDER BY RAND() LIMIT 5";
           $result = $conn->query($sql);
           if ($result->num_rows > 0) {
@@ -64,7 +53,7 @@
                     <p class="card-text text-secondary"><?php echo $row["Autor"]; ?></p>
                     <h6 class="card-price font-weight-bold text-dark"><?php echo $row["Cena"]; ?> zł</h6>
                     <form action="includes/add_to_cart.php" method="POST">
-                      <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>"> <!-- Replace with your item ID -->
+                      <input type="hidden" name="item_id" value="<?php echo $row['ID'] ?>">
                       <button type="submit" class="btn btn-dark secondary border-0">
                         Dodaj do koszyka
                       </button>
@@ -84,6 +73,10 @@
     </div>
   </section>
   <?php include("includes/footer.php"); ?>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script src="scripts/swiper.js"></script>
 </body>
 

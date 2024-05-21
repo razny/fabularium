@@ -2,22 +2,20 @@
 <html lang="pl">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/media-sizes.css" />
-  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fabularium - o nas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/media-sizes.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
 </head>
 
 <body class="bg">
   <?php include("includes/header.php"); ?>
+  <?php include("includes/conn.php"); ?>
   <div class="d-flex align-items-center justify-content-center">
-    <section class="my-3 px-2 w-75">
-
+    <div class="my-3 px-2 w-75">
       <section class="py-3 py-md-5 py-xl-8">
         <div class="container">
           <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
@@ -70,22 +68,13 @@
           </div>
         </div>
       </section>
-
       <hr>
-      <div class="container">
+      <section class="container">
         <div class="row">
-          <br />
           <div class="col text-center mb-3">
             <h2>Nasz sklep w liczbach</h2>
           </div>
           <?php
-          $servername = "localhost";
-          $username = "root";
-          $password = "";
-          $dbname = "blank";
-
-          $conn = new mysqli($servername, $username, $password, $dbname);
-
           $sql = "SELECT * FROM pierwsze50";
           $result = $conn->query($sql);
 
@@ -109,7 +98,6 @@
 
           $conn->close();
           ?>
-
         </div>
         <div class="row text-center">
           <div class="col">
@@ -151,11 +139,13 @@
             </div>
           </div>
         </div>
-    </section>
+      </section>
+    </div>
   </div>
   <?php include("includes/footer.php"); ?>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="scripts/counter.js"></script>
-
 </body>
 
 </html>

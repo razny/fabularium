@@ -2,32 +2,21 @@
 <html lang="pl">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/media-sizes.css" />
-  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fabularium - katalog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" href="styles/media-sizes.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
 </head>
 
 <body class="bg">
   <?php
   include("includes/header.php");
+  include("includes/conn.php");
   if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
-  }
-
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "blank";
-
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
   }
 
   // Define the default sorting order
@@ -99,14 +88,13 @@
   }
   ?>
 
-  <div class="d-flex align-items-center justify-content-center" id="catalog">
-    <section class="my-3 px-2 w-75">
+  <section class="d-flex align-items-center justify-content-center" id="catalog">
+    <div class="my-3 px-2 w-75">
       <div class="container pt-5">
         <div class="row">
           <div class="col-md-8 order-md-2 col-lg-9">
             <div class="container-fluid">
               <div class="row">
-
                 <div class="col-md-6">
                   <div class="dropdown">
                     <button type="button" class="btn btn-dark secondary border-0 dropdown-toggle" data-bs-toggle="dropdown">
@@ -135,7 +123,6 @@
                   }
                   return $url;
                 }
-
                 ?>
 
                 <div class="col-md-6">
@@ -231,9 +218,11 @@
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
   <?php include("includes/footer.php"); ?>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -28,4 +28,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['item_id'])) {
     header('Location: ' . $_SESSION['redirect_url']);
     exit();
 }
-?>

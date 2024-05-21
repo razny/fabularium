@@ -2,22 +2,17 @@
 <html lang="pl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/media-sizes.css" />
-    <link rel="icon" type="image/x-icon" href="images/favicon.svg">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fabularium - logowanie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/media-sizes.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.svg">
 </head>
 
 <body class="gradient-bg">
-    <?php
-    session_start();
-
-    $conn = mysqli_connect("localhost", "root", "", "blank");
-    if (!$conn) die("Connection failed: " . mysqli_connect_error());
+    <?php include("includes/conn.php");
 
     // Sprawdzenie, czy sesja jest już aktywna
     if (isset($_SESSION['user_id'])) {
@@ -121,7 +116,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

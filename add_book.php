@@ -13,12 +13,9 @@
 </head>
 
 <body class="gradient-bg">
-    <?php
+<?php include("includes/conn.php");
+
     session_start();
-
-    $conn = mysqli_connect("localhost", "root", "", "blank");
-    if (!$conn) die("Connection failed: " . mysqli_connect_error());
-
     // Check if the user is an admin
     if (isset($_SESSION['user_id'])) {
         $username = $_SESSION['username'];
@@ -81,7 +78,7 @@
                                 <div class="mb-3 row">
                                     <label for="liczba_stron" class="col-sm-3 col-form-label">Liczba stron:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="liczba_stron" name="liczba_stron" required>
+                                        <input type="number" class="form-control" id="liczba_stron" name="liczba_stron" placeholder="Ile stron ma książka?" required>
                                     </div>
                                 </div>
 

@@ -11,4 +11,3 @@ session_destroy();
 // Przekieruj użytkownika na stronę logowania lub inną stronę po wylogowaniu
 header("Location: ../index.php");
 exit;
-?>

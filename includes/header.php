@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Check if the user is logged in
 if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     $user_id = $_SESSION['user_id'];
@@ -60,21 +59,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                     <a class="nav-link" href="logowanie.php">Logowanie</a>
                 </li>
             </ul>
-            <form class="w-100 d-sm-none">
+            <form class="w-100 d-sm-none" action="search.php" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Wpisz tytuł, autora lub IBSN...">
+                    <input type="text" class="form-control" name="search_query" placeholder="Wpisz tytuł, autora lub IBSN..." required>
                     <span class="input-group-text">
-                        <a href="#">
-                            <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
-                        </a>
+                        <div class="col-auto">
+                            <button type="submit" name="submit" class="btn btn-link p-0 d-flex justify-content-center align-items-center">
+                                <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
+                            </button>
+                        </div>
                     </span>
                 </div>
             </form>
         </div>
-
     </div>
 </header>
-
 <style>
     /* Custom CSS for collapsing the navbar links into a column */
     @media (max-width: 576px) {
@@ -84,7 +83,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         }
     }
 </style>
-
 <script>
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
