@@ -13,7 +13,11 @@
 
 <body class="gradient-bg">
     <?php include("includes/conn.php");
-
+    session_start();
+    if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+        $user_id = $_SESSION['user_id'];
+        $username = $_SESSION['username'];
+    }
     // Sprawdzenie, czy sesja jest już aktywna
     if (isset($_SESSION['user_id'])) {
         // Jeśli tak, wyświetl nazwę użytkownika i przycisk wylogowania
@@ -25,6 +29,9 @@
                     <div class="card shadow-lg">
                         <div class="card-body p-5">
                             <h4 class='text-center mb-3'>Zalogowany jako: <?php echo "$username" ?></h4>
+                            <a href="index.php">
+                                <button class="btn btn-dark accent btn-block border-0 mt-3 w-100">Wróć na stronę główną</button>
+                            </a>
                             <form action="includes/logout.php" method="POST">
                                 <button type="submit" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Wyloguj się</button>
                             </form>
@@ -32,7 +39,6 @@
                             // Sprawdzenie czy zalogowany użytkownik jest adminem
                             if ($_SESSION['username'] == 'admin') {
                             ?>
-                                <!-- Dodaj przycisk "Dodaj książkę" -->
                                 <a href="add_book.php" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Dodaj książkę</a>
                             <?php
                             }
@@ -46,7 +52,6 @@
         // Przerwij dalsze wykonywanie kodu
         exit();
     }
-
     // Kod do obsługi formularza logowania
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["username"];
