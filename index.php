@@ -17,16 +17,16 @@
 <body class="bg">
   <?php include("includes/header.php"); ?>
   <?php include("includes/conn.php"); ?>
-  <section class="jumbotron position-relative d-flex justify-content-center align-items-center py-5">
+  <section class="jumbotron position-relative d-flex justify-content-center align-items-center py-4">
     <div class="mask"></div>
-    <div class="py-4 w-md-75 w-l-75 w-xl-75 position-relative z-index-1">
-      <div class="w-md-75 w-l-75 w-xl-75 me-5 ms-3">
+    <div class="py-5 w-sm-75 w-md-75 w-l-75 w-xl-75 position-relative z-index-1 text-center text-md-start">
+      <div class="w-md-75 w-l-75 w-xl-75 me-md-5 ms-md-3 ms-0 me-0 p-sm-0 p-4">
         <h1 class="display-4 mb-4" style="font-weight: 400;">Odkryj świat literatury!</h1>
-        <p class="lead me-5">Oferujemy szeroki wybór tytułów, które zaspokoją nawet najbardziej wymagające gusta
+        <p class="lead me-md-5 me-l-5 me-xl-5">Oferujemy szeroki wybór tytułów, które zaspokoją nawet najbardziej wymagające gusta
           czytelnicze i pozwolą Ci zgłębić tematykę, która Cię interesuje. Nasza księgarnia to nie tylko miejsce, gdzie
           możesz znaleźć książki - to przestrzeń, w której marzenia o literackich podróżach stają się rzeczywistością.
         </p>
-        <p class="lead me-5">
+        <p class="me-md-5 me-l-5 me-xl-5 me-sm-0">
           <a class="btn primary btn-dark border-0 mt-4" href="katalog.php" role="button">Zobacz wszystkie
             produkty</a>
         </p>
@@ -40,7 +40,7 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <?php
-          $sql = "SELECT * FROM pierwsze50 ORDER BY RAND() LIMIT 5";
+          $sql = "SELECT * FROM books ORDER BY RAND() LIMIT 5";
           $result = $conn->query($sql);
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {

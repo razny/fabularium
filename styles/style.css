@@ -3,6 +3,7 @@
 body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 :root {
@@ -45,7 +46,6 @@ body {
 
 /*********************************/
 
-
 .form-control:focus {
   box-shadow: 0 .1rem .1rem var(--primary);
   border-color: var(--secondary);
@@ -63,6 +63,15 @@ footer .text-body {
 
 footer .text-body {
   font-weight: 600;
+}
+
+footer {
+  margin-bottom: 0;
+}
+
+#bottom-footer {
+  bottom: 0;
+  width: 100%;
 }
 
 .list-group {
@@ -296,8 +305,31 @@ th .text-secondary {
   font-weight: 400;
 }
 
-@media (min-width: 1025px) {
-  .h-custom {
-  height: 100vh !important;
+/*********************************/
+
+/* Extra small devices (phones) */
+@media only screen and (max-width: 575px) {
+
+}
+
+/* Small devices (portrait tablets and large phones) */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+
+}
+
+/* Medium devices (landscape tablets) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* Your styles for medium devices here */
+}
+
+/* Large devices (laptops/desktops) */
+@media only screen and (min-width: 992px) {
+  /* Your styles for large devices here */
+}
+
+@media (max-width: 576px) {
+  .jumbotron .pad-xs {
+      padding-left: 3rem; /* Adjust as needed */
+      padding-right: 3rem; /* Adjust as needed */
   }
-  }
+}

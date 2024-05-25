@@ -11,45 +11,52 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <style>
+        .card {
+            border-radius: 16px;
+        }
+
+        @media (max-width: 576px) {
+
+            /* Adjust styles for extra small devices */
+            .h5 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg">
     <?php include("includes/header.php"); ?>
     <?php include("includes/conn.php"); ?>
     <div class="d-flex align-items-center d-flex flex-column min-vh-100">
-        <section class="my-2 w-75">
+        <section class="my-2 w-md-75 w-100">
             <div class="container h-100 py-5">
                 <?php
-                // Check if the cart is empty
                 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
                     echo '<div class="alert alert-secondary" role="alert">Brak produktów w koszyku. Sprawdź nasz szeroki wybór produktów w katalogu i znajdź coś dla siebie!</div>';
                 } else { ?>
-                    <!-- Display the payment form only if the cart is not empty -->
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="h5">Koszyk</th>
-                                    <th scope="col">Cena</th>
-                                    <th scope="col">Usuń</th>
+                                    <th scope="col" class="h5" >Koszyk</th>
+                                    <th scope="col" style="text-align: center;">Cena</th>
+                                    <th scope="col" style="text-align: center;">Usuń</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $totalPurchaseAmount = 0;
 
-                                // Iterate through cart items
                                 foreach ($_SESSION['cart'] as $item) {
                                     $item_id = $item['id'];
 
-                                    // Fetch product details from the database
-                                    $sql = "SELECT ID, Tytul, Autor, Okladka, Cena FROM pierwsze50 WHERE ID = $item_id";
+                                    $sql = "SELECT ID, Tytul, Autor, Okladka, Cena FROM books WHERE ID = $item_id";
                                     $result = $conn->query($sql);
 
                                     if ($result->num_rows > 0) {
-                                        // Output data of each row
                                         while ($row = $result->fetch_assoc()) { ?>
-                                            <!--Display the cart item with its details-->
                                             <tr>
                                                 <td>
                                                     <div class="d-flex align-items-center">
@@ -63,15 +70,13 @@
                                                     </div>
                                                 </td>
                                                 <?php
-
                                                 $item_total_price = $row['Cena'];
                                                 $totalPurchaseAmount += $item_total_price; ?>
 
-                                                <td id="price_<?php echo $item_id; ?>" class="align-middle">
+                                                <td id="price_<?php echo $item_id; ?>" class="align-middle" style="text-align: center;">
                                                     <?php echo number_format($item_total_price, 2); ?> zł
                                                 </td>
-                                                <td class="align-middle">
-                                                    <!-- Add a form with a hidden input field to remove the item -->
+                                                <td class="align-middle" style="text-align: center;">
                                                     <form method="post" action="includes/remove_from_cart.php">
                                                         <input type="hidden" name="item_id" value="<?php echo $item_id; ?>">
                                                         <button type="submit" class="btn-close m-3"></button>
@@ -87,83 +92,89 @@
                         </table>
                     </div>
                     <?php
-                    // Calculate the total amount (including delivery cost)
-                    $deliveryCost = 9.99; // Assuming fixed delivery cost
+                    $deliveryCost = 9.99;
                     $totalAmount = $totalPurchaseAmount + $deliveryCost;
-
-                    // Display total amount and checkout button
                     ?>
-                    <div class="card shadow-2-strong mt-5 py-3" style="border-radius: 16px;">
-                        <div class="card-body p-4">
-                            <div class="row d-flex justify-content-between">
-                                <div class="col-md-6 col-lg-4 col-xl-6">
-                                    <div class="row">
-                                        <div class="col-12 col-xl-6">
-                                            <div data-mdb-input-init class="form-outline mb-4 mb-xl-5">
-                                                <input type="text" id="typeName" class="form-control form-control" placeholder="Jan Kowalski" />
-                                                <label class="form-label" for="typeName">Imię i nazwisko na karcie</label>
+
+                    <div class="mt-3 py-3">
+                        <div>
+                            <div class="row d-flex flex-column flex-md-row justify-content-center">
+                                <div class="col-md-8 mb-4 mb-md-0">
+                                    <div class="card shadow-2-strong p-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div data-mdb-input-init class="form-outline mb-4">
+                                                    <input type="text" id="typeName" class="form-control" placeholder="Jan Kowalski" />
+                                                    <label class="form-label" for="typeName">Imię i nazwisko na karcie</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-xl-6">
-                                            <div data-mdb-input-init class="form-outline mb-4 mb-xl-5">
-                                                <input type="text" id="typeExp" class="form-control form-control" placeholder="MM/RR" size="5" id="exp" minlength="5" maxlength="5" />
-                                                <label class="form-label" for="typeExp">Data ważności</label>
+                                            <div class="col-12">
+                                                <div data-mdb-input-init class="form-outline mb-4">
+                                                    <input type="text" id="typeExp" class="form-control" placeholder="MM/RR" size="5" id="exp" minlength="5" maxlength="5" />
+                                                    <label class="form-label" for="typeExp">Data ważności</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-xl-6">
-                                            <div data-mdb-input-init class="form-outline mb-4 mb-xl-5">
-                                                <input type="text" id="typeText" class="form-control form-control" placeholder="1111 2222 3333 4444" minlength="16" maxlength="16" />
-                                                <label class="form-label" for="typeText">Numer karty</label>
+                                            <div class="col-12">
+                                                <div data-mdb-input-init class="form-outline mb-4">
+                                                    <input type="text" id="typeText" class="form-control" placeholder="1111 2222 3333 4444" minlength="16" maxlength="16" />
+                                                    <label class="form-label" for="typeText">Numer karty</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-xl-6">
-                                            <div data-mdb-input-init class="form-outline mb-4 mb-xl-5">
-                                                <input type="password" id="typeCvv" class="form-control form-control" placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                                                <label class="form-label" for="typeCvv">CVV</label>
+                                            <div class="col-12">
+                                                <div data-mdb-input-init class="form-outline mb-4">
+                                                    <input type="password" id="typeCvv" class="form-control" placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                                                    <label class="form-label" for="typeCvv">CVV</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-xl-3">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="mb-2">Kwota zakupów</p>
-                                        <p class="mb-2"><?php echo number_format($totalPurchaseAmount, 2); ?> zł</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <p class="mb-0">Dostawa</p>
-                                        <p class="mb-0"><?php echo number_format($deliveryCost, 2); ?> zł</p>
-                                    </div>
-                                    <hr class="my-4">
-                                    <div class="d-flex justify-content-between mb-4">
-                                        <p class="mb-2">Razem</p>
-                                        <p class="mb-2"><?php echo number_format($totalAmount, 2); ?> zł</p>
-                                    </div>
-                                    <div class="d-flex justify-content-end mb-4">
-                                        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validateForm()">
-                                            <button type="submit" name="submit" class="btn btn-dark btn-block secondary border-0">
-                                                <span>Zamów</span>
-                                            </button>
-                                        </form>
-                                        <?php
-                                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                            // Clear the cart
-                                            unset($_SESSION['cart']);
-                                        ?>
-                                            <script>
-                                                // After clearing the cart, display an alert and allow the form submission
-                                                alert("Dziękujemy za złożenie zamówienia!");
-                                                // Redirect the user to the homepage or elsewhere after completing the order
-                                                window.location = "index.php"; // Change "index.php" to the appropriate path
-                                            </script>
-                                        <?php
-                                            // Terminate further PHP execution to avoid displaying a blank page
-                                            exit;
-                                        } ?>
+                                <div class="col-md-4 card">
+                                    <div class="card-body shadow-2-strong p-4">
+                                        <div class="flex-column">
+                                            <div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <p class="mb-0">Kwota zakupów</p>
+                                                    <p class="mb-0"><?php echo number_format($totalPurchaseAmount, 2); ?> zł</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <p class="mb-0">Dostawa</p>
+                                                    <p class="mb-0"><?php echo number_format($deliveryCost, 2); ?> zł</p>
+                                                </div>
+                                                <hr class="my-2">
+                                                <div class="d-flex justify-content-between mb-2">
+                                                    <p class="mb-0">Razem</p>
+                                                    <p class="mb-0"><?php echo number_format($totalAmount, 2); ?> zł</p>
+                                                </div>
+                                            </div>
+                                            <div class="text-end"> <!-- Utilizing Bootstrap's utility class "text-end" to align content to the right -->
+                                                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validateForm()">
+                                                    <button type="submit" name="submit" class="btn btn-dark btn-block secondary border-0 mt-2">
+                                                        <span>Zamów</span>
+                                                    </button>
+                                                </form>
+                                                <?php
+                                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                                    unset($_SESSION['cart']);
+                                                ?>
+                                                    <script>
+                                                        alert("Dziękujemy za złożenie zamówienia!");
+                                                        window.location = "index.php";
+                                                    </script>
+                                                <?php
+                                                    exit;
+                                                } ?>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                        <?php } ?>
                         </div>
+                    </div>
+
+                <?php } ?>
+            </div>
         </section>
     </div>
     <?php include("includes/footer.php"); ?>

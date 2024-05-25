@@ -13,13 +13,14 @@ var mySwiper = new Swiper('.swiper', {
     },
     observer: false,
     breakpoints: {
-        // When window width is <= 768px (mobile)
         768: {
             slidesPerView: 1,
         },
-        // When window width is > 768px (desktop)
+        769: {
+            slidesPerView: 'auto',
+        },
         992: {
             slidesPerView: 'auto',
-        }
+        },
     }
 });

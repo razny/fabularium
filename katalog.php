@@ -44,49 +44,13 @@
     }
   }
 
-  $items_per_page = 15;
-  $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-  $offset = ($current_page - 1) * $items_per_page;
-
-  $sql = "SELECT * FROM pierwsze50";
-  // Additional clauses for filtering by category
-  if (isset($_GET['category'])) {
-    $selected_category = $_GET['category'];
-    $where_clauses[] = "Kategoria LIKE '%$selected_category%'";
-  }
-
-  // Check if there are any additional clauses
-  if (!empty($where_clauses)) {
-    $sql .= ' WHERE ' . implode(' AND ', $where_clauses);
-  }
-
-  // Add sorting order
-  $sql .= " ORDER BY $sort_order";
-
-  // Count total items (considering filters)
-  $total_items_sql = "SELECT COUNT(*) as total FROM pierwsze50";
-  if (!empty($where_clauses)) {
-    $total_items_sql .= ' WHERE ' . implode(' AND ', $where_clauses);
-  }
-
-  // Execute the query to get total items count
-  $total_items_result = $conn->query($total_items_sql);
-  $total_items = $total_items_result->fetch_assoc()['total'];
-
-  // Calculate total pages based on total items and items per page
-  $total_pages = ceil($total_items / $items_per_page);
-
-  // Calculate offset based on current page
-  $offset = ($current_page - 1) * $items_per_page;
-
-  // Add LIMIT and OFFSET to the SQL query
-  $sql .= " LIMIT $items_per_page OFFSET $offset";
+  include("includes/pagination.php");
 
   // Execute the main query to fetch products for the current page
   $result = $conn->query($sql);
   ?>
 
-  <section class="d-flex align-items-center justify-content-center" id="catalog">
+  <section class="d-flex align-items-center justify-content-center min-vh-100" id="catalog">
     <div class="my-3 px-2 w-75">
       <div class="container pt-5">
         <div class="row">
@@ -192,7 +156,7 @@
 
           <div class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
             <?php
-            $sql = "SELECT DISTINCT kategoria FROM pierwsze50";
+            $sql = "SELECT DISTINCT kategoria FROM books";
             $result = $conn->query($sql);
 
             $genres = [];

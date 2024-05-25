@@ -124,7 +124,7 @@
                                 $okladka = $_POST["okladka"];
                                 $cena = $_POST["cena"];
 
-                                $sql = "INSERT INTO pierwsze50 (`Tytul`, `Wydawnictwo`, `Autor`, `Kategoria`, `Data premiery`, `Liczba stron`, `ISBN`, `okladka`, `Cena`)
+                                $sql = "INSERT INTO books (`Tytul`, `Wydawnictwo`, `Autor`, `Kategoria`, `Data premiery`, `Liczba stron`, `ISBN`, `okladka`, `Cena`)
                             VALUES ('$tytul', '$wydawnictwo', '$autor', '$kategoria', '$data_premiery', $liczba_stron, '$isbn', '$okladka', $cena)";
 
                                 if (mysqli_query($conn, $sql)) {

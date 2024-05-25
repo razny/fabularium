@@ -17,7 +17,7 @@
   <?php include("includes/header.php"); ?>
   <?php include("includes/conn.php"); ?>
   <div class="d-flex align-items-center justify-content-center">
-    <section class="my-5 px-2 w-75">
+    <section class="my-4 px-2 w-75">
       <h3 class="text-center mb-3">Opinie klientów o naszym sklepie</h3>
       <hr>
       <div class="container">
@@ -47,7 +47,7 @@
         mysqli_close($conn);
         ?>
 
-        <hr class="mt-2 ">
+        <hr class="mt-2">
         <h4 class="card-title my-4">Podziel się swoją opinią!</h4>
         <?php
         // Sprawdź, czy użytkownik jest zalogowany

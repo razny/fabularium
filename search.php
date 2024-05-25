@@ -18,21 +18,23 @@
     <?php include("includes/conn.php"); ?>
 
     <section class="d-flex align-items-center justify-content-center" id="catalog">
-        <div class="my-3 px-2 w-75">
-            <?php
-            $search_result = ""; // Initialize variable to hold search result HTML
+        <div class="my-4 px-2 w-75 min-vh-100">
+            <div class="text-center">
+                <?php
+                $search_result = ""; // Initialize variable to hold search result HTML
 
-            if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
-                $search_query = $_GET['search_query'];
-                echo "Wyniki wyszukiwania dla <b>" . $search_query . "</b>:<br><br>";
-            } else {
-                echo "Nie znaleziono produktów dla twojego zapytania.";
-            }
-
-            $sql = "SELECT * FROM pierwsze50 WHERE Tytul LIKE '%$search_query%' OR Autor LIKE '%$search_query%' OR ISBN LIKE '%$search_query%'";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) { ?>
-                <div class="row">
+                if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
+                    $search_query = $_GET['search_query'];
+                    echo "<h4>Wyniki wyszukiwania dla <b>" . $search_query . "</b>:</h4>";
+                } else {
+                    echo "Nie znaleziono produktów dla twojego zapytania.";
+                }
+                ?> </div>
+            <hr> <?php
+                    $sql = "SELECT * FROM books WHERE Tytul LIKE '%$search_query%' OR Autor LIKE '%$search_query%' OR ISBN LIKE '%$search_query%'";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) { ?>
+                <div class="row mt-4">
                     <div class="col-12">
                         <div class="row">
                             <?php while ($row = mysqli_fetch_assoc($result)) : ?>
@@ -63,9 +65,9 @@
                     </div>
                 </div>
             <?php
-            } else {
-                echo "Nie znaleziono żadnych produktów.";
-            }
+                    } else {
+                        echo "Nie znaleziono żadnych produktów.";
+                    }
             ?>
         </div>
     </section>

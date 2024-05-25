@@ -16,7 +16,7 @@
 <body class="bg">
   <?php include("includes/header.php"); ?>
   <?php include("includes/conn.php"); ?>
-  <div class="d-flex align-items-center justify-content-center">
+  <div class="d-flex align-items-center justify-content-center min-vh-100">
     <div class="my-3 px-2 w-75">
       <section class="py-3 py-md-5 py-xl-8">
         <div class="container">
@@ -29,13 +29,12 @@
                 <div class="col-12 col-xl-11">
                   <h2 class="h1 mb-3">Kim jesteśmy?</h2>
                   <div class="d-flex flex-column justify-content-around">
-                    <p class="lead fs-5 text-secondary">Jesteśmy pasjonatami literatury i wierzymy, że dobre książki
+                    <p class="lead fs-5 text-secondary mb-4">Jesteśmy pasjonatami literatury i wierzymy, że dobre książki
                       mogą zmieniać świat. W Fabularium dbamy o to, aby dostarczać naszym klientom najlepsze tytuły z
                       różnorodnych gatunków literackich. Niezależnie od tego, czy jesteś miłośnikiem literatury
-                      klasycznej, fantastyki,
-                      czy kryminałów, mamy coś dla Ciebie. Nasz zespół pasjonatów z przyjemnością dzieli się swoją
+                      klasycznej, fantastyki, czy kryminałów, mamy coś dla Ciebie. Nasz zespół pasjonatów z przyjemnością dzieli się swoją
                       wiedzą i służy pomocą w wyborze odpowiednich książek.</p>
-                    <div class="row gy-4 gy-md-0 gx-xxl-5X my-sm-3">
+                    <div class="row gy-4 gy-md-2 gx-xxl-5X my-sm-4">
                       <div class="col-12 col-md-6">
                         <div class="d-flex">
                           <div class="me-4 text-primary">
@@ -70,23 +69,23 @@
           </div>
         </div>
       </section>
-      <hr>
+      <hr class="mb-5">
       <section class="container">
         <div class="row">
           <div class="col text-center mb-3">
-            <h2>Nasz sklep w liczbach</h2>
+            <h3>Nasz sklep w liczbach</h3>
           </div>
           <?php
-          $sql = "SELECT * FROM pierwsze50";
+          $sql = "SELECT * FROM books";
           $result = $conn->query($sql);
 
-          $count_sql = "SELECT COUNT(DISTINCT autor) AS total_authors, COUNT(*) AS total_books FROM pierwsze50";
+          $count_sql = "SELECT COUNT(DISTINCT autor) AS total_authors, COUNT(*) AS total_books FROM books";
           $count_result = $conn->query($count_sql);
           $counts = $count_result->fetch_assoc();
 
           $total_categories = 0; // Initialize total_categories variable
 
-          $sql = "SELECT DISTINCT kategoria FROM pierwsze50"; // Modify the query to select only unique values of "kategoria"
+          $sql = "SELECT DISTINCT kategoria FROM books"; // Modify the query to select only unique values of "kategoria"
           $result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
@@ -102,7 +101,7 @@
           ?>
         </div>
         <div class="row text-center">
-          <div class="col">
+          <div class="col-md mb-4">
             <div class="counter">
               <i class="fa fa-2x"></i>
               <h2 class="timer count-title count-number" data-to="<?php echo $counts['total_books']; ?>" data-speed="3000"></h2>
@@ -126,14 +125,14 @@
               </p>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md mb-4">
             <div class="counter">
               <i class="fa fa-2x"></i>
               <h2 class="timer count-title count-number" data-to="<?php echo $counts['total_authors']; ?>" data-speed="3000"></h2>
               <p class="count-text mb-3">Różnych autorów</p>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md mb-4">
             <div class="counter">
               <i class="fa fa-2x"></i>
               <h2 class="timer count-title count-number" data-to="<?php echo $total_categories; ?>" data-speed="3000"></h2>
@@ -142,6 +141,7 @@
           </div>
         </div>
       </section>
+
     </div>
   </div>
   <?php include("includes/footer.php"); ?>
