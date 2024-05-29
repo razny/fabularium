@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fabularium - katalog</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/media-sizes.css">
   <link rel="icon" type="image/x-icon" href="images/favicon.svg">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -59,7 +59,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="dropdown">
-                    <button type="button" class="btn btn-dark secondary border-0 dropdown-toggle" data-bs-toggle="dropdown">
+                    <button type="button" class="btn btn-dark border-0 dropdown-toggle" data-bs-toggle="dropdown">
                       Sortuj wg:
                     </button>
                     <ul class="dropdown-menu">
@@ -117,20 +117,20 @@
                           </div>
                           <div class="card-body text-center d-flex flex-column">
                             <h5 class="card-title mb-1">
-                              <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>" class="font-weight-bold text-dark text-decoration-none">
+                              <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>">
                                 <?php echo htmlspecialchars($row['Tytul']); ?>
                               </a>
                             </h5>
                             <p class="card-text mb-2 small text-secondary">
                               <?php echo htmlspecialchars($row['Autor']); ?>
                             </p>
-                            <h6 class="card-price font-weight-bold text-dark">
+                            <h6 class="card-price">
                               <?php echo htmlspecialchars($row['Cena']); ?> zł
                             </h6>
                             <div class="mt-auto">
                               <form action="includes/add_to_cart.php" method="POST">
                                 <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
-                                <button type="submit" class="btn btn-dark btn-sm secondary border-0">
+                                <button type="submit" class="btn btn-dark btn-sm border-0">
                                   Dodaj do koszyka
                                 </button>
                               </form>

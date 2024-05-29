@@ -29,7 +29,7 @@
                 <div class="col-12 col-xl-11">
                   <h2 class="h1 mb-3">Kim jesteśmy?</h2>
                   <div class="d-flex flex-column justify-content-around">
-                    <p class="lead fs-5 text-secondary mb-4">Jesteśmy pasjonatami literatury i wierzymy, że dobre książki
+                    <p class="lead fs-5 mb-4">Jesteśmy pasjonatami literatury i wierzymy, że dobre książki
                       mogą zmieniać świat. W Fabularium dbamy o to, aby dostarczać naszym klientom najlepsze tytuły z
                       różnorodnych gatunków literackich. Niezależnie od tego, czy jesteś miłośnikiem literatury
                       klasycznej, fantastyki, czy kryminałów, mamy coś dla Ciebie. Nasz zespół pasjonatów z przyjemnością dzieli się swoją
@@ -42,9 +42,7 @@
                           </div>
                           <div>
                             <h4 class="mb-3">Profesjonalizm</h4>
-                            <p class="text-secondary mb-0">Nasz zespół dba o każdy szczegół, starannie obsługując
-                              klientów
-                              i zawsze gotowy wysłuchać ich potrzeb.</p>
+                            <p class="text-secondary mb-0">Nasz zespół dba o każdy szczegół, starannie obsługując klientów i zawsze gotowy wysłuchać ich potrzeb.</p>
                           </div>
                         </div>
                       </div>
@@ -55,9 +53,7 @@
                           </div>
                           <div>
                             <h4 class="mb-3">Zaangażowanie</h4>
-                            <p class="text-secondary mb-0">Promujemy czytelnictwo i angażujemy się w działania
-                              społeczne,
-                              organizując akcje charytatywne.</p>
+                            <p class="text-secondary mb-0">Promujemy czytelnictwo i angażujemy się w działania społeczne, organizując akcje charytatywne.</p>
                           </div>
                         </div>
                       </div>
@@ -103,7 +99,6 @@
         <div class="row text-center">
           <div class="col-md mb-4">
             <div class="counter">
-              <i class="fa fa-2x"></i>
               <h2 class="timer count-title count-number" data-to="<?php echo $counts['total_books']; ?>" data-speed="3000"></h2>
               <p class="count-text mb-3">
                 <?php
@@ -127,14 +122,12 @@
           </div>
           <div class="col-md mb-4">
             <div class="counter">
-              <i class="fa fa-2x"></i>
               <h2 class="timer count-title count-number" data-to="<?php echo $counts['total_authors']; ?>" data-speed="3000"></h2>
               <p class="count-text mb-3">Różnych autorów</p>
             </div>
           </div>
           <div class="col-md mb-4">
             <div class="counter">
-              <i class="fa fa-2x"></i>
               <h2 class="timer count-title count-number" data-to="<?php echo $total_categories; ?>" data-speed="3000"></h2>
               <p class="count-text mb-3">Dostępnych kategorii</p>
             </div>

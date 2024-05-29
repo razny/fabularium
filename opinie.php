@@ -18,9 +18,9 @@
   <?php include("includes/conn.php"); ?>
   <div class="d-flex align-items-center justify-content-center">
     <section class="my-4 px-2 w-75">
-      <h3 class="text-center mb-3">Opinie klientów o naszym sklepie</h3>
+      <h3 class="text-center mb-3 mt-3">Opinie klientów o naszym sklepie</h3>
       <hr>
-      <div class="container">
+      <div class="container" id="reviews">
         <?php
         // Process form submission
         if (isset($_POST["submit"])) {
@@ -72,7 +72,7 @@
               <label for="wiad">Wiadomość:</label>
               <textarea class="form-control" id="wiad" name="wiad" rows="4" required></textarea>
             </div>
-            <button type="submit" class="btn btn-dark secondary border-0" name="submit">Wyślij</button>
+            <button type="submit" class="btn btn-dark border-0" name="submit">Wyślij</button>
           </form>
         <?php } ?>
       </div>

@@ -47,14 +47,14 @@
                                         </div>
                                         <div class="card-body text-center d-flex flex-column">
                                             <h5 class="card-title mb-1">
-                                                <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>" class="font-weight-bold text-dark text-decoration-none">
+                                                <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>" >
                                                     <?php echo htmlspecialchars($row['Tytul']); ?>
                                                 </a>
                                             </h5>
                                             <p class="card-text mb-2 small text-secondary">
                                                 <?php echo htmlspecialchars($row['Autor']); ?>
                                             </p>
-                                            <h6 class="card-price font-weight-bold text-dark">
+                                            <h6 class="card-price">
                                                 <?php echo htmlspecialchars($row['Cena']); ?> zł
                                             </h6>
                                         </div>

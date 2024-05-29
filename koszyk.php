@@ -30,7 +30,7 @@
     <?php include("includes/header.php"); ?>
     <?php include("includes/conn.php"); ?>
     <div class="d-flex align-items-center d-flex flex-column min-vh-100">
-        <section class="my-2 w-md-75 w-100">
+        <section class="my-2 w-md-75 w-100" id="cart">
             <div class="container h-100 py-5">
                 <?php
                 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {

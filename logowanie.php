@@ -12,7 +12,9 @@
 </head>
 
 <body class="gradient-bg">
-    <?php include("includes/conn.php");
+    
+    <?php 
+    include("includes/conn.php");
     session_start();
     if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         $user_id = $_SESSION['user_id'];
@@ -52,44 +54,34 @@
         // Przerwij dalsze wykonywanie kodu
         exit();
     }
-    // Kod do obsługi formularza logowania
+    // osługa formularza logowania
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $query = "SELECT id, username, password FROM users WHERE username = ?";
-        $stmt = mysqli_prepare($conn, $query);
+        $query = "SELECT id, username, password FROM users WHERE username = '$username'";
+        $result = mysqli_query($conn, $query);
 
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "s", $username);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
+        if ($result && mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_assoc($result);
 
-            if (mysqli_stmt_num_rows($stmt) == 1) {
-                mysqli_stmt_bind_result($stmt, $user_id, $db_username, $db_password);
-                mysqli_stmt_fetch($stmt);
-
-                if ($password === $db_password) {
-                    $_SESSION['user_id'] = $user_id;
-                    $_SESSION['username'] = $db_username;
-                    header("Location: index.php");
-                    exit();
-                } else {
-                    $error_message = "Nieprawidłowe dane logowania";
-                }
+            // Verify password
+            if ($password === $row['password']) {
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['username'] = $row['username'];
+                header("Location: index.php");
+                exit();
             } else {
                 $error_message = "Nieprawidłowe dane logowania";
             }
-
-            mysqli_stmt_close($stmt);
         } else {
-            die("Prepare failed: " . mysqli_error($conn));
+            $error_message = "Nieprawidłowe dane logowania";
         }
-
         mysqli_close($conn);
     }
     ?>
-    <div class="container">
+
+    <div class="container" id="login">
         <div class="row justify-content-center align-items-center vh-100">
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow-lg">
@@ -110,12 +102,12 @@
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Wprowadź hasło" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Zaloguj się</button>
+                                <button type="submit" class="btn btn-dark btn-block border-0 mt-3 w-100">Zaloguj się</button>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer text-center pt-2">
-                        <p class="mb-0">Nie masz konta? <a href="rejestracja.php" class="btn btn-link">Zarejestruj się</a></p>
+                        <p class="mb-0">Nie masz konta? <a href="rejestracja.php" class="btn-link">Zarejestruj się</a></p>
                     </div>
                 </div>
             </div>

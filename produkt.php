@@ -28,7 +28,7 @@
 <body class="bg">
   <?php include("includes/header.php");
   include("includes/conn.php"); ?>
-  <div class="d-flex align-items-center justify-content-center">
+  <div class="d-flex align-items-center justify-content-center" id="produkt">
     <section class="my-5 w-75 py-3">
       <?php
 

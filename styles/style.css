@@ -39,6 +39,10 @@ body {
   color: var(--primary);
 }
 
+.primary-text:hover {
+  color: var(--accent);
+}
+
 .gradient-bg {
   background: rgb(126, 63, 204);
   background: linear-gradient(90deg, rgba(126, 63, 204, 1) 0%, rgba(175, 126, 236, 1) 100%);
@@ -100,13 +104,22 @@ footer {
   color: #e7e7e7;
 }
 
+.jumbotron .btn {
+  background: var(--primary);
+
+}
+
+.jumbotron .btn:hover {
+  background: var(--accent);
+}
+
 /*********************************/
 .card {
   height: 100%;
   overflow: hidden;
 }
 
-.card__title {
+.card-title {
   text-align: center;
   transition: opacity 0.3s;
 }
@@ -115,7 +128,20 @@ footer {
   font-size: 14px;
 }
 
+.card-title a {
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+}
+
 /*********************************/
+.dropdown .btn {
+  background: var(--accent);
+}
+
+.dropdown .btn:hover {
+  background: var(--primary);
+}
 
 .form-select:focus {
   box-shadow: 0 .1rem .2rem var(--secondary);
@@ -136,7 +162,7 @@ footer {
 }
 
 .page-item {
-  color: var(--primary);
+  color: var(--accent);
 }
 
 .page-item.active .page-link {
@@ -212,8 +238,20 @@ footer {
   color: var(--primary);
 }
 
-.btn-dark:hover {
+.card .btn {
   background: var(--accent);
+}
+
+.card .btn:hover {
+  background: var(--primary)!important;
+}
+
+.card .btn-dark:hover {
+  background: var(--accent);
+}
+
+#register .btn-link, #login .btn-link {
+  color: var(--primary);
 }
 
 .navbar-brand {
@@ -293,38 +331,31 @@ section > h2 span {
   text-align: center;
 }
 
-.fa-2x {
-  margin: 0 auto;
-  float: none;
-  display: table;
-  color: #4ad1e5;
-}
 /*********************************/
 
 th .text-secondary {
   font-weight: 400;
 }
 
+#produkt .btn {
+  background: var(--accent);
+}
+
+#produkt .btn:hover {
+  background: var(--primary);
+}
+
 /*********************************/
-
-/* Extra small devices (phones) */
-@media only screen and (max-width: 575px) {
-
+#reviews h4 {
+  text-align: left;
 }
 
-/* Small devices (portrait tablets and large phones) */
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-
+#reviews .btn {
+  background: var(--accent);
 }
 
-/* Medium devices (landscape tablets) */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* Your styles for medium devices here */
-}
-
-/* Large devices (laptops/desktops) */
-@media only screen and (min-width: 992px) {
-  /* Your styles for large devices here */
+#reviews .btn:hover {
+  background: var(--primary);
 }
 
 @media (max-width: 576px) {

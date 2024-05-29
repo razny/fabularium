@@ -7,7 +7,7 @@
   <title>Fabularium - sklep z książkami dla każdego</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/style.css" id="light">
   <link rel="stylesheet" href="styles/media-sizes.css">
   <link rel="icon" type="image/x-icon" href="images/favicon.svg">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -27,14 +27,14 @@
           możesz znaleźć książki - to przestrzeń, w której marzenia o literackich podróżach stają się rzeczywistością.
         </p>
         <p class="me-md-5 me-l-5 me-xl-5 me-sm-0">
-          <a class="btn primary btn-dark border-0 mt-4" href="katalog.php" role="button">Zobacz wszystkie
+          <a class="btn primary border-0 mt-4" href="katalog.php" role="button">Zobacz wszystkie
             produkty</a>
         </p>
       </div>
     </div>
   </section>
 
-  <section class="container-fluid bg mt-5 w-md-75">
+  <section class="container-fluid bg mt-5 w-md-75" id="swiper">
     <h2 class="text-center my-5"><span class="bg">Polecane książki</span></h2>
     <div class="row text-center">
       <div class="swiper">
@@ -53,7 +53,7 @@
                   <div class="card-body mx-1 d-flex flex-column justify-content-around">
                     <h5 class="card-title"><?php echo $row["Tytul"]; ?></h5>
                     <p class="card-text text-secondary"><?php echo $row["Autor"]; ?></p>
-                    <h6 class="card-price font-weight-bold text-dark"><?php echo $row["Cena"]; ?> zł</h6>
+                    <h6 class="card-price"><?php echo $row["Cena"]; ?> zł</h6>
                     <form action="includes/add_to_cart.php" method="POST">
                       <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
                       <button type="submit" class="btn btn-dark btn-sm secondary border-0">

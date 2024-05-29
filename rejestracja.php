@@ -12,37 +12,31 @@
 </head>
 
 <body class="gradient-bg">
-    <section class="container">
+    <section class="container" id="register">
         <div class="row justify-content-center align-items-center vh-100">
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow-lg">
                     <div class="card-body p-5">
                         <h2 class="text-center mb-5">Rejestracja</h2>
                         <?php include("includes/conn.php");
-                        // Process form submission
                         if (isset($_POST["submit"])) {
                             $username = $_POST["username"];
                             $password = $_POST["password"];
 
-                            // Check if the username contains spaces
                             if (strpos($username, ' ') !== false) {
-                                // Username contains spaces, display error message
                                 echo "<div class='alert alert-danger text-center' role='alert'>Nazwa użytkownika nie może zawierać spacji!</div>";
                             } else {
-                                // Check if the username already exists
+                                // sprawdz czy nie ma juz uzytkownika o takiej nazwie w bazie
                                 $check_query = "SELECT * FROM users WHERE username='$username'";
                                 $result = mysqli_query($conn, $check_query);
-                                if (mysqli_num_rows($result) > 0) {
-                                    // Username already exists, display error message
+                                if (mysqli_num_rows($result) > 0) { 
                                     echo "<div class='alert alert-danger text-center' role='alert'>Nazwa użytkownika już istnieje!</div>";
                                 } else {
-                                    // Username is unique, proceed with registration
+                                    // nazwa uzytkownika nie zostala wczesniej uzyta
                                     $query = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
                                     if (mysqli_query($conn, $query)) {
-                                        // Display success message
                                         echo "<div class='alert alert-success text-center' role='alert'>Konto zostało utworzone pomyślnie!</div>";
                                     } else {
-                                        // Display error message if insertion fails
                                         echo "<div class='alert alert-danger text-center' role='alert'>Błąd podczas tworzenia konta.</div>";
                                     }
                                 }
@@ -63,12 +57,12 @@
                                 <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Potwierdź hasło" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" name="submit" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Utwórz konto</button>
+                                <button type="submit" name="submit" class="btn btn-dark btn-block border-0 mt-3 w-100">Utwórz konto</button>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer text-center pt-2">
-                        <p class="mb-0">Masz już konto? <a href="logowanie.php" class="btn btn-link">Zaloguj się tutaj</a></p>
+                        <p class="mb-0">Masz już konto? <a href="logowanie.php" class="btn-link">Zaloguj się tutaj</a></p>
                     </div>
                 </div>
             </div>
