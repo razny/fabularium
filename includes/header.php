@@ -7,7 +7,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 }
 ?>
 <style>
-    
     #toggleMode {
         border: none;
         background: none;
@@ -16,7 +15,44 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     }
 
     .dark-mode {
-        background-color: #070509;
+        background-color: #1b1d1e;
+        color: #e3e3e3;
+    }
+
+    .dark-mode-header {
+        background-color: #151718 !important;
+    }
+
+    .dark-mode-header .navbar-brand {
+        color: #d6d6d6;
+    }
+
+    .dark-mode-header .form-control,
+    .dark-mode-header .form-control:hover,
+    .dark-mode-header .form-control:focus {
+        background-color: #1f1d21;
+        color: #e3e3e3;
+        border-color: #2c2e2f;
+    }
+
+    .dark-mode-header input::placeholder {
+        color: #717171;
+    }
+
+    .dark-mode-header .input-group-text {
+        background: #2c292f;
+        border-color: #2c292f;
+    }
+
+    .dark-mode-header .input-group-text:hover {
+        background: #1b1d1e;
+    }
+
+    .dark-mode-header .nav-link {
+        color: #d6d6d6;
+    }
+
+    .dark-mode-header .nav-link:hover {
         color: #e3e3e3;
     }
 
@@ -25,135 +61,158 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     }
 
     .dark-mode .swiper::before {
-  background: #070509;
-}
+        background: #1b1d1e;
+    }
 
-.dark-mode .swiper::after {
-  background: #070509;
-}
+    .dark-mode .swiper::after {
+        background: #1b1d1e;
+    }
 
-.dark-mode section > h2 {
-    width: 100%;
-  text-align: center;
-  border-bottom: 1px solid #828282;
-  line-height: 0.1em;
-  margin: 10px 0 20px;
-  padding: 0.2em;
-  font-size: 25px;
-}
+    .dark-mode section>h2 {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #828282;
+        line-height: 0.1em;
+        margin: 10px 0 20px;
+        padding: 0.2em;
+        font-size: 25px;
+    }
 
-.dark-mode section > h2 span {
-    padding: 5px 20px;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 5px;
-  border-color: #828282;
-  background-color: #070509 !important;
-}
+    .dark-mode section>h2 span {
+        padding: 5px 20px;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 5px;
+        border-color: #828282;
+        background-color: #1b1d1e !important;
+    }
 
-.dark-mode #swiper {
-    background: #070509;
-}
+    .dark-mode #swiper {
+        background: #1b1d1e;
+    }
 
-.dark-mode .card {
-    background: #1f1d21;
-}
+    .dark-mode .card {
+        background: #1f1d21;
+    }
 
-.dark-mode .card-title {
-    color: #e3e3e3;
-}
+    .dark-mode .card-title {
+        color: #e3e3e3;
+    }
 
-.dark-mode .card-price {
-    color: #e3e3e3;
-}
+    .dark-mode .card-price {
+        color: #e3e3e3;
+    }
 
-.dark-mode td p {
-    color: #e3e3e3;
-}
+    .dark-mode td p {
+        color: #e3e3e3;
+    }
 
-.dark-mode td, .dark-mode tr {
-    color: #e3e3e3;
-}
+    .dark-mode td,
+    .dark-mode tr {
+        color: #e3e3e3;
+    }
 
-.dark-mode #catalog .card {
-  transition: box-shadow 0.3s ease;
-}
+    .dark-mode #catalog .card {
+        transition: box-shadow 0.3s ease;
+    }
 
-.dark-mode #catalog .card:hover {
-  box-shadow: 0 0 20px #4a4a4a;
-}
+    .dark-mode #catalog .card:hover {
+        box-shadow: 0 0 20px #4a4a4a;
+    }
 
-.dark-mode .counter {
-  background-color: #18161a!important;
-  padding: 10px 0;
-  border-radius: 10px;
-}
+    .dark-mode .counter {
+        background-color: #18161a !important;
+        padding: 10px 0;
+        border-radius: 10px;
+    }
 
-.dark-mode .card .btn {
-    background: #7e3fcc!important;
-}
+    .dark-mode .card .btn {
+        background: #7e3fcc !important;
+    }
 
-.dark-mode .card .btn:hover {
-    background: #9345f5!important;
-}
+    .dark-mode .card .btn:hover {
+        background: #9345f5 !important;
+    }
 
-.dark-mode #reviews .btn {
-    background: #7e3fcc;
-}
+    .dark-mode #reviews .btn {
+        background: #7e3fcc;
+    }
 
-.dark-mode #reviews .btn:hover {
-    background: #9345f5;
-}
+    .dark-mode #reviews .btn:hover {
+        background: #9345f5;
+    }
 
-.dark-mode .dropdown .btn {
-    background: #7e3fcc;
-}
+    .dark-mode .dropdown .btn {
+        background: #7e3fcc;
+    }
 
-.dark-mode .dropdown .btn:hover {
-    background: #9345f5;
-}
+    .dark-mode .dropdown .btn:hover {
+        background: #9345f5;
+    }
 
-.dark-mode .card-title a {
-    color: #e3e3e3;
-}
+    .dark-mode .dropdown-menu, .dark-mode .dropdown-item {
+        background: #1b1d1e!important;
+        color: #d6d6d6;
+    }
 
-.dark-mode #produkt .btn {
-    background: #7e3fcc;
-}
+    .dark-mode .dropdown-item:hover {
+        background: #272a2b!important;
+    }
 
-.dark-mode #produkt .btn:hover {
-    background: #9345f5;
-}
+    .dark-mode .card-title a {
+        color: #e3e3e3;
+    }
 
-.dark-mode section .form-control, .dark-mode section .form-control:hover, .dark-mode section .form-control:focus {
-    background-color: #1f1d21;
-    color: #e3e3e3;
-    border-color: #717171;
-}
+    .dark-mode #produkt .btn {
+        background: #7e3fcc;
+    }
 
-.dark-mode section input::placeholder{
-    color: #717171;
-}
+    .dark-mode #produkt .btn:hover {
+        background: #9345f5;
+    }
 
-.dark-mode .alert {
-    background-color: #1f1d21;
-    color: #e3e3e3;
-    border-color: #717171;
-}
+    .dark-mode section .form-control,
+    .dark-mode section .form-control:hover,
+    .dark-mode section .form-control:focus {
+        background-color: #1f1d21;
+        color: #e3e3e3;
+        border-color: #2c292f;
+    }
 
-.dark-mode .page-link , .dark-mode .page-link a {
-    background-color: #1f1d21!important;
-    border-color: #717171;
-    color: #af7eec;
-}
+    .dark-mode section input::placeholder {
+        color: #717171;
+    }
 
-.dark-mode .page-link:hover {
-    color: #e3e3e3;
-}
+    .dark-mode .alert {
+        background-color: #1f1d21;
+        color: #e3e3e3;
+        border-color: #717171;
+    }
 
-.dark-mode #cart td, .dark-mode #cart th {
-    border-color: #717171;
-}
+    .dark-mode .page-link,
+    .dark-mode .page-link a {
+        background-color: #1f1d21 !important;
+        border-color: #717171;
+        color: #7e3fcc;
+    }
+
+    .dark-mode .page-link:hover {
+        background-color: #2c292f!important;
+        color: #af7eec;
+    }
+
+    .dark-mode .page-item.active a {
+        background-color: #7e3fcc!important;
+    }
+
+    .dark-mode .page-item.active a:hover {
+        color: #e3e3e3!important;
+    }
+
+    .dark-mode #cart td,
+    .dark-mode #cart th {
+        border-color: #2c292f;
+    }
 
     /* collapsing the navbar links into a column */
     @media (max-width: 576px) {
@@ -164,7 +223,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     }
 </style>
 
-<header class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+<header class="navbar navbar-expand-sm navbar-light bg-light sticky-top" id="header">
     <div class="container-fluid w-l-75 w-xl-75">
         <a class="navbar-brand" href="index.php">
             <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-1" />
@@ -198,12 +257,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 </li>
                 <li class="nav-item d-none d-sm-block">
                     <a class="nav-link" href="koszyk.php">
-                        <img src="images/shopping-cart-icon.svg" width="29" height="29" alt="Logo" />
+                        <img id="cart-icon" src="images/shopping-cart-icon.svg" width="29" height="29" alt="Logo" />
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo isset($_SESSION['username']) ? 'Twój login: ' . $_SESSION['username'] : 'Gość'; ?>">
                     <a class="nav-link" href="logowanie.php">
-                        <img src="images/user-icon.svg" width="27" height="27" alt="Logo" />
+                        <img id="user-icon" src="images/user-icon.svg" width="27" height="27" alt="Logo" />
                     </a>
                 </li>
                 <li class="nav-item d-none d-sm-block">
@@ -273,12 +332,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 
     function setMode() {
         const canvas = document.getElementById('canvas');
+        const header = document.getElementById('header');
+        const cartIcon = document.getElementById('cart-icon');
+        const userIcon = document.getElementById('user-icon');
         const ctx = canvas.getContext('2d');
         if (isLightMode) {
             document.body.classList.remove('dark-mode');
+            header.classList.remove('dark-mode-header');
+            cartIcon.src = 'images/shopping-cart-icon-light.svg';
+            userIcon.src = 'images/user-icon-light.svg';
             drawSun(ctx, '#ffdb4d'); // Yellow sun
         } else {
             document.body.classList.add('dark-mode');
+            header.classList.add('dark-mode-header');
+            cartIcon.src = 'images/shopping-cart-icon-dark.svg';
+            userIcon.src = 'images/user-icon-dark.svg';
             drawMoon(ctx, '#ffdb4d', '#222'); // Yellow moon on dark background
         }
     }
