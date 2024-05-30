@@ -11,7 +11,35 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<style>
+    .dark-mode .card {
+        background: #1f1d21;
+    }
 
+    .dark-mode .card-footer {
+        background: #151718;
+    }
+
+    .dark-mode .card {
+        color: #e3e3e3;
+    }
+
+    .dark-mode input, .dark-mode input:focus {
+        background: #1b1d1e;
+        border-color: #2c292f;
+        color: #e3e3e3;
+    }
+
+    .dark-mode input::placeholder {
+        color: #717171;
+    }
+
+    .dark-mode .alert-danger {
+        background: #d65259;
+        border-color: #b12a31;
+        color: #78080e;
+    }
+</style>
 <body class="gradient-bg">
 <?php include("includes/conn.php");
 
@@ -141,5 +169,32 @@
         </div>
     </div>
 </body>
+<script>
+    function samePassword() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm-password").value;
 
+        if (password != confirmPassword) {
+            alert("Hasła nie są identyczne!");
+            return false;
+        }
+        return true;
+    }
+
+    function applyDarkMode() {
+        const isLightMode = localStorage.getItem('mode') === 'light';
+        if (!isLightMode) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+        console.log('Dark mode is ' + (isLightMode ? 'disabled' : 'enabled'));
+    }
+
+    // Apply dark mode on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded event fired');
+        applyDarkMode();
+    });
+</script>
 </html>

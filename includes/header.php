@@ -150,13 +150,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         background: #9345f5;
     }
 
-    .dark-mode .dropdown-menu, .dark-mode .dropdown-item {
-        background: #1b1d1e!important;
+    .dark-mode .dropdown-menu,
+    .dark-mode .dropdown-item {
+        background: #1b1d1e !important;
         color: #d6d6d6;
     }
 
     .dark-mode .dropdown-item:hover {
-        background: #272a2b!important;
+        background: #272a2b !important;
     }
 
     .dark-mode .card-title a {
@@ -197,16 +198,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     }
 
     .dark-mode .page-link:hover {
-        background-color: #2c292f!important;
+        background-color: #2c292f !important;
         color: #af7eec;
     }
 
     .dark-mode .page-item.active a {
-        background-color: #7e3fcc!important;
+        background-color: #7e3fcc !important;
     }
 
     .dark-mode .page-item.active a:hover {
-        color: #e3e3e3!important;
+        color: #e3e3e3 !important;
     }
 
     .dark-mode #cart td,
@@ -276,6 +277,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 <li class="nav-item d-block d-sm-none">
                     <a class="nav-link" href="logowanie.php">Logowanie</a>
                 </li>
+                <li class="nav-item d-block d-sm-none mb-2">
+                    <a class="nav-link" id="toggleModeText" href="#a" onclick="toggleMode()">Tryb jasny/ciemny</a>
+                </li>
             </ul>
             <form class="w-100 d-sm-none" action="search.php" method="GET">
                 <div class="input-group">
@@ -303,24 +307,22 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 <script>
     // Drawing functions
     function drawSun(ctx, sunColor) {
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        ctx.fillStyle = sunColor; // Set sun color
+        ctx.fillStyle = sunColor;
         ctx.beginPath();
         ctx.arc(16, 16, 12, 0, Math.PI * 2);
         ctx.fill();
     }
 
     function drawMoon(ctx, moonColor, moonBackgroundColor) {
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.save();
         ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
-        ctx.rotate((Math.PI / 180) * 90);
+        ctx.rotate((Math.PI / 180) * 85);
         ctx.translate(-ctx.canvas.width / 2, -ctx.canvas.height / 2);
-        ctx.fillStyle = moonBackgroundColor; // Set background color
+        ctx.fillStyle = moonBackgroundColor;
         ctx.beginPath();
         ctx.arc(16, 16, 12, 0, Math.PI * 2);
         ctx.fill();
-        ctx.fillStyle = moonColor; // Set moon color
+        ctx.fillStyle = moonColor;
         ctx.beginPath();
         ctx.arc(16, 10, 10, 0, Math.PI * 2);
         ctx.fill();
@@ -336,20 +338,25 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         const cartIcon = document.getElementById('cart-icon');
         const userIcon = document.getElementById('user-icon');
         const ctx = canvas.getContext('2d');
+
+        // Clear canvas
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+        // Set mode
+        document.body.classList.toggle('dark-mode', !isLightMode);
+        header.classList.toggle('dark-mode-header', !isLightMode);
+        cartIcon.src = isLightMode ? 'images/shopping-cart-icon-light.svg' : 'images/shopping-cart-icon-dark.svg';
+        userIcon.src = isLightMode ? 'images/user-icon-light.svg' : 'images/user-icon-dark.svg';
+
+        // Draw appropriate celestial body
         if (isLightMode) {
-            document.body.classList.remove('dark-mode');
-            header.classList.remove('dark-mode-header');
-            cartIcon.src = 'images/shopping-cart-icon-light.svg';
-            userIcon.src = 'images/user-icon-light.svg';
-            drawSun(ctx, '#ffdb4d'); // Yellow sun
+            drawSun(ctx, '#ffdb4d');
         } else {
-            document.body.classList.add('dark-mode');
-            header.classList.add('dark-mode-header');
-            cartIcon.src = 'images/shopping-cart-icon-dark.svg';
-            userIcon.src = 'images/user-icon-dark.svg';
-            drawMoon(ctx, '#ffdb4d', '#222'); // Yellow moon on dark background
+            drawMoon(ctx, '#151718', '#d6d6d6');
         }
     }
+
+    setMode(); // Apply initial mode
 
     // Set initial mode
     setMode();

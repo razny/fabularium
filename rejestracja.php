@@ -10,7 +10,35 @@
     <link rel="stylesheet" href="styles/media-sizes.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
 </head>
+<style>
+    .dark-mode .card {
+        background: #1f1d21;
+    }
 
+    .dark-mode .card-footer {
+        background: #151718;
+    }
+
+    .dark-mode .card {
+        color: #e3e3e3;
+    }
+
+    .dark-mode input, .dark-mode input:focus {
+        background: #1b1d1e;
+        border-color: #2c292f;
+        color: #e3e3e3;
+    }
+
+    .dark-mode input::placeholder {
+        color: #717171;
+    }
+
+    .dark-mode .alert-danger {
+        background: #d65259;
+        border-color: #b12a31;
+        color: #78080e;
+    }
+</style>
 <body class="gradient-bg">
     <section class="container" id="register">
         <div class="row justify-content-center align-items-center vh-100">
@@ -29,7 +57,7 @@
                                 // sprawdz czy nie ma juz uzytkownika o takiej nazwie w bazie
                                 $check_query = "SELECT * FROM users WHERE username='$username'";
                                 $result = mysqli_query($conn, $check_query);
-                                if (mysqli_num_rows($result) > 0) { 
+                                if (mysqli_num_rows($result) > 0) {
                                     echo "<div class='alert alert-danger text-center' role='alert'>Nazwa użytkownika już istnieje!</div>";
                                 } else {
                                     // nazwa uzytkownika nie zostala wczesniej uzyta
@@ -81,5 +109,22 @@
         }
         return true;
     }
+
+    function applyDarkMode() {
+        const isLightMode = localStorage.getItem('mode') === 'light';
+        if (!isLightMode) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+        console.log('Dark mode is ' + (isLightMode ? 'disabled' : 'enabled'));
+    }
+
+    // Apply dark mode on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded event fired');
+        applyDarkMode();
+    });
 </script>
+
 </html>
