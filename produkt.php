@@ -64,26 +64,25 @@
                     </tr>
                     <tr>
                       <th style="width: 30%;" scope="row">Premiera:</th>
-                      <td class="small"><?php echo $row["Data premiery"]; ?></td>
+                      <td class="small"><?php echo $row["Data_premiery"]; ?></td>
                     </tr>
                     <tr>
                       <th style="width: 30%;" scope="row">ISBN:</th>
                       <td class="small"><?php echo $row["ISBN"]; ?></td>
                     </tr>
+                    <tr>
+                      <th style="width: 30%;" scope="row">Liczba stron:</th>
+                      <td class="small"><?php echo $row["Liczba_stron"]; ?></td>
+                    </tr>
                   </tbody>
                 </table>
-                <form action="includes/add_to_cart.php" method="POST">
+                <form action="includes/add_to_cart.php" method="POST" target="hidden_iframe" id="cart_form">
                   <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
                   <button type="submit" class="btn btn-dark secondary border-0">
                     Dodaj do koszyka
                   </button>
                 </form>
-                <?php
-                if (isset($_SESSION['cart_error'])) {
-                  echo '<script>alert("' . $_SESSION['cart_error'] . '");</script>';
-                  unset($_SESSION['cart_error']);
-                }
-                ?>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe> <!-- prevents from reloading page -->
               </div>
             </div>
     </section>

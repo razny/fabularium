@@ -126,6 +126,13 @@
                                 </div>
 
                                 <div class="mb-3 row">
+                                    <label for="opis" class="col-sm-3 col-form-label">Opis:</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" id="opis" name="opis" placeholder="Wpisz opis" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
                                     <label for="cena" class="col-sm-3 col-form-label">Cena:</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="cena" name="cena" placeholder="Wprowadź cenę" required>
@@ -150,10 +157,11 @@
                                 $liczba_stron = $_POST["liczba_stron"];
                                 $isbn = $_POST["isbn"];
                                 $okladka = $_POST["okladka"];
+                                $opis = $_POST["opis"];
                                 $cena = $_POST["cena"];
 
-                                $sql = "INSERT INTO books (`Tytul`, `Wydawnictwo`, `Autor`, `Kategoria`, `Data premiery`, `Liczba stron`, `ISBN`, `okladka`, `Cena`)
-                            VALUES ('$tytul', '$wydawnictwo', '$autor', '$kategoria', '$data_premiery', $liczba_stron, '$isbn', '$okladka', $cena)";
+                                $sql = "INSERT INTO books (`Tytul`, `Wydawnictwo`, `Autor`, `Kategoria`, `Data_premiery`, `Liczba_stron`, `ISBN`, `Okladka`, `Opis`, Cena)
+                            VALUES ('$tytul', '$wydawnictwo', '$autor', '$kategoria', '$data_premiery', $liczba_stron, '$isbn', '$okladka', '$opis', $cena)";
 
                                 if (mysqli_query($conn, $sql)) {
                                     echo "<br>Nowy rekord został pomyślnie dodany.";

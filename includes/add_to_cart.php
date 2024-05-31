@@ -1,32 +1,40 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+// logged out users cant access cart
 if (!isset($_SESSION['user_id'])) {
-    // If not logged in, redirect to the login page
     header('Location: ../logowanie.php');
     exit();
 }
 
-// Process adding item to the cart
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['item_id'])) {
     $item_id = $_POST['item_id'];
-
-    // Check if the item is already in the cart
+    // same item cant be added twice
     if (isset($_SESSION['cart'][$item_id])) {
-        // Item is already in the cart, return an error
         $_SESSION['cart_error'] = "Ten przedmiot znajduje się już w twoim koszyku.";
     } else {
-        // Add the item to the cart
         $_SESSION['cart'][$item_id] = [
             'id' => $item_id,
         ];
     }
 
-    // Store the current page URL in the session
-    $_SESSION['redirect_url'] = $_SERVER['HTTP_REFERER'];
+    // output js to update the parent page
+    echo "<script>
+        var error = " . (isset($_SESSION['cart_error']) ? "'" . $_SESSION['cart_error'] . "'" : 'null') . ";
+        if (error) {
+            alert(error);
+        } else {
+            alert('Dodano do koszyka!');
+            // Optionally, you can update the cart UI here if needed
+        }
+        // Reset the form to clear the iframe content
+        document.getElementById('cart_form').reset();
+    </script>";
 
-    // Redirect back to the previous page
-    header('Location: ' . $_SESSION['redirect_url']);
-    exit();
+
+    if (isset($_SESSION['cart_error'])) {
+      echo '<script>alert("' . $_SESSION['cart_error'] . '");</script>';
+      unset($_SESSION['cart_error']);
+    }
+
 }

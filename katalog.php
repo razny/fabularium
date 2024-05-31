@@ -1,3 +1,52 @@
+<?php
+include("includes/conn.php");
+
+if (!isset($_SESSION['cart'])) {
+  $_SESSION['cart'] = [];
+}
+
+$sort_order = "ID ASC";
+
+if (isset($_GET['sort'])) {
+  switch ($_GET['sort']) {
+    case 'rand':
+      $sort_order = "RAND()";
+      break;
+    case 'asc':
+      $sort_order = "Tytul ASC";
+      break;
+    case 'desc':
+      $sort_order = "Tytul DESC";
+      break;
+    case 'price_asc':
+      $sort_order = "Cena ASC";
+      break;
+    case 'price_desc':
+      $sort_order = "Cena DESC";
+      break;
+    default:
+      $sort_order = "ID ASC";
+      break;
+  }
+}
+
+$items_per_page = 9;
+
+// get current page from query string or default to 1
+$current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($current_page - 1) * $items_per_page;
+
+// fetch total number of items
+$total_items_sql = "SELECT COUNT(*) AS total FROM books";
+$total_items_result = $conn->query($total_items_sql);
+$total_items = $total_items_result->fetch_assoc()['total'];
+$total_pages = ceil($total_items / $items_per_page);
+
+// fetch products for the current page
+$sql = "SELECT * FROM books ORDER BY $sort_order LIMIT $items_per_page OFFSET $offset";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -14,41 +63,7 @@
 </head>
 
 <body class="bg">
-  <?php
-  include("includes/header.php");
-  include("includes/conn.php");
-  if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
-  }
-
-  // Define the default sorting order
-  $sort_order = "ID ASC";
-
-  if (isset($_GET['sort'])) {
-    switch ($_GET['sort']) {
-      case 'asc':
-        $sort_order = "Tytul ASC";
-        break;
-      case 'desc':
-        $sort_order = "Tytul DESC";
-        break;
-      case 'price_asc':
-        $sort_order = "Cena ASC";
-        break;
-      case 'price_desc':
-        $sort_order = "Cena DESC";
-        break;
-      default:
-        $sort_order = "ID ASC";
-        break;
-    }
-  }
-
-  include("includes/pagination.php");
-
-  // Execute the main query to fetch products for the current page
-  $result = $conn->query($sql);
-  ?>
+  <?php include("includes/header.php"); ?>
 
   <section class="d-flex align-items-center justify-content-center min-vh-100" id="catalog">
     <div class="my-3 px-2 w-75">
@@ -72,40 +87,7 @@
                   </div>
                 </div>
 
-                <?php
-                // Function to build pagination links with optional parameters
-                function buildPaginationLink($page, $category = null, $sort = null)
-                {
-                  $url = "?page=$page";
-                  if ($category !== null) {
-                    $url .= "&category=" . urlencode($category);
-                  }
-                  if ($sort !== null) {
-                    $url .= "&sort=" . urlencode($sort);
-                  }
-                  return $url;
-                }
-                ?>
-
-                <div class="col-md-6">
-                  <div class="col-md-12 mb-3">
-                    <ul class="pagination justify-content-end">
-                      <?php if ($current_page > 1) : ?>
-                        <li class="page-item"><a class="page-link" href="<?php echo buildPaginationLink($current_page - 1, isset($_GET['category']) ? $_GET['category'] : null, isset($_GET['sort']) ? $_GET['sort'] : null); ?>">Poprzednia</a></li>
-                      <?php endif; ?>
-
-                      <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-                        <li class="page-item <?php echo ($i === $current_page) ? 'active' : ''; ?>"><a class="page-link" href="<?php echo buildPaginationLink($i, isset($_GET['category']) ? $_GET['category'] : null, isset($_GET['sort']) ? $_GET['sort'] : null); ?>"><?php echo $i; ?></a></li>
-                      <?php endfor; ?>
-
-                      <?php if ($current_page < $total_pages) : ?>
-                        <li class="page-item"><a class="page-link" href="<?php echo buildPaginationLink($current_page + 1, isset($_GET['category']) ? $_GET['category'] : null, isset($_GET['sort']) ? $_GET['sort'] : null); ?>">Następna</a></li>
-                      <?php endif; ?>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="row">
+                <div class="row" id="products-container">
                   <?php if ($result->num_rows > 0) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
                       <div class="col-6 col-md-6 col-lg-4 mb-3">
@@ -128,19 +110,13 @@
                               <?php echo htmlspecialchars($row['Cena']); ?> zł
                             </h6>
                             <div class="mt-auto">
-                              <form action="includes/add_to_cart.php" method="POST">
+                              <form action="includes/add_to_cart.php" method="POST" target="hidden_iframe" id="cart_form">
                                 <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
                                 <button type="submit" class="btn btn-dark btn-sm border-0">
                                   Dodaj do koszyka
                                 </button>
                               </form>
-                              <?php
-                              // Check if there's a cart error and display it
-                              if (isset($_SESSION['cart_error'])) {
-                                echo '<script>alert("' . $_SESSION['cart_error'] . '");</script>';
-                                unset($_SESSION['cart_error']); // Unset the session variable
-                              }
-                              ?>
+                              <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe> <!-- prevents from reloading page -->
                             </div>
                           </div>
                         </div>
@@ -150,10 +126,10 @@
                     <p>No results found.</p>
                   <?php endif; ?>
                 </div>
+
               </div>
             </div>
           </div>
-
           <div class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
             <?php
             $sql = "SELECT DISTINCT kategoria FROM books";
@@ -171,10 +147,7 @@
             } else {
               echo "0 results";
             }
-
-            $conn->close();
             ?>
-
             <h4 class="mb-3">Kategorie</h4>
             <div>
               <?php
@@ -190,7 +163,38 @@
     </div>
   </section>
   <?php include("includes/footer.php"); ?>
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var currentPage = <?php echo $current_page; ?>;
+      var totalPages = <?php echo $total_pages; ?>;
+      var loading = false;
+
+      function loadMoreProducts() {
+        if (loading || currentPage >= totalPages) return;
+        loading = true;
+        currentPage++;
+
+        var url = "?page=" + currentPage + "&sort=<?php echo isset($_GET['sort']) ? $_GET['sort'] : ''; ?>";
+        if ('<?php echo isset($_GET['category']) ? $_GET['category'] : ''; ?>' !== '') {
+          url += "&category=<?php echo urlencode(isset($_GET['category']) ? $_GET['category'] : ''); ?>";
+        }
+
+        $.get(url, function(data) {
+          var newProducts = $(data).find("#products-container").html();
+          $("#products-container").append(newProducts);
+          loading = false;
+        });
+      }
+
+      $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+          loadMoreProducts();
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
