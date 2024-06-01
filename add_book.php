@@ -136,7 +136,7 @@
                                 <div class="mb-3 row">
                                     <label for="cena" class="col-sm-3 col-form-label">Cena:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="cena" name="cena" placeholder="Wprowadź cenę" required>
+                                        <input type="number" class="form-control" id="cena" name="cena" step="any" placeholder="Wprowadź cenę" required>
                                     </div>
                                 </div>
 

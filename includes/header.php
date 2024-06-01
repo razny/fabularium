@@ -196,29 +196,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         border-color: #717171;
     }
 
-    .dark-mode .page-link,
-    .dark-mode .page-link a {
-        background-color: #1f1d21 !important;
-        border-color: #717171;
-        color: #7e3fcc;
-    }
-
-    .dark-mode .page-link:hover {
-        background-color: #2c292f !important;
-        color: #af7eec;
-    }
-
-    .dark-mode .page-item.active a {
-        background-color: #7e3fcc !important;
-    }
-
-    .dark-mode .page-item.active a:hover {
-        color: #e3e3e3 !important;
-    }
-
     .dark-mode #cart td,
     .dark-mode #cart th {
         border-color: #2c292f;
+    }
+
+    .dark-mode .close-btn {
+        content: url('images/cross-icon-dark.svg');
     }
 </style>
 
@@ -257,12 +241,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 </li>
                 <li class="nav-item d-none d-lg-block">
                     <a class="nav-link" href="koszyk.php">
-                        <img id="cart-icon" src="images/shopping-cart-icon.svg" width="29" height="29" alt="Logo" />
+                        <img id="cart-icon" width="29" height="29" alt="Logo" />
                     </a>
                 </li>
                 <li class="nav-item d-none d-lg-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo isset($_SESSION['username']) ? 'Twój login: ' . $_SESSION['username'] : 'Gość'; ?>">
                     <a class="nav-link" href="logowanie.php">
-                        <img id="user-icon" src="images/user-icon.svg" width="27" height="27" alt="Logo" />
+                        <img id="user-icon" width="27" height="27" alt="Logo" />
                     </a>
                 </li>
                 <li class="nav-item d-none d-lg-block">

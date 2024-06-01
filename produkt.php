@@ -82,6 +82,17 @@
                     Dodaj do koszyka
                   </button>
                 </form>
+
+                <script>
+                  <?php if (isset($_SESSION['cart_error'])) : ?>
+                    alert("<?php echo $_SESSION['cart_error']; ?>");
+                    <?php unset($_SESSION['cart_error']); ?>
+                  <?php elseif (isset($_SESSION['cart_success'])) : ?>
+                    alert("<?php echo $_SESSION['cart_success']; ?>");
+                    <?php unset($_SESSION['cart_success']); ?>
+                  <?php endif; ?>
+                </script>
+
               </div>
             </div>
     </section>

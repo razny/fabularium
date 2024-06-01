@@ -18,7 +18,7 @@
   <?php include("includes/conn.php"); ?>
   <div class="d-flex align-items-center justify-content-center min-vh-100">
     <div class="my-3 px-2 w-75">
-      <section class="py-3 py-md-5 py-xl-8">
+      <section class="py-3 py-md-3 py-xl-8">
         <div class="container">
           <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
             <div class="col-12 col-lg-6 col-xl-5 align-self-start">
@@ -34,30 +34,18 @@
                       różnorodnych gatunków literackich. Niezależnie od tego, czy jesteś miłośnikiem literatury
                       klasycznej, fantastyki, czy kryminałów, mamy coś dla Ciebie. Nasz zespół pasjonatów z przyjemnością dzieli się swoją
                       wiedzą i służy pomocą w wyborze odpowiednich książek.</p>
-                    <div class="row gy-4 gy-md-2 gx-xxl-5X my-sm-4">
-                      <div class="col-12 col-md-6">
-                        <div class="d-flex">
-                          <div class="me-4 text-primary">
-                            <img src="images/victory-motivation-icon.svg" alt="" class="icon" width="32" height="32">
-                          </div>
-                          <div>
-                            <h4 class="mb-3">Profesjonalizm</h4>
-                            <p class="text-secondary mb-0">Nasz zespół dba o każdy szczegół, starannie obsługując klientów i zawsze gotowy wysłuchać ich potrzeb.</p>
-                          </div>
-                        </div>
+
+                    <div class="row gy-4 gy-md-2 gx-xxl-5X my-sm-3" >
+                      <div class="col-12 col-md-6 border-end">
+                        <h4 class="mb-3">Profesjonalizm</h4>
+                        <p class="text-secondary mb-0">Nasz zespół zwraca uwagę na każdy szczegół, sumiennie obsługując klientów i zawsze chętnie słuchając ich potrzeb.</p>
                       </div>
-                      <div class="col-12 col-md-6">
-                        <div class="d-flex">
-                          <div class="me-4 text-primary">
-                            <img src="images/hands-helping-icon.svg" alt="" class="icon" width="32" height="32">
-                          </div>
-                          <div>
-                            <h4 class="mb-3">Zaangażowanie</h4>
-                            <p class="text-secondary mb-0">Promujemy czytelnictwo i angażujemy się w działania społeczne, organizując akcje charytatywne.</p>
-                          </div>
-                        </div>
+                      <div class="col-12 col-md-6 ps-md-4 d-flex flex-column">
+                        <h4 class="mb-3">Zaangażowanie</h4>
+                        <p class="text-secondary mb-0">Wspieramy rozwój czytelnictwa i angażujemy się w projekty społeczne, organizując wydarzenia charytatywne.</p>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>

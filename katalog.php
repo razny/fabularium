@@ -86,7 +86,7 @@ $total_pages = ceil($total_items / $items_per_page);
                     </a>
                     <div class="card-body d-flex flex-column align-items-center">
                       <h5 class="card-title">
-                        <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>">
+                        <a href="produkt.php?ID=<?php echo htmlspecialchars($row['ID']); ?>">
                           <?php echo htmlspecialchars($row['Tytul']); ?>
                         </a>
                       </h5>

@@ -23,7 +23,8 @@
         color: #e3e3e3;
     }
 
-    .dark-mode input, .dark-mode input:focus {
+    .dark-mode input,
+    .dark-mode input:focus {
         background: #1b1d1e;
         border-color: #2c292f;
         color: #e3e3e3;
@@ -39,6 +40,7 @@
         color: #78080e;
     }
 </style>
+
 <body class="gradient-bg">
     <section class="container" id="register">
         <div class="row justify-content-center align-items-center vh-100">

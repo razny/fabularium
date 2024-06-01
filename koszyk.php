@@ -33,49 +33,50 @@
                                 </tr>
                             </thead>
                             <tbody>
-    <?php
-    $totalPurchaseAmount = 0;
+                                <?php
+                                $totalPurchaseAmount = 0;
 
-    foreach ($_SESSION['cart'] as $item) {
-        $item_id = $item['id'];
+                                foreach ($_SESSION['cart'] as $item) {
+                                    $item_id = $item['id'];
 
-        $sql = "SELECT ID, Tytul, Autor, Okladka, Cena FROM books WHERE ID = $item_id";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) { ?>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <a href="produkt.php?ID=<?php echo ($row['ID']); ?>">
-                                <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid rounded-3" alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" style="max-width: 100px; max-height: 100px; width: auto; height: auto;">
-                            </a>
-                            <div class="flex-column ms-4">
-                                <p class="mb-2"><?php echo $row['Tytul']; ?></p>
-                                <p class="mb-0 text-secondary"><?php echo $row['Autor']; ?></p>
-                            </div>
-                        </div>
-                    </td>
-                    <?php
-                    $item_total_price = $row['Cena'];
-                    $totalPurchaseAmount += $item_total_price; ?>
+                                    $sql = "SELECT ID, Tytul, Autor, Okladka, Cena FROM books WHERE ID = $item_id";
+                                    $result = $conn->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) { ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="produkt.php?ID=<?php echo ($row['ID']); ?>">
+                                                            <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid rounded-3" alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" style="max-width: 100px; max-height: 100px; width: auto; height: auto;">
+                                                        </a>
+                                                        <div class="flex-column ms-4">
+                                                            <p class="mb-2"><?php echo $row['Tytul']; ?></p>
+                                                            <p class="mb-0 text-secondary"><?php echo $row['Autor']; ?></p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <?php
+                                                $item_total_price = $row['Cena'];
+                                                $totalPurchaseAmount += $item_total_price; ?>
 
-                    <td id="price_<?php echo $item_id; ?>" class="align-middle" style="text-align: center; white-space: nowrap;">
-                        <?php echo number_format($item_total_price, 2); ?> zł
-                    </td>
-
-                    <td class="align-middle" style="text-align: center;">
-                        <form method="post" action="includes/remove_from_cart.php">
-                            <input type="hidden" name="item_id" value="<?php echo $item_id; ?>">
-                            <button type="submit" class="btn-close m-3"></button>
-                        </form>
-                    </td>
-                </tr>
-    <?php
-            }
-        }
-    }
-    ?>
-</tbody>
+                                                <td id="price_<?php echo $item_id; ?>" class="align-middle" style="text-align: center; white-space: nowrap;">
+                                                    <?php echo number_format($item_total_price, 2); ?> zł
+                                                </td>
+                                                <td class="align-middle" style="text-align: center;">
+                                                    <form method="post" action="includes/remove_from_cart.php">
+                                                        <input type="hidden" name="item_id" value="<?php echo $item_id; ?>">
+                                                        <button type="submit" class=" m-3" style="background: none; border: none;">
+                                                            <img src="images/cross-icon-light.svg" class="close-btn" style="height: 24px; width: 24px;">
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                <?php
+                                        }
+                                    }
+                                }
+                                ?>
+                            </tbody>
 
                         </table>
                     </div>

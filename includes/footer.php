@@ -1,6 +1,5 @@
 <footer class="primary text-center mt-5" id="bottom-footer">
-    <div class="text-center p-2">
-        © 2024 Copyright:
-        <a class="text-body" href="https://github.com/razny">razny</a>
+    <div class="container py-3">
+        <p class="mb-0">&copy; 2024 Fabularium. Wszelkie prawa zastrzeżone.</p>
     </div>
 </footer>
