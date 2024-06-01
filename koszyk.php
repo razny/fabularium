@@ -11,19 +11,6 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <style>
-        .card {
-            border-radius: 16px;
-        }
-
-        @media (max-width: 576px) {
-
-            /* Adjust styles for extra small devices */
-            .h5 {
-                font-size: 1.25rem;
-            }
-        }
-    </style>
 </head>
 
 <body class="bg">
@@ -40,55 +27,56 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="h5" >Koszyk</th>
+                                    <th scope="col" class="h5">Koszyk</th>
                                     <th scope="col" style="text-align: center;">Cena</th>
                                     <th scope="col" style="text-align: center;">Usuń</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $totalPurchaseAmount = 0;
+    <?php
+    $totalPurchaseAmount = 0;
 
-                                foreach ($_SESSION['cart'] as $item) {
-                                    $item_id = $item['id'];
+    foreach ($_SESSION['cart'] as $item) {
+        $item_id = $item['id'];
 
-                                    $sql = "SELECT ID, Tytul, Autor, Okladka, Cena FROM books WHERE ID = $item_id";
-                                    $result = $conn->query($sql);
+        $sql = "SELECT ID, Tytul, Autor, Okladka, Cena FROM books WHERE ID = $item_id";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) { ?>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <a href="produkt.php?ID=<?php echo ($row['ID']); ?>">
+                                <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid rounded-3" alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" style="max-width: 100px; max-height: 100px; width: auto; height: auto;">
+                            </a>
+                            <div class="flex-column ms-4">
+                                <p class="mb-2"><?php echo $row['Tytul']; ?></p>
+                                <p class="mb-0 text-secondary"><?php echo $row['Autor']; ?></p>
+                            </div>
+                        </div>
+                    </td>
+                    <?php
+                    $item_total_price = $row['Cena'];
+                    $totalPurchaseAmount += $item_total_price; ?>
 
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) { ?>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <a href="produkt.php?ID=<?php echo ($row['ID']); ?>">
-                                                            <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid rounded-3" alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" style="width:100px">
-                                                        </a>
-                                                        <div class="flex-column ms-4">
-                                                            <p class="mb-2"><?php echo $row['Tytul']; ?></p>
-                                                            <p class="mb-0 text-secondary"><?php echo $row['Autor']; ?></p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <?php
-                                                $item_total_price = $row['Cena'];
-                                                $totalPurchaseAmount += $item_total_price; ?>
+                    <td id="price_<?php echo $item_id; ?>" class="align-middle" style="text-align: center; white-space: nowrap;">
+                        <?php echo number_format($item_total_price, 2); ?> zł
+                    </td>
 
-                                                <td id="price_<?php echo $item_id; ?>" class="align-middle" style="text-align: center;">
-                                                    <?php echo number_format($item_total_price, 2); ?> zł
-                                                </td>
-                                                <td class="align-middle" style="text-align: center;">
-                                                    <form method="post" action="includes/remove_from_cart.php">
-                                                        <input type="hidden" name="item_id" value="<?php echo $item_id; ?>">
-                                                        <button type="submit" class="btn-close m-3"></button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                <?php
-                                        }
-                                    }
-                                }
-                                ?>
-                            </tbody>
+                    <td class="align-middle" style="text-align: center;">
+                        <form method="post" action="includes/remove_from_cart.php">
+                            <input type="hidden" name="item_id" value="<?php echo $item_id; ?>">
+                            <button type="submit" class="btn-close m-3"></button>
+                        </form>
+                    </td>
+                </tr>
+    <?php
+            }
+        }
+    }
+    ?>
+</tbody>
+
                         </table>
                     </div>
                     <?php

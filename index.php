@@ -45,8 +45,8 @@
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
           ?>
-              <div class="swiper-slide">
-                <div class="card align-items-center border-2" style="height: 348px;">
+              <div class="swiper-slide" style="height: auto;">
+                <div class="card align-items-center border-2" >
                   <a href="produkt.php?ID=<?php echo htmlspecialchars($row['ID']); ?>">
                     <img src="<?php echo htmlspecialchars($row["Okladka"]); ?>" class="mt-3" alt="Book Cover" style="width: 90px; height: 150px;">
                   </a>
@@ -54,13 +54,6 @@
                     <h5 class="card-title"><?php echo $row["Tytul"]; ?></h5>
                     <p class="card-text text-secondary"><?php echo $row["Autor"]; ?></p>
                     <h6 class="card-price"><?php echo $row["Cena"]; ?> zł</h6>
-                    <form action="includes/add_to_cart.php" method="POST" target="hidden_iframe" id="cart_form">
-                      <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
-                      <button type="submit" class="btn btn-dark btn-sm secondary border-0">
-                        Dodaj do koszyka
-                      </button>
-                    </form>
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe> <!-- prevents from reloading page -->
                   </div>
                 </div>
               </div>

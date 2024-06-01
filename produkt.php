@@ -76,13 +76,12 @@
                     </tr>
                   </tbody>
                 </table>
-                <form action="includes/add_to_cart.php" method="POST" target="hidden_iframe" id="cart_form">
+                <form action="includes/add_to_cart.php" method="POST" id="cart_form">
                   <input type="hidden" name="item_id" value="<?php echo $row['ID']; ?>">
                   <button type="submit" class="btn btn-dark secondary border-0">
                     Dodaj do koszyka
                   </button>
                 </form>
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe> <!-- prevents from reloading page -->
               </div>
             </div>
     </section>

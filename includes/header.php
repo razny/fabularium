@@ -56,6 +56,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         color: #e3e3e3;
     }
 
+    /*******************/
+
     .dark-mode h2 {
         color: #e3e3e3;
     }
@@ -150,6 +152,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         background: #9345f5;
     }
 
+    .dark-mode aside h4 {
+        color: #e3e3e3;
+    }
+
     .dark-mode .dropdown-menu,
     .dark-mode .dropdown-item {
         background: #1b1d1e !important;
@@ -214,29 +220,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     .dark-mode #cart th {
         border-color: #2c292f;
     }
-
-    /* collapsing the navbar links into a column */
-    @media (max-width: 576px) {
-        .navbar-nav {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-        }
-    }
 </style>
 
-<header class="navbar navbar-expand-sm navbar-light bg-light sticky-top" id="header">
-    <div class="container-fluid w-l-75 w-xl-75">
+<header class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="header">
+    <div class="container-fluid w-lg-75 w-xl-75">
         <a class="navbar-brand" href="index.php">
             <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-1" />
             Fabularium
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <form class="w-100 d-none d-sm-block" action="search.php" method="GET">
+            <form class="w-100 d-none d-lg-block" action="search.php" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="search_query" placeholder="Wpisz tytuł, autora lub IBSN..." required>
+                    <input type="text" class="form-control" name="search_query" placeholder="Tytuł/autor/ISBN..." required>
                     <span class="input-group-text">
                         <div class="col-auto">
                             <button type="submit" name="submit" class="btn btn-link p-0 d-flex justify-content-center align-items-center">
@@ -250,40 +248,41 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 <li class="nav-item">
                     <a class="nav-link" href="katalog.php">Katalog</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" style="white-space: nowrap;">
                     <a class="nav-link" href="o-nas.php">O nas</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="opinie.php">Opinie</a>
                 </li>
-                <li class="nav-item d-none d-sm-block">
+                <li class="nav-item d-none d-lg-block">
                     <a class="nav-link" href="koszyk.php">
                         <img id="cart-icon" src="images/shopping-cart-icon.svg" width="29" height="29" alt="Logo" />
                     </a>
                 </li>
-                <li class="nav-item d-none d-sm-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo isset($_SESSION['username']) ? 'Twój login: ' . $_SESSION['username'] : 'Gość'; ?>">
+                <li class="nav-item d-none d-lg-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo isset($_SESSION['username']) ? 'Twój login: ' . $_SESSION['username'] : 'Gość'; ?>">
                     <a class="nav-link" href="logowanie.php">
                         <img id="user-icon" src="images/user-icon.svg" width="27" height="27" alt="Logo" />
                     </a>
                 </li>
-                <li class="nav-item d-none d-sm-block">
+                <li class="nav-item d-none d-lg-block">
                     <button id="toggleMode">
                         <canvas id="canvas" width="32" height="32"></canvas>
                     </button>
                 </li>
-                <li class="nav-item d-block d-sm-none">
+                <li class="nav-item d-block d-lg-none">
                     <a class="nav-link" href="koszyk.php">Koszyk</a>
                 </li>
-                <li class="nav-item d-block d-sm-none">
+                <li class="nav-item d-block d-lg-none">
                     <a class="nav-link" href="logowanie.php">Logowanie</a>
                 </li>
-                <li class="nav-item d-block d-sm-none mb-2">
+                <li class="nav-item d-block d-lg-none mb-2">
                     <a class="nav-link" id="toggleModeText" href="#a" onclick="toggleMode()">Tryb jasny/ciemny</a>
                 </li>
             </ul>
-            <form class="w-100 d-sm-none" action="search.php" method="GET">
+            <form class="w-100 d-lg-none" action="search.php" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="search_query" placeholder="Wpisz tytuł, autora lub IBSN..." required>
+                    <input type="text" class="form-control" name="search_query" placeholder="Tytuł/autor/ISBN..." required>
                     <span class="input-group-text">
                         <div class="col-auto">
                             <button type="submit" name="submit" class="btn btn-link p-0 d-flex justify-content-center align-items-center">
@@ -305,7 +304,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 </script>
 
 <script>
-    // Drawing functions
     function drawSun(ctx, sunColor) {
         ctx.fillStyle = sunColor;
         ctx.beginPath();
@@ -345,6 +343,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         // Set mode
         document.body.classList.toggle('dark-mode', !isLightMode);
         header.classList.toggle('dark-mode-header', !isLightMode);
+        header.classList.toggle('navbar-light', !isLightMode); // Remove navbar-light class
+        header.classList.toggle('navbar-dark', !isLightMode); // Add navbar-dark class
+
         cartIcon.src = isLightMode ? 'images/shopping-cart-icon-light.svg' : 'images/shopping-cart-icon-dark.svg';
         userIcon.src = isLightMode ? 'images/user-icon-light.svg' : 'images/user-icon-dark.svg';
 
@@ -357,9 +358,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     }
 
     setMode(); // Apply initial mode
-
-    // Set initial mode
-    setMode();
 
     function toggleMode() {
         isLightMode = !isLightMode;

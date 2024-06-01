@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-// logged out users cant access cart
+// Logged out users can't access cart
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ../logowanie.php');
+    // Use JavaScript to redirect instead of PHP header, as headers might have been sent already
+    echo "<script>window.location.href = '../logowanie.php';</script>";
     exit();
 }
 

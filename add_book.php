@@ -30,6 +30,18 @@
         color: #e3e3e3;
     }
 
+    .dark-mode .form-control,
+    .dark-mode .form-control:hover,
+    .dark-mode .form-control:focus {
+        background-color: #1f1d21;
+        color: #e3e3e3;
+        border-color: #2c292f;
+    }
+
+    .dark-mode .form-control::placeholder {
+        color: #717171;
+    }
+
     .dark-mode input::placeholder {
         color: #717171;
     }
@@ -42,18 +54,7 @@
 </style>
 <body class="gradient-bg">
 <?php include("includes/conn.php");
-
-    session_start();
-    // Check if the user is an admin
-    if (isset($_SESSION['user_id'])) {
-        $username = $_SESSION['username'];
-        // Check if the user is an admin (assuming 'admin' is the admin username)
-        if ($username != 'admin') {
-            // Display error message and exit
-            $error_message = "Ta strona jest dostępna tylko dla administratorów.";
-        }
-    }
-    ?>
+    session_start();?>
     <div class="container">
         <div class="row justify-content-center align-items-center vh-100">
             <div class="col-md-6">
@@ -199,7 +200,7 @@
         console.log('Dark mode is ' + (isLightMode ? 'disabled' : 'enabled'));
     }
 
-    // Apply dark mode on page load
+    // apply dark mode on page load
     document.addEventListener('DOMContentLoaded', function() {
         console.log('DOMContentLoaded event fired');
         applyDarkMode();
