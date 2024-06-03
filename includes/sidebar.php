@@ -1,6 +1,6 @@
 <aside class="px-4 py-2">
     <?php
-    $sql = "SELECT kategoria, COUNT(*) AS count FROM books GROUP BY kategoria HAVING count >= 4";
+    $sql = "SELECT kategoria, COUNT(*) AS count FROM books GROUP BY kategoria HAVING count >= 3";
     $result = $conn->query($sql);
 
     $genres = [];
@@ -8,7 +8,10 @@
         while ($row = $result->fetch_assoc()) {
             $categories = explode(",", $row["kategoria"]);
             foreach ($categories as $category) {
-                $genres[] = trim($category);
+                $trimmedCategory = trim($category);
+                if (!in_array($trimmedCategory, $genres)) {
+                    $genres[] = $trimmedCategory;
+                }
             }
         }
         sort($genres);

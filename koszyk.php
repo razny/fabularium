@@ -47,7 +47,7 @@
                                                 <td>
                                                     <div class="d-flex align-items-center">
                                                         <a href="produkt.php?ID=<?php echo ($row['ID']); ?>">
-                                                            <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid rounded-3" alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" style="max-width: 100px; max-height: 100px; width: auto; height: auto;">
+                                                            <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid rounded-3" alt="Okładka książki <?php echo $row['Tytul']; ?>" style="max-width: 100px; max-height: 100px; width: auto; height: auto;">
                                                         </a>
                                                         <div class="flex-column ms-4">
                                                             <p class="mb-2"><?php echo $row['Tytul']; ?></p>
@@ -66,7 +66,7 @@
                                                     <form method="post" action="includes/remove_from_cart.php">
                                                         <input type="hidden" name="item_id" value="<?php echo $item_id; ?>">
                                                         <button type="submit" class=" m-3" style="background: none; border: none;">
-                                                            <img src="images/cross-icon-light.svg" class="close-btn" style="height: 24px; width: 24px;">
+                                                            <img src="images/cross-icon-light.svg" class="close-btn" style="height: 24px; width: 24px;" alt="Usuń produkt z koszyka">
                                                         </button>
                                                     </form>
                                                 </td>
@@ -136,7 +136,7 @@
                                                     <p class="mb-0"><?php echo number_format($totalAmount, 2); ?> zł</p>
                                                 </div>
                                             </div>
-                                            <div class="text-end"> <!-- Utilizing Bootstrap's utility class "text-end" to align content to the right -->
+                                            <div class="text-end">
                                                 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validateForm()">
                                                     <button type="submit" name="submit" class="btn btn-dark btn-block secondary border-0 mt-2">
                                                         <span>Zamów</span>

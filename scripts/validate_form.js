@@ -8,7 +8,7 @@ function validateForm() {
         alert("Proszę wypełnić wszystkie pola.");
         return false;
     }
-    // Check if typeName contains a space between the first and last name
+
     if (!/\s/.test(typeName)) {
         alert("Proszę podać pełne imię i nazwisko oddzielone spacją.");
         return false;

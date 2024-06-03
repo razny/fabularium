@@ -119,14 +119,8 @@
         } else {
             document.body.classList.remove('dark-mode');
         }
-        console.log('Dark mode is ' + (isLightMode ? 'disabled' : 'enabled'));
     }
-
-    // Apply dark mode on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOMContentLoaded event fired');
-        applyDarkMode();
-    });
+    applyDarkMode();
 </script>
 
 </html>

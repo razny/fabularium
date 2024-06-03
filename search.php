@@ -21,7 +21,7 @@
         <div class="my-4 px-2 w-75 min-vh-100">
             <div class="text-center">
                 <?php
-                $search_result = ""; // Initialize variable to hold search result HTML
+                $search_result = "";
 
                 if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
                     $search_query = $_GET['search_query'];
@@ -41,21 +41,21 @@
                                 <div class="col-12 col-md-6 col-lg-4 mb-3">
                                     <div class="card h-100 border-0">
                                         <div class="card-img-top mt-4">
-                                            <a href="produkt.php?ID=<?php echo htmlspecialchars($row['ID']); ?>">
-                                                <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid mx-auto d-block" alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" style="height:200px">
+                                            <a href="produkt.php?ID=<?php echo $row['ID']; ?>">
+                                                <img src="<?php echo $row['Okladka']; ?>" class="img-fluid mx-auto d-block" alt="Okładka książki <?php echo $row['Tytul']; ?>" style="height:200px">
                                             </a>
                                         </div>
                                         <div class="card-body text-center d-flex flex-column">
                                             <h5 class="card-title mb-1">
-                                                <a href="produkt.php?id=<?php echo htmlspecialchars($row['ID']); ?>" >
-                                                    <?php echo htmlspecialchars($row['Tytul']); ?>
+                                                <a href="produkt.php?id=<?php echo $row['ID']; ?>" >
+                                                    <?php echo $row['Tytul']; ?>
                                                 </a>
                                             </h5>
                                             <p class="card-text mb-2 small text-secondary">
-                                                <?php echo htmlspecialchars($row['Autor']); ?>
+                                                <?php echo $row['Autor']; ?>
                                             </p>
                                             <h6 class="card-price">
-                                                <?php echo htmlspecialchars($row['Cena']); ?> zł
+                                                <?php echo $row['Cena']; ?> zł
                                             </h6>
                                         </div>
                                     </div>
@@ -71,6 +71,7 @@
             ?>
         </div>
     </section>
+    
     <?php include("includes/footer.php"); ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>

@@ -3,7 +3,7 @@
 		options = options || {};
 
 		return $(this).each(function () {
-			// set options for current element
+			// ustawienie opcji dla bieżącego elementu
 			var settings = $.extend({}, $.fn.countTo.defaults, {
 				from: $(this).data('from'),
 				to: $(this).data('to'),
@@ -12,11 +12,11 @@
 				decimals: $(this).data('decimals')
 			}, options);
 
-			// how many times to update the value, and how much to increment the value on each update
+			// obliczenie, ile razy zaktualizować wartość i o ile ją zwiększyć przy każdej aktualizacji
 			var loops = Math.ceil(settings.speed / settings.refreshInterval),
 				increment = (settings.to - settings.from) / loops;
 
-			// references & variables that will change with each update
+			// referencje i zmienne, które będą się zmieniać przy każdej aktualizacji
 			var self = this,
 				$self = $(this),
 				loopCount = 0,
@@ -25,13 +25,13 @@
 
 			$self.data('countTo', data);
 
-			// if an existing interval can be found, clear it first
+			// jeśli istnieje interwał, wyczyść go
 			if (data.interval) {
 				clearInterval(data.interval);
 			}
 			data.interval = setInterval(updateTimer, settings.refreshInterval);
 
-			// initialize the element with the starting value
+			// inicjalizacja elementu wartością początkową
 			render(value);
 
 			function updateTimer() {
@@ -45,7 +45,7 @@
 				}
 
 				if (loopCount >= loops) {
-					// remove the interval
+					// usuń interwał
 					$self.removeData('countTo');
 					clearInterval(data.interval);
 					value = settings.to;
@@ -64,14 +64,14 @@
 	};
 
 	$.fn.countTo.defaults = {
-		from: 0,               // the number the element should start at
-		to: 0,                 // the number the element should end at
-		speed: 1000,           // how long it should take to count between the target numbers
-		refreshInterval: 100,  // how often the element should be updated
-		decimals: 0,           // the number of decimal places to show
-		formatter: formatter,  // handler for formatting the value before rendering
-		onUpdate: null,        // callback method for every time the element is updated
-		onComplete: null       // callback method for when the element finishes updating
+		from: 0,               // początkowa wartość elementu
+		to: 0,                 // końcowa wartość elementu
+		speed: 1000,           // czas trwania animacji między wartościami docelowymi
+		refreshInterval: 100,  // częstotliwość aktualizacji elementu
+		decimals: 0,           // liczba miejsc po przecinku do wyświetlenia
+		formatter: formatter,  // funkcja formatująca wartość przed wyświetleniem
+		onUpdate: null,        // metoda zwrotna wywoływana za każdym razem, gdy element jest aktualizowany
+		onComplete: null       // metoda zwrotna wywoływana po zakończeniu aktualizacji elementu
 	};
 
 	function formatter(value, settings) {
@@ -80,14 +80,14 @@
 }(jQuery));
 
 jQuery(function ($) {
-	// custom formatting example
+	// niestandardowe formatowanie
 	$('.count-number').data('countToOptions', {
 		formatter: function (value, options) {
 			return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
 		}
 	});
 
-	// start all the timers
+	// rozpoczęcie wszystkich liczników
 	$('.timer').each(count);
 
 	function count(options) {

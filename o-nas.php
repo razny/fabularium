@@ -22,7 +22,7 @@
         <div class="container">
           <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
             <div class="col-12 col-lg-6 col-xl-5 align-self-start">
-              <img class="img-fluid rounded mb-4 mt-2" src="images/team.jpg" alt="">
+              <img class="img-fluid rounded mb-4 mt-2" src="images/team.jpg" alt="Zdjęcie zespołu pracowników Fabularium">
             </div>
             <div class="col-12 col-lg-6 col-xl-7">
               <div class="row justify-content-xl-center">
@@ -35,8 +35,8 @@
                       klasycznej, fantastyki, czy kryminałów, mamy coś dla Ciebie. Nasz zespół pasjonatów z przyjemnością dzieli się swoją
                       wiedzą i służy pomocą w wyborze odpowiednich książek.</p>
 
-                    <div class="row gy-4 gy-md-2 gx-xxl-5X my-sm-3" >
-                      <div class="col-12 col-md-6 border-end">
+                    <div class="row gy-4 gy-md-2 gx-xxl-5X my-sm-3">
+                      <div class="col-12 col-md-6">
                         <h4 class="mb-3">Profesjonalizm</h4>
                         <p class="text-secondary mb-0">Nasz zespół zwraca uwagę na każdy szczegół, sumiennie obsługując klientów i zawsze chętnie słuchając ich potrzeb.</p>
                       </div>
@@ -67,18 +67,23 @@
           $count_result = $conn->query($count_sql);
           $counts = $count_result->fetch_assoc();
 
-          $total_categories = 0; // Initialize total_categories variable
+          $total_categories = 0;
+          $unique_categories = array();
 
-          $sql = "SELECT DISTINCT kategoria FROM books"; // Modify the query to select only unique values of "kategoria"
+          $sql = "SELECT DISTINCT kategoria FROM books";
           $result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
-            // output data of each row
             while ($row = $result->fetch_assoc()) {
-              // Explode the categories by comma and count each separately
               $categories = explode(",", $row["kategoria"]);
-              $total_categories += count($categories);
+              foreach ($categories as $category) {
+                $category = trim($category);
+                if (!in_array($category, $unique_categories)) {
+                  $unique_categories[] = $category;
+                }
+              }
             }
+            $total_categories = count($unique_categories);
           }
 
           $conn->close();
@@ -90,10 +95,7 @@
               <h2 class="timer count-title count-number" data-to="<?php echo $counts['total_books']; ?>" data-speed="3000"></h2>
               <p class="count-text mb-3">
                 <?php
-                // Get the last digit of the total count
                 $last_digit = substr($counts['total_books'], -1);
-
-                // Check the last digit to determine the correct plural form
                 switch ($last_digit) {
                   case '2':
                   case '3':

@@ -32,11 +32,10 @@ if (isset($_GET['sort'])) {
 
 $items_per_page = 9;
 
-// get current page from query string or default to 1
+// pobierz nr strony lub przyjmij 1 jako wartość domyślną
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($current_page - 1) * $items_per_page;
 
-// fetch total number of items
 $total_items_sql = "SELECT COUNT(*) AS total FROM books";
 $total_items_result = $conn->query($total_items_sql);
 
@@ -57,19 +56,24 @@ $total_pages = ceil($total_items / $items_per_page);
   <link rel="icon" type="image/x-icon" href="images/favicon.svg">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="bg">
   <?php include("includes/header.php"); ?>
 
-  <div class="container pt-5  w-100 w-lg-75">
+  <div class="container pt-4 w-100 w-lg-75">
+
+    <div class="dropdown d-lg-none d-flex">
+      <?php include("includes/sidebar-mobile.php"); ?>
+    </div>
+
     <div class="row">
-      <!-- sidebar for large devices -->
+
       <div class="col-lg-3 d-none d-lg-block">
-      <?php include("includes/sidebar.php"); ?>
+        <?php include("includes/sidebar.php"); ?>
       </div>
 
-      <!-- main content -->
       <div class="col-lg-9">
         <section class="d-flex align-items-center justify-content-center min-vh-100" id="catalog">
           <div class="my-3 px-2">
@@ -81,20 +85,20 @@ $total_pages = ceil($total_items / $items_per_page);
               while ($row = $result->fetch_assoc()) : ?>
                 <div class="col">
                   <div class="card h-100 border-0">
-                    <a href="produkt.php?ID=<?php echo htmlspecialchars($row['ID']); ?>">
-                      <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="mx-auto d-block mt-3" alt="Cover of <?php echo htmlspecialchars($row['Tytul']); ?>" style="height:15rem">
+                    <a href="produkt.php?ID=<?php echo $row['ID']; ?>">
+                      <img src="<?php echo $row['Okladka']; ?>" class="mx-auto d-block mt-3" alt="Okładka książki <?php echo $row['Tytul']; ?>" style="height:15rem">
                     </a>
                     <div class="card-body d-flex flex-column align-items-center">
                       <h5 class="card-title">
-                        <a href="produkt.php?ID=<?php echo htmlspecialchars($row['ID']); ?>">
-                          <?php echo htmlspecialchars($row['Tytul']); ?>
+                        <a href="produkt.php?ID=<?php echo $row['ID']; ?>">
+                          <?php echo $row['Tytul']; ?>
                         </a>
                       </h5>
                       <p class="card-text text-secondary">
-                        <?php echo htmlspecialchars($row['Autor']); ?>
+                        <?php echo $row['Autor']; ?>
                       </p>
                       <h6 class="card-price">
-                        <?php echo htmlspecialchars($row['Cena']); ?> zł
+                        <?php echo $row['Cena']; ?> zł
                       </h6>
                     </div>
                   </div>
@@ -109,7 +113,6 @@ $total_pages = ceil($total_items / $items_per_page);
 
   <?php include("includes/footer.php"); ?>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
       var currentPage = <?php echo $current_page; ?>;
