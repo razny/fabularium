@@ -156,6 +156,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         color: #e3e3e3;
     }
 
+    .dark-mode li a h5 {
+        color: #e3e3e3;
+    }
+
     .dark-mode .dropdown-menu,
     .dark-mode .dropdown-item {
         background: #1b1d1e !important;

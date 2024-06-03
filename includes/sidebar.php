@@ -1,6 +1,6 @@
 <aside class="px-4 py-2">
     <?php
-    $sql = "SELECT kategoria, COUNT(*) AS count FROM books GROUP BY kategoria HAVING count >= 3";
+    $sql = "SELECT kategoria, COUNT(*) AS count FROM books GROUP BY kategoria HAVING count >= 4";
     $result = $conn->query($sql);
 
     $genres = [];

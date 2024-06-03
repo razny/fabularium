@@ -6,7 +6,7 @@
           <h4 class="dropdown-header">Kategorie</h4>
         </li>
         <?php
-        $sql = "SELECT kategoria, COUNT(*) AS count FROM books GROUP BY kategoria HAVING count >= 3";
+        $sql = "SELECT kategoria, COUNT(*) AS count FROM books GROUP BY kategoria HAVING count >= 4";
         $result = $conn->query($sql);
 
         $genres = [];
@@ -39,7 +39,7 @@
         <li><a class="dropdown-item" href="?category=<?php echo isset($_GET['category']) ? urlencode($_GET['category']) : ''; ?>&sort=price_desc">Cena: od najwyższej</a></li>
         <li>
           <a class="dropdown-item text-dark mt-3" href="?">
-            Usuń filtry
+            <h5>Usuń filtry</h5>
           </a>
         </li>
       </ul>

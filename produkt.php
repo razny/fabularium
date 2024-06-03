@@ -17,10 +17,9 @@
 <body class="bg">
   <?php include("includes/header.php");
   include("includes/conn.php"); ?>
-  <div class="d-flex align-items-center justify-content-center" id="produkt">
-    <section class="my-5 w-75 py-3">
+  <div class="d-flex align-items-center justify-content-center px-4" id="produkt">
+    <section class="my-4 w-75 py-3">
       <?php
-
       if (isset($_GET['ID'])) {
         $id = intval($_GET['ID']);
         $sql = "SELECT * FROM books WHERE ID = $id";
@@ -32,10 +31,10 @@
             $row = $result->fetch_assoc();
       ?>
             <div class="row gx-4 gx-lg-5">
-              <div class="col-sm-12 col-md-6 col-lg-6">
-                <img class="product-image mb-4" src="<?php echo $row["Okladka"]; ?>" alt="Product Image" />
+              <div class="col-12 col-md-6">
+                <img class="img-fluid mb-4" src="<?php echo $row["Okladka"]; ?>" alt="Okładka książki <?php echo $row['Tytul']; ?>" />
               </div>
-              <div class="col-sm-12 col-md-6 col-lg-6 product-details">
+              <div class="col-12 col-md-6">
                 <h1 class="display-5 fw-bolder mb-3"><?php echo $row["Tytul"]; ?></h1>
                 <div class="fs-5 mb-3">
                   <span style="color: #908f8f"><?php echo $row["Cena"]; ?> zł</span>
