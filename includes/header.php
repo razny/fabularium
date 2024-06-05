@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Check if the user is logged in
+
 if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     $user_id = $_SESSION['user_id'];
     $username = $_SESSION['username'];
@@ -315,7 +315,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         ctx.restore();
     }
 
-    // Mode handling
     let isLightMode = localStorage.getItem('mode') === 'light';
 
     function setMode() {
@@ -325,19 +324,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         const userIcon = document.getElementById('user-icon');
         const ctx = canvas.getContext('2d');
 
-        // Clear canvas
+
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-        // Set mode
         document.body.classList.toggle('dark-mode', !isLightMode);
         header.classList.toggle('dark-mode-header', !isLightMode);
-        header.classList.toggle('navbar-light', !isLightMode); // Remove navbar-light class
-        header.classList.toggle('navbar-dark', !isLightMode); // Add navbar-dark class
+        header.classList.toggle('navbar-light', !isLightMode); 
+        header.classList.toggle('navbar-dark', !isLightMode);
 
         cartIcon.src = isLightMode ? 'images/shopping-cart-icon-light.svg' : 'images/shopping-cart-icon-dark.svg';
         userIcon.src = isLightMode ? 'images/user-icon-light.svg' : 'images/user-icon-dark.svg';
 
-        // Draw appropriate celestial body
+
         if (isLightMode) {
             drawSun(ctx, '#ffdb4d');
         } else {
@@ -345,7 +343,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
         }
     }
 
-    setMode(); // Apply initial mode
+    setMode(); 
 
     function toggleMode() {
         isLightMode = !isLightMode;

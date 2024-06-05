@@ -22,7 +22,7 @@
           }
           sort($genres);
         } else {
-          echo "<li><a class='dropdown-item' href='#'>0 results</a></li>";
+          echo "<li><a class='dropdown-item' href='#'>0 wyników</a></li>";
         }
 
         foreach ($genres as $genre) {

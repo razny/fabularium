@@ -16,7 +16,7 @@
         }
         sort($genres);
     } else {
-        echo "0 results";
+        echo "0 wyników";
     }
     ?>
     <h4 class="mb-3">Kategorie</h4>

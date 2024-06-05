@@ -179,17 +179,6 @@
     </div>
 </body>
 <script>
-    function samePassword() {
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirm-password").value;
-
-        if (password != confirmPassword) {
-            alert("Hasła nie są identyczne!");
-            return false;
-        }
-        return true;
-    }
-
         function applyDarkMode() {
         const isLightMode = localStorage.getItem('mode') === 'light';
         if (!isLightMode) {
