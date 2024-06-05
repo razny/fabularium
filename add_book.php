@@ -190,20 +190,14 @@
         return true;
     }
 
-    function applyDarkMode() {
+        function applyDarkMode() {
         const isLightMode = localStorage.getItem('mode') === 'light';
         if (!isLightMode) {
             document.body.classList.add('dark-mode');
         } else {
             document.body.classList.remove('dark-mode');
         }
-        console.log('Dark mode is ' + (isLightMode ? 'disabled' : 'enabled'));
     }
-
-    // apply dark mode on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOMContentLoaded event fired');
-        applyDarkMode();
-    });
+    applyDarkMode();
 </script>
 </html>

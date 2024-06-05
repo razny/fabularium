@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="card-body text-center d-flex flex-column">
                                             <h5 class="card-title mb-1">
-                                                <a href="produkt.php?id=<?php echo $row['ID']; ?>" >
+                                                <a href="produkt.php?ID=<?php echo $row['ID']; ?>" >
                                                     <?php echo $row['Tytul']; ?>
                                                 </a>
                                             </h5>

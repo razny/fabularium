@@ -25,7 +25,7 @@
         $sql = "SELECT * FROM books WHERE ID = $id";
         $result = $conn->query($sql);
         if ($result === false) {
-          echo "Nie znaleziono produktu.";
+          echo '<div class="min-vh-100">Nie znaleziono produktu.</div>';
         } else {
           if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -87,11 +87,11 @@
   </div>
 <?php
           } else {
-            echo "Nie znaleziono produktu o tym ID.";
+            echo '<div class="min-vh-100">Nie znaleziono produktu o tym ID.</div>';
           }
         }
       } else {
-        echo "Nie podano ID.";
+        echo '<div class="min-vh-100">Nie podano ID.</div>';
       }
       $conn->close();
 ?>
