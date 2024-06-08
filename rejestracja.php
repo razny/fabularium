@@ -9,37 +9,37 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/media-sizes.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+    <style>
+        .dark-mode .card {
+            background: #1f1d21;
+        }
+
+        .dark-mode .card-footer {
+            background: #151718;
+        }
+
+        .dark-mode .card {
+            color: #e3e3e3;
+        }
+
+        .dark-mode input,
+        .dark-mode input:focus {
+            background: #1b1d1e;
+            border-color: #2c292f;
+            color: #e3e3e3;
+        }
+
+        .dark-mode input::placeholder {
+            color: #717171;
+        }
+
+        .dark-mode .alert-danger {
+            background: #d65259;
+            border-color: #b12a31;
+            color: #78080e;
+        }
+    </style>
 </head>
-<style>
-    .dark-mode .card {
-        background: #1f1d21;
-    }
-
-    .dark-mode .card-footer {
-        background: #151718;
-    }
-
-    .dark-mode .card {
-        color: #e3e3e3;
-    }
-
-    .dark-mode input,
-    .dark-mode input:focus {
-        background: #1b1d1e;
-        border-color: #2c292f;
-        color: #e3e3e3;
-    }
-
-    .dark-mode input::placeholder {
-        color: #717171;
-    }
-
-    .dark-mode .alert-danger {
-        background: #d65259;
-        border-color: #b12a31;
-        color: #78080e;
-    }
-</style>
 
 <body class="gradient-bg">
     <section class="container" id="register">
@@ -98,29 +98,29 @@
             </div>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function samePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+
+            if (password != confirmPassword) {
+                alert("Hasła nie są identyczne!");
+                return false;
+            }
+            return true;
+        }
+
+        function applyDarkMode() {
+            const isLightMode = localStorage.getItem('mode') === 'light';
+            if (!isLightMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+        applyDarkMode();
+    </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    function samePassword() {
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirm-password").value;
-
-        if (password != confirmPassword) {
-            alert("Hasła nie są identyczne!");
-            return false;
-        }
-        return true;
-    }
-
-    function applyDarkMode() {
-        const isLightMode = localStorage.getItem('mode') === 'light';
-        if (!isLightMode) {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.remove('dark-mode');
-        }
-    }
-    applyDarkMode();
-</script>
 
 </html>

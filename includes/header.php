@@ -58,7 +58,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 
     /*******************/
 
-    .dark-mode h2 {
+    .dark-mode .swiper h2 {
         color: #e3e3e3;
     }
 
@@ -213,7 +213,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 <header class="navbar navbar-expand-lg navbar-light bg-light sticky-top" id="header">
     <div class="container-fluid w-lg-75 w-xl-75">
         <a class="navbar-brand" href="index.php">
-            <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-1" />
+            <img src="images/logo.svg" width="30" height="30" alt="Logo" class="me-1">
             Fabularium
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
@@ -223,13 +223,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
             <form class="w-100 d-none d-lg-block" action="search.php" method="GET">
                 <div class="input-group">
                     <input type="text" class="form-control" name="search_query" placeholder="Tytuł/autor/ISBN..." required>
-                    <span class="input-group-text">
+                    <div class="input-group-text">
                         <div class="col-auto">
                             <button type="submit" name="submit" class="btn btn-link p-0 d-flex justify-content-center align-items-center">
                                 <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
                             </button>
                         </div>
-                    </span>
+                    </div>
                 </div>
             </form>
             <ul class="navbar-nav w-100 justify-content-end mt-2 mt-sm-0">
@@ -245,12 +245,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 </li>
                 <li class="nav-item d-none d-lg-block">
                     <a class="nav-link" href="koszyk.php">
-                        <img id="cart-icon" width="29" height="29" alt="Logo" />
+                        <img id="cart-icon" width="29" height="29" alt="Logo">
                     </a>
                 </li>
                 <li class="nav-item d-none d-lg-block" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php echo isset($_SESSION['username']) ? 'Twój login: ' . $_SESSION['username'] : 'Gość'; ?>">
                     <a class="nav-link" href="logowanie.php">
-                        <img id="user-icon" width="27" height="27" alt="Logo" />
+                        <img id="user-icon" width="27" height="27" alt="Logo">
                     </a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
@@ -271,13 +271,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
             <form class="w-100 d-lg-none" action="search.php" method="GET">
                 <div class="input-group">
                     <input type="text" class="form-control" name="search_query" placeholder="Tytuł/autor/ISBN..." required>
-                    <span class="input-group-text">
+                    <div class="input-group-text">
                         <div class="col-auto">
                             <button type="submit" name="submit" class="btn btn-link p-0 d-flex justify-content-center align-items-center">
                                 <img src="images/magnifier-icon.svg" alt="Magnifying Glass" width="16" height="16">
                             </button>
                         </div>
-                    </span>
+                    </div>
                 </div>
             </form>
         </div>

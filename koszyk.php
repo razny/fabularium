@@ -17,7 +17,7 @@
     <?php include("includes/header.php"); ?>
     <?php include("includes/conn.php"); ?>
     <div class="d-flex align-items-center d-flex flex-column min-vh-100">
-        <section class="my-2 w-md-75 w-100" id="cart">
+        <div class="my-2 w-md-75 w-100" id="cart">
             <div class="container h-100 py-5">
                 <?php
                 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
@@ -27,7 +27,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="h5">Koszyk</th>
+                                    <th scope="col"><h4>Koszyk</h4></th>
                                     <th scope="col" style="text-align: center;">Cena</th>
                                     <th scope="col" style="text-align: center;">Usuń</th>
                                 </tr>
@@ -50,7 +50,7 @@
                                                             <img src="<?php echo htmlspecialchars($row['Okladka']); ?>" class="img-fluid rounded-3" alt="Okładka książki <?php echo $row['Tytul']; ?>" style="max-width: 100px; max-height: 100px; width: auto; height: auto;">
                                                         </a>
                                                         <div class="flex-column ms-4">
-                                                            <p class="mb-2"><?php echo $row['Tytul']; ?></p>
+                                                            <h5 class="mb-2"><?php echo $row['Tytul']; ?></h5>
                                                             <p class="mb-0 text-secondary"><?php echo $row['Autor']; ?></p>
                                                         </div>
                                                     </div>
@@ -88,7 +88,7 @@
                     <div class="mt-3 py-3">
                         <div>
                             <div class="row d-flex flex-column flex-md-row justify-content-center">
-                                <div class="col-md-8 mb-4 mb-md-0">
+                                <section class="col-md-8 mb-4 mb-md-0">
                                     <div class="card shadow-2-strong p-4">
                                         <div class="row">
                                             <div class="col-12">
@@ -117,8 +117,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 card">
+                                </section>
+                                <section class="col-md-4 card">
                                     <div class="card-body shadow-2-strong p-4">
                                         <div class="flex-column">
                                             <div>
@@ -157,14 +157,14 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </section>
                             </div>
                         </div>
                     </div>
 
                 <?php } ?>
             </div>
-        </section>
+        </div>
     </div>
     <?php include("includes/footer.php"); ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

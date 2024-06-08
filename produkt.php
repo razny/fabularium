@@ -32,7 +32,7 @@
       ?>
             <div class="row gx-4 gx-lg-5">
               <div class="col-12 col-md-6">
-                <img class="img-fluid mb-4" src="<?php echo $row["Okladka"]; ?>" alt="Okładka książki <?php echo $row['Tytul']; ?>" />
+                <img class="img-fluid mb-4" src="<?php echo $row["Okladka"]; ?>" alt="Okładka książki <?php echo $row['Tytul']; ?>">
               </div>
               <div class="col-12 col-md-6">
                 <h1 class="display-5 fw-bolder mb-3"><?php echo $row["Tytul"]; ?></h1>
@@ -84,7 +84,6 @@
               </div>
             </div>
     </section>
-  </div>
 <?php
           } else {
             echo '<div class="min-vh-100">Nie znaleziono produktu o tym ID.</div>';

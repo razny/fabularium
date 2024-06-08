@@ -2,7 +2,7 @@
 <html lang="pl">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fabularium - sklep z książkami dla każdego</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@
   </section>
   <?php include("includes/footer.php"); ?>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="scripts/swiper.js"></script>
 </body>
 

@@ -59,7 +59,7 @@
                             <?php
                             if ($_SESSION['username'] == 'admin') {
                             ?>
-                                <a href="add_book.php" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Dodaj książkę</a>
+                                <a href="edit_book.php" class="btn btn-dark accent btn-block border-0 mt-3 w-100">Edytuj bazę książek</a>
                             <?php
                             }
                             ?>
@@ -114,7 +114,6 @@
         </div>
     <?php
     }
-    mysqli_close($conn);
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
